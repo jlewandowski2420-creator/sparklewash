@@ -98,6 +98,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const mm = String(today.getMonth() + 1).padStart(2, '0');
     const dd = String(today.getDate()).padStart(2, '0');
     bookingDate.setAttribute('min', yyyy + '-' + mm + '-' + dd);
+
+    // Open date picker on click anywhere on the field (not just the calendar icon)
+    if ('showPicker' in HTMLInputElement.prototype) {
+      bookingDate.addEventListener('click', function(e) {
+        // showPicker() requires a transient user activation — click provides that
+        // If picker is already open, showPicker() closes it (toggle behaviour)
+        try { this.showPicker(); } catch (_) { /* unsupported or not allowed */ }
+      });
+    }
   }
 
   // Populate time slots: 10:00–20:30 (30-min intervals, last booking ends at 21:00)
