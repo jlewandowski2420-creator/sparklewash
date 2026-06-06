@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Sitemap: https://sparklewash.nl/sitemap.xml
+
+# Disallow admin/internal paths if any
+# Disallow: /admin/

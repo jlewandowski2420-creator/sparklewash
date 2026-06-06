@@ -27,6 +27,153 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // ── Price Calculator ──
+  const calcCheckboxes = document.querySelectorAll('#calc-grid input[type="checkbox"]');
+  const calcQty = document.getElementById('calc-qty');
+  const calcTotalDisplay = document.getElementById('calc-total-display');
+  const calcClear = document.getElementById('calc-clear');
+
+  function updateCalcTotal() {
+    let total = 0;
+    calcCheckboxes.forEach(cb => {
+      if (cb.checked) {
+        total += parseInt(cb.dataset.price, 10);
+      }
+    });
+    const qty = parseInt(calcQty ? calcQty.value : 1, 10) || 1;
+    const grandTotal = total * qty;
+    if (calcTotalDisplay) {
+      calcTotalDisplay.textContent = '\u20AC' + grandTotal;
+    }
+  }
+
+  if (calcCheckboxes.length) {
+    calcCheckboxes.forEach(cb => {
+      cb.addEventListener('change', updateCalcTotal);
+    });
+  }
+  if (calcQty) {
+    calcQty.addEventListener('input', updateCalcTotal);
+  }
+  if (calcClear) {
+    calcClear.addEventListener('click', () => {
+      calcCheckboxes.forEach(cb => { cb.checked = false; });
+      if (calcQty) calcQty.value = 1;
+      updateCalcTotal();
+    });
+  }
+
+  // ── Booking Form (localStorage) ──
+  const bookingForm = document.getElementById('booking-form');
+  const bookingSuccessMsg = document.getElementById('booking-success-msg');
+
+  if (bookingForm) {
+    bookingForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const name = bookingForm.querySelector('[name="b-name"]').value.trim();
+      const email = bookingForm.querySelector('[name="b-email"]').value.trim();
+      const phone = bookingForm.querySelector('[name="b-phone"]').value.trim();
+      const service = bookingForm.querySelector('[name="b-service"]').value;
+      const date = bookingForm.querySelector('[name="b-date"]').value;
+      const time = bookingForm.querySelector('[name="b-time"]').value;
+
+      if (!name || !email || !phone || !service || !date || !time) {
+        const msg = I18N.current === 'pl' ? 'Proszę wypełnić wszystkie wymagane pola.' :
+                    I18N.current === 'de' ? 'Bitte füllen Sie alle Pflichtfelder aus.' :
+                    I18N.current === 'nl' ? 'Vul alstublieft alle verplichte velden in.' :
+                    'Please fill in all required fields.';
+        alert(msg);
+        return;
+      }
+
+      const booking = {
+        name, email, phone, service, date, time,
+        created: new Date().toISOString()
+      };
+
+      const bookings = JSON.parse(localStorage.getItem('sparklewash-bookings') || '[]');
+      bookings.push(booking);
+      localStorage.setItem('sparklewash-bookings', JSON.stringify(bookings));
+
+      // Show success
+      const successText = I18N.current === 'pl' ? 'Rezerwacja zapisana! Skontaktujemy się w ciągu 24h.' :
+                          I18N.current === 'de' ? 'Buchung gespeichert! Wir melden uns innerhalb von 24h.' :
+                          I18N.current === 'nl' ? 'Boeking opgeslagen! Wij nemen binnen 24u contact met u op.' :
+                          'Booking saved! We will contact you within 24h.';
+      if (bookingSuccessMsg) {
+        bookingSuccessMsg.textContent = successText;
+        bookingSuccessMsg.classList.add('show');
+        setTimeout(() => bookingSuccessMsg.classList.remove('show'), 5000);
+      } else {
+        alert(successText);
+      }
+
+      bookingForm.reset();
+    });
+  }
+
+  // ── Animated Counter (Stats) ──
+  function animateCounter(el) {
+    const target = parseInt(el.dataset.target, 10);
+    if (isNaN(target)) return;
+    const duration = 2000; // ms
+    const startTime = performance.now();
+
+    // For rating (4.9), we store target 49 and divide by 10
+    const isRating = el.dataset.target === '49';
+    const finalVal = isRating ? 4.9 : target;
+
+    function step(currentTime) {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      // Ease out cubic
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const currentVal = Math.round(eased * target);
+      if (isRating) {
+        el.textContent = (currentVal / 10).toFixed(1) + '/5';
+      } else {
+        el.textContent = currentVal + '+';
+      }
+      if (progress < 1) {
+        requestAnimationFrame(step);
+      }
+    }
+    requestAnimationFrame(step);
+  }
+
+  // Set up intersection observer for stat counters
+  const statObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const numEl = entry.target.querySelector('.stat-number');
+        if (numEl && !numEl.dataset.animated) {
+          numEl.dataset.animated = '1';
+          animateCounter(numEl);
+        }
+        statObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.3 });
+
+  document.querySelectorAll('.stat-card').forEach(card => statObserver.observe(card));
+
+  // ── Scroll to Top Button ──
+  const scrollTopBtn = document.getElementById('scroll-top-btn');
+  if (scrollTopBtn) {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 400) {
+        scrollTopBtn.classList.add('show');
+      } else {
+        scrollTopBtn.classList.remove('show');
+      }
+    });
+
+    scrollTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
   // ── Contact Form ──
   const form = document.getElementById('contact-form');
   if (form) {
@@ -96,6 +243,55 @@ document.addEventListener('DOMContentLoaded', () => {
   if (header) {
     window.addEventListener('scroll', () => {
       header.style.boxShadow = window.scrollY > 10 ? '0 2px 20px rgba(0,0,0,0.3)' : 'none';
+    });
+  }
+
+  // ── FAQ Accordion ──
+  document.querySelectorAll('.faq-question').forEach(q => {
+    q.addEventListener('click', () => {
+      const answer = q.nextElementSibling;
+      if (!answer) return;
+      const isOpen = answer.classList.contains('faq-answer-open');
+      // Close all others
+      document.querySelectorAll('.faq-answer-open').forEach(a => {
+        if (a !== answer) {
+          a.classList.remove('faq-answer-open');
+          a.style.maxHeight = '0';
+          a.previousElementSibling?.classList.remove('faq-question-active');
+        }
+      });
+      // Toggle this one
+      if (isOpen) {
+        answer.classList.remove('faq-answer-open');
+        answer.style.maxHeight = '0';
+        q.classList.remove('faq-question-active');
+      } else {
+        answer.classList.add('faq-answer-open');
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+        q.classList.add('faq-question-active');
+      }
+    });
+  });
+
+  // ── Scroll Reveal (Intersection Observer) ──
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -30px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+  // ── WhatsApp Button click tracking ──
+  const waBtn = document.getElementById('whatsapp-button');
+  if (waBtn) {
+    waBtn.addEventListener('click', () => {
+      console.log('[SparkleWash] WhatsApp button clicked');
+      const clicks = parseInt(localStorage.getItem('sparklewash-wa-clicks') || '0');
+      localStorage.setItem('sparklewash-wa-clicks', (clicks + 1).toString());
     });
   }
 
