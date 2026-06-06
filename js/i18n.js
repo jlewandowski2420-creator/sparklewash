@@ -627,8 +627,19 @@ const I18N = {
 // Init on load
 document.addEventListener('DOMContentLoaded', () => {
   const saved = localStorage.getItem('sparklewash-lang');
-  if (saved && I18N.data[saved]) I18N.current = saved;
+  if (saved && I18N.data[saved]) {
+    I18N.current = saved;
+  } else {
+    // Detect browser language on first visit
+    const browserLang = (navigator.language || '').split('-')[0];
+    if (I18N.data[browserLang]) I18N.current = browserLang;
+  }
   I18N.translatePage();
+
+  // Sync active state on language buttons
+  document.querySelectorAll('.lang-btn').forEach(b => {
+    b.classList.toggle('active', b.dataset.lang === I18N.current);
+  });
 
   document.querySelectorAll('.lang-btn').forEach(btn => {
     btn.addEventListener('click', () => I18N.setLang(btn.dataset.lang));
