@@ -90,6 +90,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (calcCheckboxes.length) {
     calcCheckboxes.forEach(cb => cb.addEventListener('change', updateCalcTotal));
+    // Auto-sync checked service to booking form dropdown
+    const bookingServiceSelect = document.querySelector('[name="b-service"]');
+    if (bookingServiceSelect) {
+      calcCheckboxes.forEach(cb => {
+        cb.addEventListener('change', function() {
+          if (this.checked) bookingServiceSelect.value = this.dataset.service;
+        });
+      });
+    }
   }
   if (calcQty) calcQty.addEventListener('input', updateCalcTotal);
   if (calcClear) {
