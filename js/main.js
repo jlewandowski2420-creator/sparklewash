@@ -113,6 +113,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const mm = String(today.getMonth() + 1).padStart(2, '0');
     const dd = String(today.getDate()).padStart(2, '0');
     bookingDate.setAttribute('min', yyyy + '-' + mm + '-' + dd);
+
+    // Open date picker when clicking anywhere on the field
+    bookingDate.addEventListener('click', function() {
+      try { this.showPicker(); } catch (_) {}
+    });
   }
 
   // Populate time slots
