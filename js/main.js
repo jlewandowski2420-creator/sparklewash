@@ -88,6 +88,32 @@ document.addEventListener('DOMContentLoaded', () => {
   // ── Booking Form → Formspree ──
   const bookingForm = document.getElementById('booking-form');
   const bookingSuccessMsg = document.getElementById('booking-success-msg');
+  const bookingDate = document.getElementById('booking-date');
+  const bookingTime = document.getElementById('booking-time');
+
+  // Set min date to today (no past dates)
+  if (bookingDate) {
+    const today = new Date();
+    const yyyy = today.getFullYear();
+    const mm = String(today.getMonth() + 1).padStart(2, '0');
+    const dd = String(today.getDate()).padStart(2, '0');
+    bookingDate.setAttribute('min', yyyy + '-' + mm + '-' + dd);
+  }
+
+  // Populate time slots: 10:00–20:30 (30-min intervals, last booking ends at 21:00)
+  if (bookingTime) {
+    for (var h = 10; h <= 20; h++) {
+      for (var m = 0; m <= 30; m += 30) {
+        if (h === 20 && m > 30) break;
+        var hh = String(h).padStart(2, '0');
+        var mm2 = String(m).padStart(2, '0');
+        var opt = document.createElement('option');
+        opt.value = hh + ':' + mm2;
+        opt.textContent = hh + ':' + mm2;
+        bookingTime.appendChild(opt);
+      }
+    }
+  }
 
   if (bookingForm) {
     bookingForm.addEventListener('submit', async (e) => {
@@ -97,11 +123,18 @@ document.addEventListener('DOMContentLoaded', () => {
       const email = bookingForm.querySelector('[name="b-email"]').value.trim();
       const phone = bookingForm.querySelector('[name="b-phone"]').value.trim();
       const service = bookingForm.querySelector('[name="b-service"]').value;
-      const date = bookingForm.querySelector('[name="b-date"]').value;
-      const time = bookingForm.querySelector('[name="b-time"]').value;
+      const date = bookingDate ? bookingDate.value : '';
+      const time = bookingTime ? bookingTime.value : '';
 
       if (!name || !email || !phone || !service || !date || !time) {
         alert(loc('Vul alle verplichte velden in.', 'Please fill in all required fields.', 'Bitte füllen Sie alle Pflichtfelder aus.', 'Proszę wypełnić wszystkie wymagane pola.'));
+        return;
+      }
+
+      // Double-check date isn't in the past (browser min only blocks date picker, not manual input)
+      const selected = new Date(date + 'T' + time);
+      if (selected < new Date()) {
+        alert(loc('Kies een datum en tijd in de toekomst.', 'Please choose a future date and time.', 'Bitte wählen Sie ein Datum und eine Uhrzeit in der Zukunft.', 'Proszę wybrać datę i godzinę w przyszłości.'));
         return;
       }
 

@@ -380,8 +380,10 @@
               <option value="mattress" data-i18n="booking-mattress">Matras (€35)</option>
               <option value="car" data-i18n="booking-car">Auto Interieur (€59)</option>
             </select>
-            <input type="date" name="b-date" required data-i18n-placeholder="booking-date">
-            <input type="time" name="b-time" required data-i18n-placeholder="booking-time">
+            <input type="date" name="b-date" id="booking-date" required data-i18n-placeholder="booking-date">
+            <select name="b-time" id="booking-time" required data-i18n-label="booking-time">
+              <option value="" data-i18n="booking-time-placeholder">Kies tijd</option>
+            </select>
             <button type="submit" class="btn btn-primary" data-i18n="booking-submit">Boeken</button>
           </form>
           <div class="booking-success-msg" id="booking-success-msg"></div>
