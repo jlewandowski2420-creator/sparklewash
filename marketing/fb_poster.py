@@ -1,246 +1,222 @@
 """
-SparkleWash Facebook Post Rotator
+SparkleWash Facebook Post Rotator — Professional Edition
 Returns the next post in the 12-post cycle based on stored index.
-Reads index from ~/.sparklewash-post-index, increments it.
+No emoji, clean professional tone. Polish groups + Dutch group.
 """
 import os
-from datetime import datetime
 
 INDEX_FILE = os.path.expanduser("~/.sparklewash-post-index")
 
-# ── All 12 posts ──────────────────────────────────────────────
 POSTS = [
     {
         "id": 1,
         "title": "Poznaj nas",
-        "groups": "1+2: Polacy w Limburgii (obie grupy)",
+        "groups": "Grupa 1+2: Polacy w Limburgii (obie grupy)",
         "lang": "PL",
-        "text": """🧼 Poznaj SparkleWash — Twoje meble znów jak nowe!
+        "text": """Twoja tapicerka wyglada gorzej niz powinna? A moze po prostu chcesz odswiezyc to, na czym siedzisz kazdego dnia?
 
-Hej! Jesteśmy lokalną firmą z Heerlen, która profesjonalnie pierze meble tapicerowane, dywany, materace i wnętrza aut.
+Nazywam sie Jaxob i razem z ekipa SparkleWash przywracamy meblom drugie zycie. Profesjonalne pranie ekstrakcyjne — nie szukaj dalej.
 
-✅ Pranie ekstrakcyjne Kärcherem — głęboko w strukturę tkaniny
-✅ Usuwamy plamy, zapachy, roztocza i alergeny
-✅ Przyjeżdżamy do Ciebie — zero dźwigania mebli
-✅ Mówimy po polsku, niderlandzku, niemiecku i angielsku
-✅ Działamy w całej Limburgii NL + Aachen, Köln, Düren
+Co nas wyroznia:
+- Karcher SE 4001 — sprzet klasy przemyslowej, nie zabawka z marketu
+- Dojezdzamy do Ciebie — nie musisz nigdzie dzwigac mebli
+- Chemia bezpieczna dla dzieci i zwierzat
+- Mowimy po polsku, niderlandzku, niemiecku i angielsku
 
-📩 Darmowa wycena w 24h → sparklewash.nl
-📞 WhatsApp: +31 6 84067379
+Dzialamy w calej Limburgii oraz po niemieckiej stronie granicy: Aachen, Koln, Duren.
 
-#SparkleWash #PranieTapicerki #Limburg #Heerlen #PolacyWHolandii"""
+Pierwsza wycena za darmo i bez zobowiazan. Napisz, pogadamy.
+sparklewash.nl"""
     },
     {
         "id": 2,
-        "title": "Before/After sofa",
-        "groups": "3+4: POLACY W AACHEN + Polacy w Aachen & okolicach",
+        "title": "Efekty prania sofy",
+        "groups": "Grupa 3+4: POLACY W AACHEN + Polacy w Aachen i okolicach",
         "lang": "PL",
-        "text": """✨ Przed i po — efekty mówią same za siebie!
+        "text": """Tak wyglada sofa po profesjonalnym praniu ekstrakcyjnym. Nie po odkurzaniu. Nie po przetarciu wilgotna szmatka. Po pelnym cyklu ekstrakcji goraca woda pod cisnieniem.
 
-Ta sofa przeszła gruntowne pranie ekstrakcyjne. Różnica? Sami oceńcie 👆
+Roznica jest widoczna golym okiem — brud, kurz, roztocza i alergeny usuniete z warstw, do ktorych domowe metody po prostu nie docieraja.
 
-🔹 Brud, kurz i alergeny usunięte z głębokich włókien
-🔹 Plamy z kawy i codziennego użytkowania — zniknęły
-🔹 Świeży zapach bez chemii
+Kazdy material jest inny — dlatego przed kazda usluga robimy inspekcje i dobieramy odpowiednia chemie. Bez eksperymentow. Bez ryzyka.
 
-To nie magia — to profesjonalny sprzęt i doświadczenie 💪
-
-👉 Masz sofę do odświeżenia? Napisz do nas!
-📩 sparklewash.nl | 📞 WhatsApp: +31 6 84067379
-
-#PrzedIPo #CzyszczenieSofy #SparkleWash #Aachen #PolacyWAachen"""
+Przygotuj swoja sofe na nowy sezon.
+sparklewash.nl"""
     },
     {
         "id": 3,
         "title": "Porada: plama z wina",
-        "groups": "1+5: Polacy w Limburgii-Maastricht + Aachen Ogłoszenia",
+        "groups": "Grupa 1+5: Polacy w Limburgii-Maastricht + Aachen Ogloszenia",
         "lang": "PL",
-        "text": """🍷 Plama z czerwonego wina? Nie panikuj — działaj!
+        "text": """Plama z czerwonego wina na tapicerce? Wiekszosc osob od razu lapie za ciepla wode i szmatke — i wlasnie wtedy utrwala plame na dobre.
 
-3 kroki które ratują tapicerkę:
-1. Natychmiast posyp solą — wyciąga wilgoć z plamy
-2. NIE trzyj! — tylko odsączaj papierowym ręcznikiem
-3. Zimna woda + soda oczyszczona — delikatnie tamponuj
+Zasady pierwszej pomocy dla tapicerki:
+1. Sol kuchenna — wysyp obficie na swieza plame, wyciaga wilgoc
+2. Nie trzyj — kazdy ruch rozciera barwnik glebiej we wlokna, odsaczaj papierowym recznikiem
+3. Zimna woda + soda oczyszczona — dopiero potem delikatnie tamponuj
 
-⚠️ Nigdy nie używaj ciepłej wody — utrwala plamę!
+To dziala na wiekszosc swiezych plam z wina, kawy i sokow. Ale jesli plama zdazyla wyschnac albo domowe metody nie daja rady — napisz do nas. Mamy chemie, ktorej nie kupisz w supermarkecie.
 
-A jeśli domowe sposoby nie dają rady — my przyjedziemy z Kärcherem i profesjonalną chemią 💪
-
-📩 Darmowa wycena → sparklewash.nl
-
-#PoradaDomowa #Czyszczenie #Plamy #SparkleWash #Limburg"""
+sparklewash.nl"""
     },
     {
         "id": 4,
-        "title": "Cennik + FIRST10 (NL)",
-        "groups": "6: Kleine Ondernemers Zuid Limburg",
+        "title": "Cennik i oferta (NL)",
+        "groups": "Grupa 6: Kleine Ondernemers Zuid Limburg",
         "lang": "NL",
-        "text": """💰 Onze prijzen — eerlijk en transparant
+        "text": """Professionele meubelreiniging in Zuid-Limburg — eerlijke prijzen, geen verborgen kosten.
 
 2-Zits Bank: €49
 3-Zits Bank: €69
 Hoekbank: €79
 Vloerkleed (tot 6m²): €39
-Matras: €35
+Matras (beide zijden): €35
 Auto Interieur: €59
 
-🎉 ACTIE: FIRST10 — 10% korting voor nieuwe klanten met code FIRST10!
+Elke prijs is inclusief voorreiniging, extractie met warm water onder druk, en droogtijd. Wij komen naar u toe in heel Limburg en de Duitse grensregio.
 
-📩 Gratis offerte → sparklewash.nl
-📞 WhatsApp: +31 6 84067379
+Nieuwe klanten ontvangen 10% korting op hun eerste afspraak met code FIRST10.
 
-#SparkleWash #Aanbieding #Limburg #Ondernemen #ZuidLimburg"""
+sparklewash.nl"""
     },
     {
         "id": 5,
         "title": "Alergie i roztocza",
-        "groups": "2+3: Polacy w Limburgii + POLACY W AACHEN",
+        "groups": "Grupa 2+3: Polacy w Limburgii + POLACY W AACHEN",
         "lang": "PL",
-        "text": """🤧 Kichasz w domu? To może być Twój materac!
+        "text": """Budzisz sie z zatkanym nosem? Kichasz w sypialni wiecej niz w innych pomieszczeniach? To prawdopodobnie nie pylki — to Twoj materac.
 
-W materacu może żyć nawet 2 MILIONY roztoczy. Ich odchody to jeden z głównych alergenów w domu.
+W przecietnym materacu zyje od 100 tysiecy do 2 milionow roztoczy. Ich odchody to jeden z najsilniejszych alergenow domowych — szczególnie u dzieci.
 
-Profesjonalne pranie ekstrakcyjne:
-✅ Zabija roztocza i usuwa alergeny
-✅ Eliminuje bakterie i grzyby
-✅ Świeży materac = lepszy sen
+Pranie ekstrakcyjne usuwa je calkowicie. Goraca woda + cisnienie + natychmiastowe odsysanie — zadna chemia nie zostaje w materiale. Materac jest suchy w kilka godzin, gotowy do spania tego samego dnia.
 
-🛏️ Cena: tylko €35/materac (obie strony)
+Koszt: 35 euro od materaca. Obie strony. Zero filozofii.
 
-📩 Umów pranie → sparklewash.nl
-
-#Alergia #Materac #Roztocza #ZdrowyDom #SparkleWash"""
+sparklewash.nl"""
     },
     {
         "id": 6,
-        "title": "Wnętrze auta przed/po",
-        "groups": "4+5: Polacy w Aachen & okolicach + Ogłoszenia",
+        "title": "Wnetrze auta",
+        "groups": "Grupa 4+5: Polacy w Aachen + Aachen Ogloszenia",
         "lang": "PL",
-        "text": """🚗 Twoje auto zasługuje na drugie życie!
+        "text": """Wnetrze samochodu to jedno z najbardziej zaniedbywanych miejsc jesli chodzi o higiene. Fotele, dywaniki, podsufitka — wszystko lapie kurz, bakterie i zapachy, ktorych zwykle odkurzanie nie rusza.
 
-Wnętrze auta to siedlisko kurzu, bakterii i zapachów. Standardowe odkurzanie nie daje rady — dopiero ekstrakcja parowa dociera tam gdzie trzeba.
+Oferujemy pelne pranie ekstrakcyjne wnetrza auta:
+- Fotele i tapicerka — pranie w glab wlokien
+- Dywaniki i podloga — usuwanie zaschnietego brudu
+- Podsufitka — czyszczenie bez przemoczenia kleju
 
-💺 Fotele, dywaniki, podsufitka — wszystko świeże i pachnące
-⏱️ Czas: ok. 1-1.5h
-💰 Cena: €59
+Cena: 59 euro za calosc. Czas: okolo 1-1.5 godziny. Przyjezdzamy pod wskazany adres.
 
-📩 Zarezerwuj termin → sparklewash.nl
-📞 WhatsApp: +31 6 84067379
-
-#CarInterior #AutoDetailing #PranieAuta #SparkleWash"""
+sparklewash.nl"""
     },
     {
         "id": 7,
-        "title": "5 tips voor bank (NL)",
-        "groups": "6: Kleine Ondernemers Zuid Limburg",
+        "title": "Pielegnacja mebli (NL)",
+        "groups": "Grupa 6: Kleine Ondernemers Zuid Limburg",
         "lang": "NL",
-        "text": """🛋️ 5 tips om je bank langer mooi te houden
+        "text": """Een stoffen bank gaat jaren mee — als je er goed voor zorgt. Vijf onderhoudstips van iemand die dagelijks met meubelstoffen werkt:
 
-1. Stofzuig wekelijks — ook tussen de kussens!
-2. Draai kussens maandelijks om
-3. Houd huisdieren van stoffen banken (of gebruik een plaid)
-4. Behandel vlekken meteen — hoe langer je wacht, hoe dieper het intrekt
-5. Laat eens per jaar professioneel reinigen
+1. Wekelijks stofzuigen met meubelborstel — ook tussen de kussens en in de naden
+2. Kussens maandelijks draaien — voorkomt kuilvorming
+3. Huisdieren van de bank houden, of gebruik een plaid die je wekelijks wast
+4. Vlekken direct behandelen — hoe langer je wacht, hoe dieper het intrekt
+5. Een keer per jaar professioneel laten reinigen — extractie verwijdert wat je stofzuiger laat zitten
 
-💡 Wist je dat professionele extractiereiniging tot 99% van de bacteriën verwijdert?
+Professionele reiniging is geen luxe. Het is onderhoud. Net als olie verversen bij je auto.
 
-📩 Offerte aanvragen → sparklewash.nl
-
-#Onderhoud #BankReinigen #WoonTips #SparkleWash #Limburg"""
+sparklewash.nl"""
     },
     {
         "id": 8,
-        "title": "Nasz sprzęt",
-        "groups": "1+2: Polacy w Limburgii (obie grupy)",
+        "title": "Nasz sprzet",
+        "groups": "Grupa 1+2: Polacy w Limburgii (obie grupy)",
         "lang": "PL",
-        "text": """🔧 Czym robimy magię? Sprzęt ma znaczenie!
+        "text": """Kiedys probeuje sie myc tapicerke recznie — wiadro, szmatka, moze jakis zapozyczony od sasiada odkurzacz pioracy. Efekt? Mokra kanapa przez trzy dni i plamy, ktore wracaja po tygodniu.
 
-Nasz zestaw:
-🧪 Kärcher SE 4001 — ekstrakcja gorącą wodą pod ciśnieniem
-🧴 Profesjonalna chemia Global — bezpieczna dla tkanin
-🪥 Wiertarka z nakładkami do tapicerki
-💧 Czysta woda + odsysanie — zero chemii zostaje w meblach
+Profesjonalne pranie ekstrakcyjne to zupelnie inna liga. Nasz zestaw:
 
-Nie używamy agresywnych detergentów — wszystko bezpieczne dla dzieci i zwierząt 🐶👶
+Karcher SE 4001 — jednostka ekstrakcyjna. Wtryskuje goraca wode z detergentem pod cisnieniem i natychmiast ja odsysa razem z brudem. Nie zostawia wilgoci w materiale.
 
-📩 sparklewash.nl
+Chemia Global — srodowiskowa, biodegradowalna, bez wybielaczy i agresywnych rozpuszczalnikow. Bezpieczna dla welny, bawelny, mikrofibry i wszystkich typowych tkanin obiciowych.
 
-#ProfesjonalnySprzet #Karcher #Ekstrakcja #SparkleWash"""
+Do tego wiertarka z miekkimi nakladkami do tapicerki — tam gdzie rekaw nie daje rady, wchodzi maszynowo.
+
+Nie jestesmy Januszami z mopem. Robimy to zawodowo.
+
+sparklewash.nl"""
     },
     {
         "id": 9,
         "title": "Opinia klienta",
-        "groups": "3+4: POLACY W AACHEN + Polacy w Aachen & okolicach",
+        "groups": "Grupa 3+4: POLACY W AACHEN + Polacy w Aachen i okolicach",
         "lang": "PL",
-        "text": """⭐ "Moja sofa wygląda jak nowa!"
+        "text": """Dostalismy wiadomosc od Marii z Heerlen. Opublikowana za jej zgoda.
 
-— Maria K., Heerlen
+"Zamowilam pranie sofy 3-osobowej w SparkleWash po tym, jak moje dzieci zostawily slady sokow, czekolady i kredek na tapicerce. Przyjechali punktualnie, dokladnie obejrzeli material przed rozpoczeciem pracy i wytlumaczyli caly proces. Efekt? Nie przesadzam — sofa wyglada jak w dniu zakupu. Zero chemicznego zapachu, material miekki i swiezy."
 
-"Zamówiłam pranie sofy 3-osobowej po tym jak dzieci zostawiły po sobie ślady soków i kredek. Ekipa SparkleWash przyjechała na czas, wszystko wytłumaczyła i efekt przerósł moje oczekiwania. Sofa jak z salonu!"
+Dziekujemy za zaufanie. Kazda taka opinia to dla nas potwierdzenie, ze warto robic swoje porzadnie.
 
-Dziękujemy Maria! ❤️
-
-👉 Też chcesz odświeżyć meble? Pisz śmiało!
-📩 sparklewash.nl
-
-#OpiniaKlienta #ZadowolonyKlient #PranieSofy #SparkleWash"""
+Chcesz sprawdzic nasze uslugi? Pierwsza wycena jest darmowa.
+sparklewash.nl"""
     },
     {
         "id": 10,
         "title": "Dywan transformacja",
-        "groups": "1+3: Polacy w Limburgii-Maastricht + POLACY W AACHEN",
+        "groups": "Grupa 1+3: Polacy w Limburgii-Maastricht + POLACY W AACHEN",
         "lang": "PL",
-        "text": """🟫 Dywan przeszedł transformację!
+        "text": """Dywany zbieraja wszystko — kurz, siersc zwierzat, okruchy, a czasem rzeczy, o ktorych wolisz nie wiedziec. Odkurzacz wyciaga tylko to, co na wierzchu. Reszta zostaje.
 
-Ten dywan nie widział profesjonalnego prania od lat. Efekt po naszej ekstrakcji:
-✨ Kolory znów żywe
-✨ Zero zapachów
-✨ Włókna odświeżone i puszyste
+Pranie ekstrakcyjne dywanu:
+- Woda + detergent wtryskiwane pod cisnieniem prosto w runo
+- Natychmiastowe odsysanie razem z brudem
+- Zero szorowania, zero ryzyka uszkodzenia wlokien
 
-Cena: od €39 (do 6m²)
+Po praniu dywan jest suchy w kilka godzin. Kolory wracaja do pierwotnego stanu. Zapachy znikaja.
 
-📩 sparklewash.nl | 📞 +31 6 84067379
+Koszt: od 39 euro (dywan do 6m²). Wieksze formaty — wycena indywidualna.
 
-#PranieDywanow #Transformacja #CzystyDom #SparkleWash"""
+sparklewash.nl"""
     },
     {
         "id": 11,
-        "title": "Voor bedrijven (NL)",
-        "groups": "6: Kleine Ondernemers Zuid Limburg",
+        "title": "Dla firm (NL)",
+        "groups": "Grupa 6: Kleine Ondernemers Zuid Limburg",
         "lang": "NL",
-        "text": """🏢 Ook voor bedrijven — schone indruk begint bij de entree
+        "text": """De staat van uw bedrijfsruimte zegt meer over uw onderneming dan uw website.
 
 Wij reinigen:
-🪑 Bureaustoelen & kantoormeubilair
-🟫 Tapijttegels en vloerbedekking
-🛋️ Wachtruimtes & ontvangstruimtes
+- Bureaustoelen en kantoormeubilair — tot in de naden
+- Tapijttegels en vloerbedekking — extractie reiniging
+- Wachtruimtes, ontvangstbalies, representatieve ruimtes
 
-Flexibele tijden — we komen buiten kantoortijden zodat uw bedrijf doordraait.
+Wij komen buiten kantoortijden — uw bedrijf draait door, wij werken om de hinder heen. Geen gedoe, geen uitval.
 
-📩 Offerte op maat → sparklewash.nl
-
-#Zakelijk #KantoorReinigen #Ondernemen #Limburg #SparkleWash"""
+Vraag een offerte op maat aan. Binnen 24 uur reactie.
+sparklewash.nl"""
     },
     {
         "id": 12,
-        "title": "Last minute / promocja",
-        "groups": "2+5: Polacy w Limburgii + Aachen Ogłoszenia",
+        "title": "Promocja / wolny termin",
+        "groups": "Grupa 2+5: Polacy w Limburgii + Aachen Ogloszenia",
         "lang": "PL",
-        "text": """⚡ Mamy wolny termin w ten weekend!
+        "text": """Mamy ostatnie wolne sloty na ten tydzien — Heerlen i okolice.
 
-Ostatni slot na sobotę/niedzielę w Heerlen i okolicach. Jeśli masz sofę, dywan lub materac do odświeżenia — napisz teraz!
+Sofa 2-osobowa: 49 EUR
+Sofa 3-osobowa: 69 EUR
+Naroznik: 79 EUR
+Dywan do 6m²: 39 EUR
+Materac: 35 EUR
+Wnetrze auta: 59 EUR
 
-🎉 Dla pierwszych 3 osób: DARMOWA dezodoryzacja (usuwanie zapachów) gratis do każdej usługi!
+Dla pierwszych trzech osob, ktore zarezerwuja termin w tym tygodniu — gratisy dodatek: dezodoryzacja i neutralizacja zapachow w cenie uslugi.
 
-📩 sparklewash.nl | 📞 +31 6 84067379
-
-#OstatniTermin #Promocja #Weekend #SparkleWash"""
+Napisz teraz albo zadzwon. Terminy znikaja szybciej niz myslisz.
+sparklewash.nl | +31 6 84067379"""
     },
 ]
 
 
 def get_next_post():
-    """Read index, return next post, increment index."""
     try:
         with open(INDEX_FILE) as f:
             idx = int(f.read().strip())
@@ -260,14 +236,13 @@ if __name__ == "__main__":
     post, current_num, next_num = get_next_post()
 
     print("=" * 55)
-    print(f"📌 POST #{post['id']} — {post['title']}")
-    print(f"🗣  Język: {post['lang']}")
-    print(f"👥 Grupy: {post['groups']}")
-    print(f"📅 Cykl: {current_num}/12 → następny będzie #{POSTS[next_num % len(POSTS)]['id']}")
+    print(f"POST #{post['id']} | {post['title']} | {post['lang']}")
+    print(f"Grupy: {post['groups']}")
+    print(f"Cykl: {current_num}/12 -> nastepny: #{POSTS[next_num % len(POSTS)]['id']}")
     print("=" * 55)
     print()
     print(post['text'])
     print()
     print("---")
-    print("📎 Wrzuć na strony: sparklewash.nl + FB fanpage + powyższe grupy")
-    print("🖼  Dołącz zdjęcie (przed/po, sprzęt, lub grafika)")
+    print("Post na: fanpage + powyzsze grupy + sparklewash.nl")
+    print("Zdjecie: dolacz grafike z szablonu lub zdjecie przed/po")
