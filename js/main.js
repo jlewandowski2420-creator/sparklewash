@@ -1,4 +1,6 @@
 /* ═══ SparkleWash — Main JS ═══ */
+const FORMSPREE_ID = 'mqeopkrv';
+
 document.addEventListener('DOMContentLoaded', () => {
 
   // ── Cookie Bar ──
@@ -21,10 +23,38 @@ document.addEventListener('DOMContentLoaded', () => {
     hamburger.addEventListener('click', () => {
       nav.classList.toggle('open');
     });
-    // Close on link click
     nav.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => nav.classList.remove('open'));
     });
+  }
+
+  // ── Helper: localized text ──
+  function loc(nl, en, de, pl) {
+    const c = typeof I18N !== 'undefined' ? I18N.current : 'nl';
+    if (c === 'de') return de;
+    if (c === 'en') return en;
+    if (c === 'pl') return pl;
+    return nl;
+  }
+
+  // ── Helper: submit to Formspree ──
+  async function submitToFormspree(data, btn, form) {
+    try {
+      const resp = await fetch('https://formspree.io/f/' + FORMSPREE_ID, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(data)
+      });
+      if (resp.ok) {
+        form.reset();
+        return { ok: true };
+      } else {
+        const err = await resp.json();
+        return { ok: false, error: err.error || 'Formspree error' };
+      }
+    } catch (err) {
+      return { ok: false, error: err.message };
+    }
   }
 
   // ── Price Calculator ──
@@ -36,25 +66,17 @@ document.addEventListener('DOMContentLoaded', () => {
   function updateCalcTotal() {
     let total = 0;
     calcCheckboxes.forEach(cb => {
-      if (cb.checked) {
-        total += parseInt(cb.dataset.price, 10);
-      }
+      if (cb.checked) total += parseInt(cb.dataset.price, 10);
     });
     const qty = parseInt(calcQty ? calcQty.value : 1, 10) || 1;
     const grandTotal = total * qty;
-    if (calcTotalDisplay) {
-      calcTotalDisplay.textContent = '\u20AC' + grandTotal;
-    }
+    if (calcTotalDisplay) calcTotalDisplay.textContent = '\u20AC' + grandTotal;
   }
 
   if (calcCheckboxes.length) {
-    calcCheckboxes.forEach(cb => {
-      cb.addEventListener('change', updateCalcTotal);
-    });
+    calcCheckboxes.forEach(cb => cb.addEventListener('change', updateCalcTotal));
   }
-  if (calcQty) {
-    calcQty.addEventListener('input', updateCalcTotal);
-  }
+  if (calcQty) calcQty.addEventListener('input', updateCalcTotal);
   if (calcClear) {
     calcClear.addEventListener('click', () => {
       calcCheckboxes.forEach(cb => { cb.checked = false; });
@@ -63,12 +85,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // ── Booking Form (localStorage) ──
+  // ── Booking Form → Formspree ──
   const bookingForm = document.getElementById('booking-form');
   const bookingSuccessMsg = document.getElementById('booking-success-msg');
 
   if (bookingForm) {
-    bookingForm.addEventListener('submit', (e) => {
+    bookingForm.addEventListener('submit', async (e) => {
       e.preventDefault();
 
       const name = bookingForm.querySelector('[name="b-name"]').value.trim();
@@ -79,37 +101,37 @@ document.addEventListener('DOMContentLoaded', () => {
       const time = bookingForm.querySelector('[name="b-time"]').value;
 
       if (!name || !email || !phone || !service || !date || !time) {
-        const msg = I18N.current === 'pl' ? 'Proszę wypełnić wszystkie wymagane pola.' :
-                    I18N.current === 'de' ? 'Bitte füllen Sie alle Pflichtfelder aus.' :
-                    I18N.current === 'nl' ? 'Vul alstublieft alle verplichte velden in.' :
-                    'Please fill in all required fields.';
-        alert(msg);
+        alert(loc('Vul alle verplichte velden in.', 'Please fill in all required fields.', 'Bitte füllen Sie alle Pflichtfelder aus.', 'Proszę wypełnić wszystkie wymagane pola.'));
         return;
       }
 
-      const booking = {
-        name, email, phone, service, date, time,
-        created: new Date().toISOString()
-      };
+      const btn = bookingForm.querySelector('button[type="submit"]');
+      const originalText = btn.textContent;
+      btn.textContent = loc('Bezig...', 'Sending...', 'Wird gesendet...', 'Wysyłanie...');
+      btn.disabled = true;
 
-      const bookings = JSON.parse(localStorage.getItem('sparklewash-bookings') || '[]');
-      bookings.push(booking);
-      localStorage.setItem('sparklewash-bookings', JSON.stringify(bookings));
+      const result = await submitToFormspree({
+        _subject: 'Nieuwe boeking - SparkleWash',
+        name, email, phone, service, date, time, lang: I18N.current,
+        type: 'booking'
+      }, btn, bookingForm);
 
-      // Show success
-      const successText = I18N.current === 'pl' ? 'Rezerwacja zapisana! Skontaktujemy się w ciągu 24h.' :
-                          I18N.current === 'de' ? 'Buchung gespeichert! Wir melden uns innerhalb von 24h.' :
-                          I18N.current === 'nl' ? 'Boeking opgeslagen! Wij nemen binnen 24u contact met u op.' :
-                          'Booking saved! We will contact you within 24h.';
-      if (bookingSuccessMsg) {
-        bookingSuccessMsg.textContent = successText;
-        bookingSuccessMsg.classList.add('show');
-        setTimeout(() => bookingSuccessMsg.classList.remove('show'), 5000);
+      if (result.ok) {
+        const successText = loc('Boeking ontvangen! Wij nemen binnen 24u contact met u op.', 'Booking received! We will contact you within 24h.', 'Buchung erhalten! Wir melden uns innerhalb von 24h.', 'Rezerwacja otrzymana! Skontaktujemy się w ciągu 24h.');
+        if (bookingSuccessMsg) {
+          bookingSuccessMsg.textContent = successText;
+          bookingSuccessMsg.classList.add('show');
+          setTimeout(() => bookingSuccessMsg.classList.remove('show'), 5000);
+        } else {
+          alert(successText);
+        }
+        bookingForm.reset();
       } else {
-        alert(successText);
+        alert(loc('Er is een fout opgetreden. Probeer het opnieuw of bel ons.', 'An error occurred. Please try again or call us.', 'Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut oder rufen Sie uns an.', 'Wystąpił błąd. Spróbuj ponownie lub zadzwoń do nas.'));
       }
 
-      bookingForm.reset();
+      btn.textContent = originalText;
+      btn.disabled = false;
     });
   }
 
@@ -117,32 +139,21 @@ document.addEventListener('DOMContentLoaded', () => {
   function animateCounter(el) {
     const target = parseInt(el.dataset.target, 10);
     if (isNaN(target)) return;
-    const duration = 2000; // ms
+    const duration = 2000;
     const startTime = performance.now();
-
-    // For rating (4.9), we store target 49 and divide by 10
     const isRating = el.dataset.target === '49';
-    const finalVal = isRating ? 4.9 : target;
-
     function step(currentTime) {
       const elapsed = currentTime - startTime;
       const progress = Math.min(elapsed / duration, 1);
-      // Ease out cubic
       const eased = 1 - Math.pow(1 - progress, 3);
       const currentVal = Math.round(eased * target);
-      if (isRating) {
-        el.textContent = (currentVal / 10).toFixed(1) + '/5';
-      } else {
-        el.textContent = currentVal + '+';
-      }
-      if (progress < 1) {
-        requestAnimationFrame(step);
-      }
+      if (isRating) el.textContent = (currentVal / 10).toFixed(1) + '/5';
+      else el.textContent = currentVal + '+';
+      if (progress < 1) requestAnimationFrame(step);
     }
     requestAnimationFrame(step);
   }
 
-  // Set up intersection observer for stat counters
   const statObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -155,26 +166,20 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }, { threshold: 0.3 });
-
   document.querySelectorAll('.stat-card').forEach(card => statObserver.observe(card));
 
-  // ── Scroll to Top Button ──
+  // ── Scroll to Top ──
   const scrollTopBtn = document.getElementById('scroll-top-btn');
   if (scrollTopBtn) {
     window.addEventListener('scroll', () => {
-      if (window.scrollY > 400) {
-        scrollTopBtn.classList.add('show');
-      } else {
-        scrollTopBtn.classList.remove('show');
-      }
+      scrollTopBtn.classList.toggle('show', window.scrollY > 400);
     });
-
     scrollTopBtn.addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   }
 
-  // ── Contact Form ──
+  // ── Contact Form → Formspree ──
   const form = document.getElementById('contact-form');
   if (form) {
     form.addEventListener('submit', async (e) => {
@@ -182,50 +187,38 @@ document.addEventListener('DOMContentLoaded', () => {
       const btn = form.querySelector('button[type="submit"]');
       const originalText = btn.textContent;
 
-      // Basic validation
       const name = form.querySelector('[name="name"]').value.trim();
       const email = form.querySelector('[name="email"]').value.trim();
       if (!name || !email) {
-        alert(I18N.current === 'pl' ? 'Proszę wypełnić imię i email.' : 
-              I18N.current === 'de' ? 'Bitte Name und E-Mail ausfüllen.' :
-              'Vul alstublieft naam en e-mail in.');
+        alert(loc('Vul alstublieft naam en e-mail in.', 'Please fill in name and email.', 'Bitte Name und E-Mail ausfüllen.', 'Proszę wypełnić imię i email.'));
         return;
       }
 
-      btn.textContent = I18N.current === 'pl' ? 'Wysyłanie...' :
-                        I18N.current === 'de' ? 'Wird gesendet...' :
-                        I18N.current === 'nl' ? 'Verzenden...' : 'Sending...';
+      btn.textContent = loc('Verzenden...', 'Sending...', 'Wird gesendet...', 'Wysyłanie...');
       btn.disabled = true;
 
-      // Formspree or fallback
-      try {
-        const data = {
-          name, email,
-          phone: form.querySelector('[name="phone"]').value.trim(),
-          service: form.querySelector('[name="service"]').value,
-          message: form.querySelector('[name="message"]').value.trim(),
-          lang: I18N.current
-        };
+      const result = await submitToFormspree({
+        _subject: 'Nieuwe offerteaanvraag - SparkleWash',
+        name, email,
+        phone: form.querySelector('[name="phone"]').value.trim(),
+        service: form.querySelector('[name="service"]').value,
+        message: form.querySelector('[name="message"]').value.trim(),
+        lang: I18N.current,
+        type: 'contact'
+      }, btn, form);
 
-        // Save to localStorage as fallback (will sync when online)
+      if (result.ok) {
+        // Also save local fallback
         const inquiries = JSON.parse(localStorage.getItem('sparklewash-inquiries') || '[]');
-        inquiries.push({ ...data, date: new Date().toISOString() });
+        inquiries.push({ name, email, date: new Date().toISOString() });
         localStorage.setItem('sparklewash-inquiries', JSON.stringify(inquiries));
-
-        const msgs = {
-          pl: 'Dziękujemy! Odezwiemy się w ciągu 24h.',
-          de: 'Vielen Dank! Wir melden uns innerhalb von 24h.',
-          nl: 'Bedankt! Wij reageren binnen 24u.',
-          en: 'Thank you! We will respond within 24h.'
-        };
-        alert(msgs[I18N.current] || msgs.en);
-        form.reset();
-      } catch (err) {
-        alert('Error: ' + err.message);
-      } finally {
-        btn.textContent = originalText;
-        btn.disabled = false;
+        alert(loc('Bedankt! Wij reageren binnen 24u.', 'Thank you! We will respond within 24h.', 'Vielen Dank! Wir melden uns innerhalb von 24h.', 'Dziękujemy! Odezwiemy się w ciągu 24h.'));
+      } else {
+        alert(loc('Er is een fout opgetreden. Probeer het opnieuw of bel ons.', 'An error occurred. Please try again or call us.', 'Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut oder rufen Sie uns an.', 'Wystąpił błąd. Spróbuj ponownie lub zadzwoń do nas.'));
       }
+
+      btn.textContent = originalText;
+      btn.disabled = false;
     });
   }
 
@@ -252,7 +245,6 @@ document.addEventListener('DOMContentLoaded', () => {
       const answer = q.nextElementSibling;
       if (!answer) return;
       const isOpen = answer.classList.contains('faq-answer-open');
-      // Close all others
       document.querySelectorAll('.faq-answer-open').forEach(a => {
         if (a !== answer) {
           a.classList.remove('faq-answer-open');
@@ -260,7 +252,6 @@ document.addEventListener('DOMContentLoaded', () => {
           a.previousElementSibling?.classList.remove('faq-question-active');
         }
       });
-      // Toggle this one
       if (isOpen) {
         answer.classList.remove('faq-answer-open');
         answer.style.maxHeight = '0';
@@ -273,7 +264,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // ── Scroll Reveal (Intersection Observer) ──
+  // ── Scroll Reveal ──
   const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -282,14 +273,12 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }, { threshold: 0.15, rootMargin: '0px 0px -30px 0px' });
-
   document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
   // ── WhatsApp Button click tracking ──
   const waBtn = document.getElementById('whatsapp-button');
   if (waBtn) {
     waBtn.addEventListener('click', () => {
-      console.log('[SparkleWash] WhatsApp button clicked');
       const clicks = parseInt(localStorage.getItem('sparklewash-wa-clicks') || '0');
       localStorage.setItem('sparklewash-wa-clicks', (clicks + 1).toString());
     });
