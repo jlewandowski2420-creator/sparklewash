@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SparkleWash — FB Post Template NL</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #111;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: 'Outfit', 'Segoe UI', system-ui, sans-serif;
+  }
+
+  .post-card {
+    width: 1080px;
+    height: 1080px;
+    border-radius: 24px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.6);
+    background: 
+      linear-gradient(160deg, rgba(15,15,26,0.85) 0%, rgba(15,15,26,0.7) 50%, rgba(10,20,18,0.9) 100%),
+      url('https://sparklewash.nl/images/sofa-after.jpg') center/cover no-repeat;
+  }
+
+  .post-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(ellipse at 30% 20%, rgba(0,201,167,0.12) 0%, transparent 60%),
+      radial-gradient(ellipse at 70% 80%, rgba(123,104,238,0.1) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .top-bar {
+    height: 8px;
+    background: linear-gradient(90deg, #00c9a7, #7b68ee, #00c9a7);
+    position: relative;
+    z-index: 2;
+  }
+
+  .header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 36px 56px 16px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .logo-ring {
+    width: 88px; height: 88px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #00c9a7, #5eead4);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 44px;
+    box-shadow: 0 0 40px rgba(0,201,167,0.4), 0 0 80px rgba(0,201,167,0.15);
+  }
+
+  .brand-name {
+    font-size: 30px;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: -0.5px;
+  }
+  .brand-name .accent { color: #00c9a7; }
+
+  .content {
+    flex: 1;
+    padding: 20px 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+  }
+
+  .headline {
+    font-size: 56px;
+    font-weight: 800;
+    color: #fff;
+    line-height: 1.12;
+    margin-bottom: 18px;
+    letter-spacing: -1.2px;
+    text-shadow: 0 2px 20px rgba(0,0,0,0.5);
+  }
+  .headline .highlight {
+    background: linear-gradient(135deg, #00c9a7, #5eead4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .subtitle {
+    font-size: 24px;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.45;
+    margin-bottom: 28px;
+    font-weight: 300;
+    text-shadow: 0 1px 10px rgba(0,0,0,0.4);
+  }
+
+  .pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+  .pill {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 100px;
+    padding: 12px 24px;
+    font-size: 18px;
+    color: rgba(255,255,255,0.9);
+    font-weight: 500;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    text-shadow: 0 1px 4px rgba(0,0,0,0.3);
+  }
+
+  .footer {
+    padding: 20px 60px 36px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+  }
+  .cta {
+    font-size: 22px;
+    color: #00c9a7;
+    font-weight: 700;
+    letter-spacing: -0.2px;
+    text-shadow: 0 0 20px rgba(0,201,167,0.3);
+  }
+  .contact {
+    display: flex;
+    gap: 24px;
+    font-size: 17px;
+    color: rgba(255,255,255,0.55);
+  }
+  .contact span { display: flex; align-items: center; gap: 6px; }
+
+  .drop {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.03);
+    pointer-events: none;
+    z-index: 1;
+  }
+  .drop.d1 { width: 120px; height: 120px; top: 20%; right: 8%; }
+  .drop.d2 { width: 60px; height: 60px; top: 55%; left: 10%; }
+  .drop.d3 { width: 40px; height: 40px; bottom: 25%; right: 15%; }
+</style>
+</head>
+<body>
+
+<div class="post-card">
+  <div class="top-bar"></div>
+  <div class="drop d1"></div>
+  <div class="drop d2"></div>
+  <div class="drop d3"></div>
+
+  <div class="header">
+    <div class="logo-ring">✨</div>
+    <div class="brand-name">Sparkle<span class="accent">Wash</span></div>
+  </div>
+
+  <div class="content">
+    <div class="headline">
+      Uw meubels<br><span class="highlight">weer als nieuw</span>
+    </div>
+    <div class="subtitle">
+      Professionele extractiereiniging — banken, tapijten, matrassen, auto-interieurs.<br>Wij komen naar u toe in heel Limburg en de Duitse grensregio.
+    </div>
+    <div class="pills">
+      <div class="pill">Wij komen naar u toe</div>
+      <div class="pill">Vanaf €35</div>
+      <div class="pill">Gratis offerte</div>
+      <div class="pill">Reactie binnen 24u</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="cta">sparklewash.nl</div>
+    <div class="contact">
+      <span>WhatsApp +31 6 84067379</span>
+      <span>Heerlen, Limburg</span>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
