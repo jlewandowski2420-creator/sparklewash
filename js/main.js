@@ -90,16 +90,49 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (calcCheckboxes.length) {
     calcCheckboxes.forEach(cb => cb.addEventListener('change', updateCalcTotal));
-    // Auto-sync checked service to booking form dropdown
-    const bookingServiceSelect = document.querySelector('[name="b-service"]');
-    if (bookingServiceSelect) {
-      calcCheckboxes.forEach(cb => {
-        cb.addEventListener('change', function() {
-          if (this.checked) bookingServiceSelect.value = this.dataset.service;
-        });
+  }
+
+  // Auto-sync calculator selections to booking form dropdown
+  (function() {
+    var bookingServiceSelect = document.querySelector('[name="b-service"]');
+    if (!bookingServiceSelect) return;
+
+    function syncCalcToBooking() {
+      var checked = Array.from(calcCheckboxes).filter(function(cb) { return cb.checked; });
+      var checkedValues = checked.map(function(cb) { return cb.dataset.service; });
+      // Remove previously added composite options (beyond the original 7)
+      while (bookingServiceSelect.options.length > 7) bookingServiceSelect.remove(7);
+      if (checkedValues.length === 0) {
+        bookingServiceSelect.value = '';
+      } else if (checkedValues.length === 1) {
+        bookingServiceSelect.value = checkedValues[0];
+      } else {
+        var names = checked.map(function(cb) {
+          var labelEl = cb.parentElement.querySelector('span:not(.calc-price-label)');
+          return labelEl ? labelEl.textContent.trim() : cb.dataset.service;
+        }).join(' + ');
+        var pkgLabel = (loc('Pakket','Package','Paket','Pakiet')) + ': ' + names;
+        var opt = document.createElement('option');
+        opt.value = checkedValues.join(',');
+        opt.textContent = pkgLabel;
+        bookingServiceSelect.appendChild(opt);
+        bookingServiceSelect.value = checkedValues.join(',');
+      }
+    }
+
+    if (calcCheckboxes.length) {
+      calcCheckboxes.forEach(function(cb) {
+        cb.addEventListener('change', syncCalcToBooking);
       });
     }
-  }
+
+    if (calcClear) {
+      calcClear.addEventListener('click', function() {
+        // Run after DOM settles (checkboxes cleared by other handler)
+        setTimeout(syncCalcToBooking, 0);
+      });
+    }
+  })();
   if (calcQty) calcQty.addEventListener('input', updateCalcTotal);
   if (calcClear) {
     calcClear.addEventListener('click', () => {
