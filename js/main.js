@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ── Helper: submit to Formspree ──
-  async function submitToFormspree(data, btn, form) {
+  async function submitToFormspree(data) {
     try {
       const resp = await fetch('https://formspree.io/f/' + FORMSPREE_ID, {
         method: 'POST',
@@ -46,7 +46,6 @@ document.addEventListener('DOMContentLoaded', () => {
         body: JSON.stringify(data)
       });
       if (resp.ok) {
-        form.reset();
         return { ok: true };
       } else {
         const err = await resp.json();
@@ -54,6 +53,22 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     } catch (err) {
       return { ok: false, error: err.message };
+    }
+  }
+
+  // ── Helper: populate time slots 10:00–20:30 ──
+  function populateTimeSlots(selectEl) {
+    while (selectEl.options.length > 1) selectEl.remove(1); // Clear dynamic options, keep placeholder
+    for (var h = 10; h <= 20; h++) {
+      for (var m = 0; m <= 30; m += 30) {
+        if (h === 20 && m > 30) break;
+        var hh = String(h).padStart(2, '0');
+        var mm2 = String(m).padStart(2, '0');
+        var opt = document.createElement('option');
+        opt.value = hh + ':' + mm2;
+        opt.textContent = hh + ':' + mm2;
+        selectEl.appendChild(opt);
+      }
     }
   }
 
@@ -98,31 +113,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const mm = String(today.getMonth() + 1).padStart(2, '0');
     const dd = String(today.getDate()).padStart(2, '0');
     bookingDate.setAttribute('min', yyyy + '-' + mm + '-' + dd);
-
-    // Open date picker on click anywhere on the field (not just the calendar icon)
-    if ('showPicker' in HTMLInputElement.prototype) {
-      bookingDate.addEventListener('click', function(e) {
-        // showPicker() requires a transient user activation — click provides that
-        // If picker is already open, showPicker() closes it (toggle behaviour)
-        try { this.showPicker(); } catch (_) { /* unsupported or not allowed */ }
-      });
-    }
   }
 
-  // Populate time slots: 10:00–20:30 (30-min intervals, last booking ends at 21:00)
-  if (bookingTime) {
-    for (var h = 10; h <= 20; h++) {
-      for (var m = 0; m <= 30; m += 30) {
-        if (h === 20 && m > 30) break;
-        var hh = String(h).padStart(2, '0');
-        var mm2 = String(m).padStart(2, '0');
-        var opt = document.createElement('option');
-        opt.value = hh + ':' + mm2;
-        opt.textContent = hh + ':' + mm2;
-        bookingTime.appendChild(opt);
-      }
-    }
-  }
+  // Populate time slots
+  if (bookingTime) populateTimeSlots(bookingTime);
 
   if (bookingForm) {
     bookingForm.addEventListener('submit', async (e) => {
@@ -156,9 +150,12 @@ document.addEventListener('DOMContentLoaded', () => {
         _subject: 'Nieuwe boeking - SparkleWash',
         name, email, phone, service, date, time, lang: I18N.current,
         type: 'booking'
-      }, btn, bookingForm);
+      });
 
       if (result.ok) {
+        bookingForm.reset();
+        // Re-populate time slots after reset
+        if (bookingTime) populateTimeSlots(bookingTime);
         const successText = loc('Boeking ontvangen! Wij nemen binnen 24u contact met u op.', 'Booking received! We will contact you within 24h.', 'Buchung erhalten! Wir melden uns innerhalb von 24h.', 'Rezerwacja otrzymana! Skontaktujemy się w ciągu 24h.');
         if (bookingSuccessMsg) {
           bookingSuccessMsg.textContent = successText;
@@ -167,7 +164,6 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
           alert(successText);
         }
-        bookingForm.reset();
       } else {
         alert(loc('Er is een fout opgetreden. Probeer het opnieuw of bel ons.', 'An error occurred. Please try again or call us.', 'Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut oder rufen Sie uns an.', 'Wystąpił błąd. Spróbuj ponownie lub zadzwoń do nas.'));
       }
@@ -247,7 +243,7 @@ document.addEventListener('DOMContentLoaded', () => {
         message: form.querySelector('[name="message"]').value.trim(),
         lang: I18N.current,
         type: 'contact'
-      }, btn, form);
+      });
 
       if (result.ok) {
         // Also save local fallback
