@@ -1,23 +1,65 @@
-<IfModule mod_headers.c>
-    # Security Headers
-    Header always set X-Content-Type-Options "nosniff"
-    Header always set X-Frame-Options "DENY"
-    Header always set X-XSS-Protection "1; mode=block"
-    Header always set Referrer-Policy "strict-origin-when-cross-origin"
-    Header always set Permissions-Policy "geolocation=(), microphone=(), camera=(), payment=()"
-    Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
-    Header always set Content-Security-Policy "default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self' 'unsafe-inline'; img-src 'self' data:; frame-src 'self' https://www.openstreetmap.org; connect-src 'self' https://formspree.io; form-action 'self' https://formspree.io"
-</IfModule>
+# ═══════════════════════════════════════════
+# SparkleWash — .htaccess
+# ═══════════════════════════════════════════
+# NOTE: This file is ignored by GitHub Pages.
+# It is intended for future migration to Apache/cPanel/LiteSpeed hosting (e.g. Cloud86).
+# When hosting on Apache/LiteSpeed, this file provides:
+#   - HTTP → HTTPS redirect
+#   - www → non-www redirect
+#   - GZIP compression
+#   - Cache-control headers
+#   - Security headers
+# ═══════════════════════════════════════════
 
-# Prevent directory listing
-Options -Indexes
-
-# Protect sensitive files
-<FilesMatch "\.(git|env|config|sql|log)$">
-    Require all denied
-</FilesMatch>
-
-# Force HTTPS
+# ── Enable Rewrite Engine ──
 RewriteEngine On
+
+# ── Force HTTPS ──
 RewriteCond %{HTTPS} off
 RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+
+# ── Force non-www ──
+RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
+
+# ── GZIP Compression ──
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json application/xml
+</IfModule>
+
+# ── Cache-Control Headers ──
+<IfModule mod_expires.c>
+  ExpiresActive On
+  # Images — 1 year
+  ExpiresByType image/jpg "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  # CSS & JS — 1 week
+  ExpiresByType text/css "access plus 1 week"
+  ExpiresByType application/javascript "access plus 1 week"
+  # HTML — 1 day
+  ExpiresByType text/html "access plus 1 day"
+</IfModule>
+
+# ── Security Headers ──
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "DENY"
+  Header always set X-XSS-Protection "1; mode=block"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "geolocation=(), microphone=(), camera=(), payment=()"
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+</IfModule>
+
+# ── Block access to hidden files ──
+<FilesMatch "^\.">
+  Require all denied
+</FilesMatch>
+
+# ── Block access to .git ──
+RewriteRule ^\.git - [F,L]
+
+# ── Custom 404 page ──
+# ErrorDocument 404 /404.html

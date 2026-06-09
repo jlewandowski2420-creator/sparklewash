@@ -222,18 +222,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ── Animated Counter (Stats) ──
   function animateCounter(el) {
-    const target = parseInt(el.dataset.target, 10);
+    const targetRaw = el.dataset.target;
+    const target = parseFloat(targetRaw);
     if (isNaN(target)) return;
     const duration = 2000;
     const startTime = performance.now();
-    const isRating = el.dataset.target === '49';
+    const isDecimal = targetRaw.indexOf('.') !== -1;
     function step(currentTime) {
       const elapsed = currentTime - startTime;
       const progress = Math.min(elapsed / duration, 1);
       const eased = 1 - Math.pow(1 - progress, 3);
-      const currentVal = Math.round(eased * target);
-      if (isRating) el.textContent = (currentVal / 10).toFixed(1) + '/5';
-      else el.textContent = currentVal + '+';
+      const currentVal = eased * target;
+      if (isDecimal) el.textContent = currentVal.toFixed(1) + ' ★';
+      else el.textContent = Math.round(currentVal) + '+';
       if (progress < 1) requestAnimationFrame(step);
     }
     requestAnimationFrame(step);
