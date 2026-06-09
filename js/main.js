@@ -233,7 +233,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const progress = Math.min(elapsed / duration, 1);
       const eased = 1 - Math.pow(1 - progress, 3);
       const currentVal = eased * target;
-      if (isDecimal) el.textContent = currentVal.toFixed(1) + ' ★';
+      if (isDecimal) el.textContent = currentVal.toFixed(1) + ' / 5';
       else el.textContent = Math.round(currentVal) + '+';
       if (progress < 1) requestAnimationFrame(step);
     }
