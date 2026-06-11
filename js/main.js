@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // ── Cookie Bar ──
   const cookieBar = document.getElementById('cookie-bar');
   const cookieOk = document.getElementById('cookie-ok');
+  const cookieReject = document.getElementById('cookie-reject');
   if (cookieBar && cookieOk) {
     if (localStorage.getItem('sparklewash-cookies')) {
       cookieBar.style.display = 'none';
@@ -14,6 +15,12 @@ document.addEventListener('DOMContentLoaded', () => {
       localStorage.setItem('sparklewash-cookies', '1');
       cookieBar.style.display = 'none';
     });
+    if (cookieReject) {
+      cookieReject.addEventListener('click', () => {
+        localStorage.setItem('sparklewash-cookies', '0');
+        cookieBar.style.display = 'none';
+      });
+    }
   }
 
   // ── Mobile Hamburger ──
@@ -64,12 +71,12 @@ document.addEventListener('DOMContentLoaded', () => {
   // ── Helper: populate time slots 10:00–20:30 ──
   function populateTimeSlots(selectEl) {
     while (selectEl.options.length > 1) selectEl.remove(1); // Clear dynamic options, keep placeholder
-    for (var h = 10; h <= 20; h++) {
-      for (var m = 0; m <= 30; m += 30) {
-        if (h === 20 && m > 30) break;
-        var hh = String(h).padStart(2, '0');
-        var mm2 = String(m).padStart(2, '0');
-        var opt = document.createElement('option');
+    for (let h = 10; h <= 20; h++) {
+      for (let m = 0; m <= 30; m += 30) {
+        if (h === 20 && m >= 30) break;
+        let hh = String(h).padStart(2, '0');
+        let mm2 = String(m).padStart(2, '0');
+        let opt = document.createElement('option');
         opt.value = hh + ':' + mm2;
         opt.textContent = hh + ':' + mm2;
         selectEl.appendChild(opt);

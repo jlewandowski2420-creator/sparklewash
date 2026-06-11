@@ -87,7 +87,10 @@
   <!-- Cookie Bar (GDPR compliant) -->
   <div id="cookie-bar" class="cookie-bar">
     <p data-i18n="cookie-text">Deze website gebruikt functionele cookies voor een optimale ervaring en analytische cookies om ons te verbeteren. <a href="privacy.html" style="color:var(--accent);text-decoration:underline;" data-i18n="cookie-more">Lees meer</a></p>
-    <button id="cookie-ok" data-i18n="cookie-ok">Accepteren</button>
+    <div class="cookie-buttons">
+      <button id="cookie-reject" class="cookie-btn cookie-btn-reject" data-i18n="cookie-reject">Weigeren</button>
+      <button id="cookie-ok" class="cookie-btn cookie-btn-accept" data-i18n="cookie-ok">Accepteren</button>
+    </div>
   </div>
 
   <!-- Header -->
@@ -268,6 +271,7 @@
         </div>
 
       </div>
+    </div>
   </section>
 
   <!-- Service Area -->
