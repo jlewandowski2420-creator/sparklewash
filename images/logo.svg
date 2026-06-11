@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 50" width="260" height="50">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#ffffff"/>
+      <stop offset="70%" style="stop-color:#ff9f1c"/>
+    </linearGradient>
+  </defs>
+  <text x="0" y="36" font-family="system-ui,-apple-system,sans-serif" font-size="28" font-weight="800" fill="url(#g)">✨ Sparkle<text fill="#f77f00">Wash</text></text>
+</svg>

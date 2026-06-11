@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="nl">
+<html lang="nl" data-i18n-lang="nl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
@@ -23,7 +23,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="css/style.css">
   <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
-  <title>Contact | SparkleWash</title>
+  <title data-i18n="page-title">SparkleWash — Contact</title>
 </head>
 <body>
   <header class="header">
@@ -33,11 +33,11 @@
         <span class="logo-text">Sparkle<span class="accent">Wash</span></span>
       </a>
       <nav class="nav" id="main-nav">
-        <a href="/#services">Diensten</a>
-        <a href="/#pricing">Prijzen</a>
-        <a href="/#about">Over ons</a>
-        <a href="/#calculator">Calculator</a>
-        <a href="/contact.html">Contact</a>
+        <a href="/#services" data-i18n="nav-services">Diensten</a>
+        <a href="/#pricing" data-i18n="nav-pricing">Prijzen</a>
+        <a href="/#about" data-i18n="nav-about">Over ons</a>
+        <a href="/#calculator" data-i18n="calc-title">Calculator</a>
+        <a href="/contact.html" data-i18n="nav-contact">Contact</a>
       </nav>
       <div class="lang-switch">
         <button class="lang-btn active" data-lang="nl">NL</button>
@@ -51,41 +51,38 @@
 
   <section class="section" style="padding-bottom:40px;">
     <div class="container" style="max-width:700px;">
-      <h1 class="section-title">Contact</h1>
-      <p class="section-subtitle">Heeft u een vraag of wilt u een offerte aanvragen? Bel, mail of vul het formulier in. Wij reageren binnen 24 uur.</p>
+      <h2 class="section-title" data-i18n="contact-title">Contact &amp; Offerte</h2>
+      <p class="section-subtitle" data-i18n="contact-subtitle">Heeft u een vraag of wilt u een offerte aanvragen? Bel, mail of vul het formulier in. Wij reageren binnen 24 uur.</p>
 
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:32px;">
-        <!-- Contact Info -->
         <div>
-          <h3 style="margin-bottom:16px;">Onze gegevens</h3>
+          <h3 style="margin-bottom:16px;" data-i18n="contact-info-title">Onze gegevens</h3>
           <p style="margin-bottom:12px;">📞 <a href="tel:+316****7379">+31 6 84067379</a></p>
           <p style="margin-bottom:12px;">📧 <a href="mailto:info@sparklewash.nl">info@sparklewash.nl</a></p>
           <p style="margin-bottom:12px;">📍 Heerlen, Limburg</p>
           <div style="margin-top:20px;">
             <a href="https://facebook.com/profile.php?id=61577297895578" target="_blank" rel="noopener noreferrer" style="font-size:1.4rem;">📘</a>
-            <span style="color:var(--text-dim);font-size:0.85rem;margin-left:8px;">Volg ons op Facebook</span>
+            <span style="color:var(--text-dim);font-size:0.85rem;margin-left:8px;" data-i18n="contact-follow">Volg ons op Facebook</span>
           </div>
         </div>
 
-        <!-- Contact Form -->
         <div>
           <form id="contact-form" class="contact-form">
-            <input type="text" name="name" placeholder="Uw naam" required>
-            <input type="email" name="email" placeholder="E-mailadres" required>
-            <input type="tel" name="phone" placeholder="Telefoonnummer">
-            <select name="service">
-              <option value="">Waar gaat het over?</option>
-              <option value="sofa">Bank / Fauteuil</option>
-              <option value="carpet">Tapijt / Vloerkleed</option>
-              <option value="mattress">Matras</option>
-              <option value="car">Auto Interieur</option>
-              <option value="other">Anders</option>
+            <input type="text" name="name" required data-i18n-placeholder="form-name">
+            <input type="email" name="email" required data-i18n-placeholder="form-email">
+            <input type="tel" name="phone" data-i18n-placeholder="form-phone">
+            <select name="service" data-i18n-label="form-service-default">
+              <option value="" data-i18n="form-service-default">Welke dienst?</option>
+              <option value="sofa" data-i18n="form-service-sofa">Bank / Fauteuil</option>
+              <option value="carpet" data-i18n="form-service-carpet">Tapijt / Vloerkleed</option>
+              <option value="mattress" data-i18n="form-service-mattress">Matras</option>
+              <option value="car" data-i18n="form-service-car">Auto Interieur</option>
+              <option value="other" data-i18n="form-service-other">Anders</option>
             </select>
-            <textarea name="message" rows="4" placeholder="Uw bericht / vraag"></textarea>
-            <button type="submit" class="btn btn-primary">Versturen</button>
-            <p style="font-size:0.85rem;color:var(--text-dim);margin-top:8px;">Reactie binnen 24 uur — gratis en vrijblijvend.</p>
+            <textarea name="message" rows="4" data-i18n-placeholder="form-message"></textarea>
+            <button type="submit" class="btn btn-primary" data-i18n="form-submit">Offerte aanvragen</button>
+            <p style="font-size:0.85rem;color:var(--text-dim);margin-top:8px;" data-i18n="form-note">Reactie binnen 24 uur — gratis en vrijblijvend.</p>
           </form>
-          <div style="display:none;padding:16px;background:rgba(247,127,0,0.1);border:1px solid var(--accent);border-radius:8px;margin-top:12px;text-align:center;font-weight:600;color:var(--accent-glow);" id="contact-success-msg"></div>
         </div>
       </div>
     </div>
@@ -100,31 +97,31 @@
           <span class="logo-icon">✨</span>
           <span class="logo-text">Sparkle<span class="accent">Wash</span></span>
         </a>
-        <p>Professionele reiniging in Limburg &amp; Grensregio</p>
+        <p data-i18n="footer-tagline">Professionele reiniging in Limburg &amp; Grensregio</p>
       </div>
       <div class="footer-col">
-        <h4>Diensten</h4>
+        <h4 data-i18n="nav-services">Diensten</h4>
         <div class="footer-links">
-          <a href="/#services">Bank &amp; Fauteuil</a>
-          <a href="/#services">Tapijt &amp; Vloerkleed</a>
-          <a href="/#services">Matras Reiniging</a>
-          <a href="/#services">Auto Interieur</a>
+          <a href="/#services" data-i18n="service-sofa">Bank &amp; Fauteuil</a>
+          <a href="/#services" data-i18n="service-carpet">Tapijt &amp; Vloerkleed</a>
+          <a href="/#services" data-i18n="service-mattress">Matras Reiniging</a>
+          <a href="/#services" data-i18n="service-car">Auto Interieur</a>
         </div>
       </div>
       <div class="footer-col">
-        <h4>Contact</h4>
+        <h4 data-i18n="nav-contact">Contact</h4>
         <p>📞 <a href="tel:+316****7379">+31 6 84067379</a><br>📧 info@sparklewash.nl</p>
       </div>
       <div class="footer-col">
-        <h4>Links</h4>
+        <h4 data-i18n="footer-links-title">Links</h4>
         <div class="footer-links">
-          <a href="privacy.html">Privacy</a>
-          <a href="terms.html">Voorwaarden</a>
-          <a href="contact.html">Contact</a>
+          <a href="privacy.html" data-i18n="footer-privacy">Privacy</a>
+          <a href="terms.html" data-i18n="footer-terms">Voorwaarden</a>
+          <a href="contact.html" data-i18n="nav-contact">Contact</a>
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2026 SparkleWash — Professionele reiniging in Limburg &amp; Grensregio</p>
+        <p>&copy; 2026 SparkleWash — <span data-i18n="footer-tagline">Professionele reiniging in Limburg &amp; Grensregio</span></p>
       </div>
     </div>
   </footer>
