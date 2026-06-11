@@ -1,14 +1,5 @@
 # ═══════════════════════════════════════════
-# SparkleWash — .htaccess
-# ═══════════════════════════════════════════
-# NOTE: This file is ignored by GitHub Pages.
-# It is intended for future migration to Apache/cPanel/LiteSpeed hosting (e.g. Cloud86).
-# When hosting on Apache/LiteSpeed, this file provides:
-#   - HTTP → HTTPS redirect
-#   - www → non-www redirect
-#   - GZIP compression
-#   - Cache-control headers
-#   - Security headers
+# SparkleWash — .htaccess (AKTYWNY — Cloud86 LiteSpeed)
 # ═══════════════════════════════════════════
 
 # ── Enable Rewrite Engine ──
