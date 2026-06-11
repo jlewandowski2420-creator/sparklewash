@@ -102,7 +102,7 @@
         <a href="#pricing" data-i18n="nav-pricing">Prijzen</a>
         <a href="#about" data-i18n="nav-about">Over ons</a>
         <a href="#calculator" data-i18n="calc-title">Calculator</a>
-        <a href="#contact" data-i18n="nav-contact">Contact</a>
+        <a href="contact.html" data-i18n="nav-contact">Contact</a>
       </nav>
       <div class="lang-switcher">
         <button class="lang-btn active" data-lang="nl">NL</button>
@@ -120,7 +120,7 @@
       <h1 data-i18n="hero-title">Uw meubels weer als nieuw</h1>
       <p data-i18n="hero-subtitle">Professionele extractiereiniging — tapijten, banken, matrassen, auto-interieurs. Wij komen naar u toe in heel Limburg en de Duitse grensregio.</p>
       <div class="hero-buttons">
-        <a href="#contact" class="btn btn-primary" data-i18n="hero-cta">Gratis offerte aanvragen</a>
+        <a href="contact.html" class="btn btn-primary" data-i18n="hero-cta">Gratis offerte aanvragen</a>
         <a href="#pricing" class="btn btn-secondary" data-i18n="hero-pricing">Bekijk prijzen</a>
       </div>
     </div>
@@ -373,6 +373,31 @@
           </div>
           <button class="calc-clear-btn" id="calc-clear" data-i18n="calc-clear">Wis alles</button>
         </div>
+
+        <!-- Booking Box -->
+        <div class="booking-box">
+          <h3 data-i18n="booking-title">Rechtstreeks Boeken</h3>
+          <form class="booking-form" id="booking-form">
+            <input type="text" name="b-name" placeholder="Uw naam" required data-i18n-placeholder="booking-name">
+            <input type="email" name="b-email" placeholder="E-mailadres" required data-i18n-placeholder="booking-email">
+            <input type="tel" name="b-phone" placeholder="Telefoonnummer" required data-i18n-placeholder="booking-phone">
+            <select name="b-service" required data-i18n-label="booking-service">
+              <option value="" data-i18n="booking-service">Kies dienst</option>
+              <option value="sofa2" data-i18n="booking-sofa2">2-Zits Bank (€49)</option>
+              <option value="sofa3" data-i18n="booking-sofa3">3-Zits Bank (€69)</option>
+              <option value="corner" data-i18n="booking-corner">Hoekbank (€79)</option>
+              <option value="carpet" data-i18n="booking-carpet">Vloerkleed / Tapijt (€39)</option>
+              <option value="mattress" data-i18n="booking-mattress">Matras (€35)</option>
+              <option value="car" data-i18n="booking-car">Auto Interieur (€59)</option>
+            </select>
+            <input type="date" name="b-date" id="booking-date" required data-i18n-placeholder="booking-date">
+            <select name="b-time" id="booking-time" required data-i18n-label="booking-time">
+              <option value="" data-i18n="booking-time-placeholder">Kies tijd</option>
+            </select>
+            <button type="submit" class="btn btn-primary" data-i18n="booking-submit">Boeken</button>
+          </form>
+          <div class="booking-success-msg" id="booking-success-msg"></div>
+        </div>
       </div>
     </div>
   </section>
@@ -403,91 +428,6 @@
           <div class="faq-question" data-i18n="faq-q5" role="button" tabindex="0">Krijg ik garantie op de reiniging?</div>
           <div class="faq-answer" data-i18n="faq-a5">Ja, wij staan achter ons werk...</div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact -->
-  <section id="contact" class="section">
-    <div class="container">
-      <h2 class="section-title" data-i18n="contact-title">Contact & Offerte</h2>
-      <div class="contact-grid">
-        <div class="contact-info">
-          <p>📞 <a href="tel:+31684067379">+31 6 84067379</a></p>
-          <p>📧 <a href="mailto:info@sparklewash.nl">info@sparklewash.nl</a></p>
-          <p>📍 Heerlen, Limburg</p>
-          <div class="social-links">
-            <a href="https://facebook.com/profile.php?id=61577297895578" target="_blank" rel="noopener">📘 Facebook</a>
-          </div>
-          <div class="share-buttons-hero" style="margin-top:12px;">
-            <span style="color:var(--text-dim);font-size:0.9rem;margin-right:4px;" data-i18n="share-label">Deel: </span>
-            <a href="https://www.facebook.com/sharer/sharer.php?u=https://sparklewash.nl" target="_blank" rel="noopener" class="share-btn" aria-label="Share Facebook">📘</a>
-            <a href="https://twitter.com/intent/tweet?text=SparkleWash%20—%20Professionele%20Reiniging&url=https://sparklewash.nl" target="_blank" rel="noopener" class="share-btn" aria-label="Share Twitter">🐦</a>
-            <a href="https://wa.me/?text=SparkleWash%20—%20Professionele%20Reiniging%20https://sparklewash.nl" target="_blank" rel="noopener" class="share-btn" aria-label="Share WhatsApp">💬</a>
-          </div>
-        </div>
-        <form id="contact-form" class="contact-form booking-wizard" novalidate>
-          <div class="wizard-progress">
-            <span class="wizard-dot active" data-dot="1"></span>
-            <span class="wizard-dot" data-dot="2"></span>
-            <span class="wizard-dot" data-dot="3"></span>
-          </div>
-
-          <!-- Step 1: Diensten -->
-          <div class="wizard-step active" data-step="1">
-            <h3 class="wizard-step-title" data-i18n="wizard-step1-title">Stap 1: Kies uw dienst(en)</h3>
-            <div class="wizard-services">
-              <label class="wizard-service-option">
-                <input type="checkbox" name="wizard-service" value="sofa" data-price="49">
-                <span class="wizard-service-icon">🛋️</span>
-                <span class="wizard-service-name" data-i18n="form-service-sofa">Bank / Fauteuil</span>
-                <span class="wizard-service-price"><span data-i18n="wizard-price-from">vanaf</span> €49</span>
-              </label>
-              <label class="wizard-service-option">
-                <input type="checkbox" name="wizard-service" value="carpet" data-price="39">
-                <span class="wizard-service-icon">🟫</span>
-                <span class="wizard-service-name" data-i18n="form-service-carpet">Tapijt / Vloerkleed</span>
-                <span class="wizard-service-price"><span data-i18n="wizard-price-from">vanaf</span> €39</span>
-              </label>
-              <label class="wizard-service-option">
-                <input type="checkbox" name="wizard-service" value="mattress" data-price="35">
-                <span class="wizard-service-icon">🛏️</span>
-                <span class="wizard-service-name" data-i18n="form-service-mattress">Matras</span>
-                <span class="wizard-service-price"><span data-i18n="wizard-price-from">vanaf</span> €35</span>
-              </label>
-              <label class="wizard-service-option">
-                <input type="checkbox" name="wizard-service" value="car" data-price="59">
-                <span class="wizard-service-icon">🚗</span>
-                <span class="wizard-service-name" data-i18n="form-service-car">Auto Interieur</span>
-                <span class="wizard-service-price"><span data-i18n="wizard-price-from">vanaf</span> €59</span>
-              </label>
-            </div>
-            <p class="wizard-error" id="wizard-error-1" aria-live="polite"></p>
-          </div>
-
-          <!-- Step 2: Contactgegevens -->
-          <div class="wizard-step" data-step="2">
-            <h3 class="wizard-step-title" data-i18n="wizard-step2-title">Stap 2: Uw gegevens</h3>
-            <input type="text" name="wizard-name" placeholder="Naam" required data-i18n-placeholder="form-name">
-            <input type="email" name="wizard-email" placeholder="E-mailadres" required data-i18n-placeholder="form-email">
-            <input type="tel" name="wizard-phone" placeholder="Telefoonnummer" required data-i18n-placeholder="form-phone">
-            <input type="text" name="wizard-address" placeholder="Adres" required data-i18n-placeholder="wizard-address">
-            <p class="wizard-error" id="wizard-error-2" aria-live="polite"></p>
-          </div>
-
-          <!-- Step 3: Bevestiging -->
-          <div class="wizard-step" data-step="3">
-            <h3 class="wizard-step-title" data-i18n="wizard-step3-title">Stap 3: Bevestiging</h3>
-            <div class="wizard-summary" id="wizard-summary"></div>
-            <p class="wizard-thanks" data-i18n="wizard-thanks">Bedankt! We nemen binnen 24 uur contact op.</p>
-            <button type="button" class="btn btn-secondary wizard-restart-btn" id="wizard-restart" data-i18n="wizard-restart">Nieuwe aanvraag</button>
-          </div>
-
-          <div class="wizard-nav">
-            <button type="button" class="btn btn-secondary" id="wizard-prev" data-i18n="wizard-prev" hidden>Vorige</button>
-            <button type="button" class="btn btn-primary" id="wizard-next" data-i18n="wizard-next">Volgende</button>
-          </div>
-        </form>
       </div>
     </div>
   </section>
