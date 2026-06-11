@@ -181,6 +181,22 @@ document.addEventListener('DOMContentLoaded', () => {
     bookingForm.addEventListener('submit', async (e) => {
       e.preventDefault();
 
+      // Rate limiting: 30s between submissions
+      const lastSubmit = localStorage.getItem('sparklewash-last-submit');
+      if (lastSubmit && Date.now() - parseInt(lastSubmit) < 30000) {
+        alert(loc('Te snel. Probeer het over 30 seconden opnieuw.', 'Too fast. Please try again in 30 seconds.', 'Zu schnell. Bitte versuchen Sie es in 30 Sekunden erneut.', 'Zbyt szybko. Spróbuj ponownie za 30 sekund.'));
+        return;
+      }
+
+      // Honeypot for bot protection
+      if (!bookingForm.querySelector('input[name="_gotcha"]')) {
+        const hp = document.createElement('input');
+        hp.type = 'text';
+        hp.name = '_gotcha';
+        hp.style.display = 'none';
+        bookingForm.appendChild(hp);
+      }
+
       const name = bookingForm.querySelector('[name="b-name"]').value.trim();
       const email = bookingForm.querySelector('[name="b-email"]').value.trim();
       const phone = bookingForm.querySelector('[name="b-phone"]').value.trim();
@@ -213,6 +229,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (result.ok) {
         bookingForm.reset();
+        localStorage.setItem('sparklewash-last-submit', Date.now().toString());
         // Re-populate time slots after reset
         if (bookingTime) populateTimeSlots(bookingTime);
         const successText = loc('Boeking ontvangen! Wij nemen binnen 24u contact met u op.', 'Booking received! We will contact you within 24h.', 'Buchung erhalten! Wir melden uns innerhalb von 24h.', 'Rezerwacja otrzymana! Skontaktujemy się w ciągu 24h.');
@@ -282,6 +299,23 @@ document.addEventListener('DOMContentLoaded', () => {
   if (form && !form.classList.contains('booking-wizard')) {
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
+
+      // Rate limiting: 30s between submissions
+      const lastSubmit = localStorage.getItem('sparklewash-last-submit');
+      if (lastSubmit && Date.now() - parseInt(lastSubmit) < 30000) {
+        alert(loc('Te snel. Probeer het over 30 seconden opnieuw.', 'Too fast. Please try again in 30 seconds.', 'Zu schnell. Bitte versuchen Sie es in 30 Sekunden erneut.', 'Zbyt szybko. Spróbuj ponownie za 30 sekund.'));
+        return;
+      }
+
+      // Honeypot for bot protection
+      if (!form.querySelector('input[name="_gotcha"]')) {
+        const hp = document.createElement('input');
+        hp.type = 'text';
+        hp.name = '_gotcha';
+        hp.style.display = 'none';
+        form.appendChild(hp);
+      }
+
       const btn = form.querySelector('button[type="submit"]');
       const originalText = btn.textContent;
 
@@ -306,6 +340,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
 
       if (result.ok) {
+        localStorage.setItem('sparklewash-last-submit', Date.now().toString());
         // Also save local fallback
         const inquiries = JSON.parse(localStorage.getItem('sparklewash-inquiries') || '[]');
         inquiries.push({ name, email, date: new Date().toISOString() });

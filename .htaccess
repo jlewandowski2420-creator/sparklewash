@@ -44,6 +44,8 @@ RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
   Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
   # Cache-Control for CSS (cache busting via query string)
   Header set Cache-Control "public, max-age=86400" "expr=%{CONTENT_TYPE} =~ m#text/css#"
+  # Content Security Policy
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; font-src https://fonts.gstatic.com; connect-src 'self' https://formspree.io; img-src 'self' data:; base-uri 'self'; form-action 'self' https://formspree.io"
 </IfModule>
 
 # ── Block access to hidden files ──
