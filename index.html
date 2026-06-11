@@ -110,7 +110,7 @@
         <button class="lang-btn" data-lang="en">EN</button>
         <button class="lang-btn" data-lang="pl">PL</button>
       </div>
-      <button class="hamburger" id="hamburger" aria-label="Menu">☰</button>
+      <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">☰</button>
     </div>
   </header>
 
@@ -451,21 +451,67 @@
             <a href="https://wa.me/?text=SparkleWash%20—%20Professionele%20Reiniging%20https://sparklewash.nl" target="_blank" rel="noopener" class="share-btn" aria-label="Share WhatsApp">💬</a>
           </div>
         </div>
-        <form id="contact-form" class="contact-form">
-          <input type="text" name="name" placeholder="Uw naam" required data-i18n-placeholder="form-name">
-          <input type="email" name="email" placeholder="E-mailadres" required data-i18n-placeholder="form-email">
-          <input type="tel" name="phone" placeholder="Telefoonnummer" data-i18n-placeholder="form-phone">
-          <select name="service" data-i18n-label="form-service">
-            <option value="" data-i18n="form-service-default">Welke dienst?</option>
-            <option value="sofa" data-i18n="form-service-sofa">Bank / Fauteuil</option>
-            <option value="carpet" data-i18n="form-service-carpet">Tapijt / Vloerkleed</option>
-            <option value="mattress" data-i18n="form-service-mattress">Matras</option>
-            <option value="car" data-i18n="form-service-car">Auto Interieur</option>
-            <option value="other" data-i18n="form-service-other">Anders</option>
-          </select>
-          <textarea name="message" rows="4" placeholder="Uw bericht / vraag" data-i18n-placeholder="form-message"></textarea>
-          <button type="submit" class="btn btn-primary" data-i18n="form-submit">Offerte aanvragen</button>
-          <p class="form-note" data-i18n="form-note">Reactie binnen 24 uur — gratis en vrijblijvend.</p>
+        <form id="contact-form" class="contact-form booking-wizard" novalidate>
+          <div class="wizard-progress">
+            <span class="wizard-dot active" data-dot="1"></span>
+            <span class="wizard-dot" data-dot="2"></span>
+            <span class="wizard-dot" data-dot="3"></span>
+          </div>
+
+          <!-- Step 1: Diensten -->
+          <div class="wizard-step active" data-step="1">
+            <h3 class="wizard-step-title" data-i18n="wizard-step1-title">Stap 1: Kies uw dienst(en)</h3>
+            <div class="wizard-services">
+              <label class="wizard-service-option">
+                <input type="checkbox" name="wizard-service" value="sofa" data-price="49">
+                <span class="wizard-service-icon">🛋️</span>
+                <span class="wizard-service-name" data-i18n="form-service-sofa">Bank / Fauteuil</span>
+                <span class="wizard-service-price"><span data-i18n="wizard-price-from">vanaf</span> €49</span>
+              </label>
+              <label class="wizard-service-option">
+                <input type="checkbox" name="wizard-service" value="carpet" data-price="39">
+                <span class="wizard-service-icon">🟫</span>
+                <span class="wizard-service-name" data-i18n="form-service-carpet">Tapijt / Vloerkleed</span>
+                <span class="wizard-service-price"><span data-i18n="wizard-price-from">vanaf</span> €39</span>
+              </label>
+              <label class="wizard-service-option">
+                <input type="checkbox" name="wizard-service" value="mattress" data-price="35">
+                <span class="wizard-service-icon">🛏️</span>
+                <span class="wizard-service-name" data-i18n="form-service-mattress">Matras</span>
+                <span class="wizard-service-price"><span data-i18n="wizard-price-from">vanaf</span> €35</span>
+              </label>
+              <label class="wizard-service-option">
+                <input type="checkbox" name="wizard-service" value="car" data-price="59">
+                <span class="wizard-service-icon">🚗</span>
+                <span class="wizard-service-name" data-i18n="form-service-car">Auto Interieur</span>
+                <span class="wizard-service-price"><span data-i18n="wizard-price-from">vanaf</span> €59</span>
+              </label>
+            </div>
+            <p class="wizard-error" id="wizard-error-1" aria-live="polite"></p>
+          </div>
+
+          <!-- Step 2: Contactgegevens -->
+          <div class="wizard-step" data-step="2">
+            <h3 class="wizard-step-title" data-i18n="wizard-step2-title">Stap 2: Uw gegevens</h3>
+            <input type="text" name="wizard-name" placeholder="Naam" required data-i18n-placeholder="form-name">
+            <input type="email" name="wizard-email" placeholder="E-mailadres" required data-i18n-placeholder="form-email">
+            <input type="tel" name="wizard-phone" placeholder="Telefoonnummer" required data-i18n-placeholder="form-phone">
+            <input type="text" name="wizard-address" placeholder="Adres" required data-i18n-placeholder="wizard-address">
+            <p class="wizard-error" id="wizard-error-2" aria-live="polite"></p>
+          </div>
+
+          <!-- Step 3: Bevestiging -->
+          <div class="wizard-step" data-step="3">
+            <h3 class="wizard-step-title" data-i18n="wizard-step3-title">Stap 3: Bevestiging</h3>
+            <div class="wizard-summary" id="wizard-summary"></div>
+            <p class="wizard-thanks" data-i18n="wizard-thanks">Bedankt! We nemen binnen 24 uur contact op.</p>
+            <button type="button" class="btn btn-secondary wizard-restart-btn" id="wizard-restart" data-i18n="wizard-restart">Nieuwe aanvraag</button>
+          </div>
+
+          <div class="wizard-nav">
+            <button type="button" class="btn btn-secondary" id="wizard-prev" data-i18n="wizard-prev" hidden>Vorige</button>
+            <button type="button" class="btn btn-primary" id="wizard-next" data-i18n="wizard-next">Volgende</button>
+          </div>
         </form>
       </div>
     </div>
@@ -554,9 +600,9 @@
     💬
   </a>
 
-  <script src="js/i18n.js?v=3"></script>
+  <script src="js/i18n.js?v=4"></script>
   <script src="js/slider.js?v=2"></script>
-  <script src="js/main.js?v=7"></script>
+  <script src="js/main.js?v=9"></script>
 
   <script type="application/ld+json">
   {

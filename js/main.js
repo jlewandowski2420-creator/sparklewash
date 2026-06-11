@@ -22,9 +22,14 @@ document.addEventListener('DOMContentLoaded', () => {
   if (hamburger && nav) {
     hamburger.addEventListener('click', () => {
       nav.classList.toggle('open');
+      const expanded = nav.classList.contains('open');
+      hamburger.setAttribute('aria-expanded', String(expanded));
     });
     nav.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => nav.classList.remove('open'));
+      link.addEventListener('click', () => {
+        nav.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+      });
     });
   }
 
@@ -265,9 +270,139 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // ── Contact Form → Formspree ──
+  // ── Booking Wizard (multi-step) ──
+  const wizard = document.getElementById('contact-form');
+  if (wizard && wizard.classList.contains('booking-wizard')) {
+    const steps = wizard.querySelectorAll('.wizard-step');
+    const dots = wizard.querySelectorAll('.wizard-dot');
+    const nextBtn = document.getElementById('wizard-next');
+    const prevBtn = document.getElementById('wizard-prev');
+    const restartBtn = document.getElementById('wizard-restart');
+    const summaryEl = document.getElementById('wizard-summary');
+    let currentStep = 0;
+
+    function wLoc(nl, de, en, pl) { return loc(nl, en, de, pl); }
+
+    function showStep(idx) {
+      steps.forEach((s, i) => { s.classList.toggle('active', i === idx); });
+      dots.forEach((d, i) => { d.classList.toggle('active', i <= idx); });
+      prevBtn.hidden = idx === 0;
+      if (idx === steps.length - 1) {
+        nextBtn.textContent = wLoc('Versturen', 'Absenden', 'Submit', 'Wyślij');
+        buildSummary();
+      } else {
+        nextBtn.textContent = wLoc('Volgende', 'Weiter', 'Next', 'Dalej');
+      }
+      currentStep = idx;
+    }
+
+    function validateStep(idx) {
+      const errorEl = document.getElementById('wizard-error-' + (idx + 1));
+      if (errorEl) errorEl.textContent = '';
+      if (idx === 0) {
+        const checked = wizard.querySelectorAll('[name="wizard-service"]:checked');
+        if (checked.length === 0) {
+          if (errorEl) errorEl.textContent = wLoc(
+            'Selecteer minimaal één dienst.',
+            'Bitte wählen Sie mindestens eine Dienstleistung.',
+            'Please select at least one service.',
+            'Wybierz co najmniej jedną usługę.'
+          );
+          return false;
+        }
+        return true;
+      }
+      if (idx === 1) {
+        const fields = ['wizard-name', 'wizard-email', 'wizard-phone', 'wizard-address'];
+        for (const fn of fields) {
+          const f = wizard.querySelector('[name="' + fn + '"]');
+          if (!f || !f.value.trim()) {
+            if (errorEl) errorEl.textContent = wLoc(
+              'Vul alle verplichte velden in.',
+              'Bitte füllen Sie alle Pflichtfelder aus.',
+              'Please fill in all required fields.',
+              'Wypełnij wszystkie wymagane pola.'
+            );
+            return false;
+          }
+        }
+        return true;
+      }
+      return true;
+    }
+
+    function buildSummary() {
+      if (!summaryEl) return;
+      const services = Array.from(wizard.querySelectorAll('[name="wizard-service"]:checked'))
+        .map(cb => cb.parentElement.querySelector('.wizard-service-name').textContent.trim());
+      const name = wizard.querySelector('[name="wizard-name"]').value.trim();
+      const email = wizard.querySelector('[name="wizard-email"]').value.trim();
+      const phone = wizard.querySelector('[name="wizard-phone"]').value.trim();
+      const address = wizard.querySelector('[name="wizard-address"]').value.trim();
+      summaryEl.innerHTML =
+        '<p><strong>' + wLoc('Diensten:','Dienstleistungen:','Services:','Usługi:') + '</strong> ' + services.join(', ') + '</p>' +
+        '<p><strong>' + wLoc('Naam:','Name:','Name:','Imię:') + '</strong> ' + name + '</p>' +
+        '<p><strong>Email:</strong> ' + email + '</p>' +
+        '<p><strong>' + wLoc('Telefoon:','Telefon:','Phone:','Telefon:') + '</strong> ' + phone + '</p>' +
+        '<p><strong>' + wLoc('Adres:','Adresse:','Address:','Adres:') + '</strong> ' + address + '</p>';
+    }
+
+    nextBtn.addEventListener('click', async () => {
+      if (!validateStep(currentStep)) return;
+      if (currentStep < steps.length - 1) {
+        showStep(currentStep + 1);
+        return;
+      }
+      // Submit
+      const services = Array.from(wizard.querySelectorAll('[name="wizard-service"]:checked'))
+        .map(cb => cb.value).join(',');
+      const data = {
+        _subject: 'Nieuwe offerteaanvraag - SparkleWash',
+        name: wizard.querySelector('[name="wizard-name"]').value.trim(),
+        email: wizard.querySelector('[name="wizard-email"]').value.trim(),
+        phone: wizard.querySelector('[name="wizard-phone"]').value.trim(),
+        address: wizard.querySelector('[name="wizard-address"]').value.trim(),
+        service: services,
+        lang: I18N.current,
+        type: 'wizard'
+      };
+      nextBtn.textContent = wLoc('Verzenden...','Senden...','Sending...','Wysyłanie...');
+      nextBtn.disabled = true;
+      const result = await submitToFormspree(data);
+      nextBtn.disabled = false;
+      if (result.ok) {
+        showStep(2);
+        // Also save local fallback
+        const inquiries = JSON.parse(localStorage.getItem('sparklewash-inquiries') || '[]');
+        inquiries.push({ name: data.name, email: data.email, date: new Date().toISOString() });
+        localStorage.setItem('sparklewash-inquiries', JSON.stringify(inquiries));
+      } else {
+        const errorEl = document.getElementById('wizard-error-2');
+        if (errorEl) errorEl.textContent = wLoc(
+          'Fout bij verzenden. Probeer opnieuw of bel ons.',
+          'Fehler beim Senden. Bitte versuchen Sie es erneut oder rufen Sie uns an.',
+          'Error sending. Please try again or call us.',
+          'Błąd wysyłania. Spróbuj ponownie lub zadzwoń.'
+        );
+        nextBtn.textContent = wLoc('Versturen', 'Absenden', 'Submit', 'Wyślij');
+      }
+    });
+
+    prevBtn.addEventListener('click', () => {
+      if (currentStep > 0) showStep(currentStep - 1);
+    });
+
+    if (restartBtn) {
+      restartBtn.addEventListener('click', () => {
+        wizard.reset();
+        showStep(0);
+      });
+    }
+  }
+
+  // ── Contact Form (legacy — kept if booking wizard not present) ──
   const form = document.getElementById('contact-form');
-  if (form) {
+  if (form && !form.classList.contains('booking-wizard')) {
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const btn = form.querySelector('button[type="submit"]');
