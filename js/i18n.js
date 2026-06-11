@@ -43,6 +43,7 @@ const I18N = {
       'scroll-top': '↑',
       // FAQ
       'faq-title': 'Veelgestelde Vragen',
+      'faq-subtitle': 'Veelgestelde vragen over onze reinigingsdiensten.',
       'faq-q1': 'Hoelang duurt het drogen na de reiniging?',
       'faq-a1': 'De droogtijd varieert van 2 tot 6 uur, afhankelijk van de stof en ventilatie. Wij gebruiken professionele extractieapparatuur die het meeste water verwijdert, zodat uw meubels snel weer bruikbaar zijn. Bij goede ventilatie is uw bank vaak binnen 3-4 uur droog.',
       'faq-q2': 'Verwijderen jullie ook hardnekkige vlekken?',
@@ -125,6 +126,7 @@ const I18N = {
       'form-submit': 'Offerte aanvragen',
       'form-note': 'Reactie binnen 24 uur — gratis en vrijblijvend.',
       'footer-tagline': 'Professionele reiniging in Limburg & Grensregio',
+      'footer-follow': 'Volg Ons',
       'footer-privacy': 'Privacy',
       'footer-terms': 'Voorwaarden',
       'how-title': 'Zo Werkt Het',
@@ -187,6 +189,7 @@ const I18N = {
       'scroll-top': '↑',
       // FAQ
       'faq-title': 'Häufig Gestellte Fragen',
+      'faq-subtitle': 'Häufig gestellte Fragen zu unseren Reinigungsdienstleistungen.',
       'faq-q1': 'Wie lange dauert die Trocknungszeit nach der Reinigung?',
       'faq-a1': 'Die Trocknungszeit variiert zwischen 2 und 6 Stunden, abhängig vom Stoff und der Belüftung. Wir verwenden professionelle Extraktionsgeräte, die das meiste Wasser entfernen, sodass Ihre Möbel schnell wieder nutzbar sind. Bei guter Belüftung ist Ihr Sofa oft innerhalb von 3-4 Stunden trocken.',
       'faq-q2': 'Entfernen Sie auch hartnäckige Flecken?',
@@ -269,6 +272,7 @@ const I18N = {
       'form-submit': 'Angebot anfordern',
       'form-note': 'Antwort innerhalb von 24 Stunden — kostenlos und unverbindlich.',
       'footer-tagline': 'Professionelle Reinigung in Limburg & Grenzregion',
+      'footer-follow': 'Folgen Sie Uns',
       'footer-privacy': 'Datenschutz',
       'footer-terms': 'AGB',
       'how-title': 'So Funktioniert Es',
@@ -331,6 +335,7 @@ const I18N = {
       'scroll-top': '↑',
       // FAQ
       'faq-title': 'Frequently Asked Questions',
+      'faq-subtitle': 'Frequently asked questions about our cleaning services.',
       'faq-q1': 'How long does drying take after cleaning?',
       'faq-a1': 'Drying time varies from 2 to 6 hours, depending on the fabric and ventilation. We use professional extraction equipment that removes most of the water, so your furniture is ready to use again quickly. With good ventilation, your sofa is often dry within 3-4 hours.',
       'faq-q2': 'Do you remove tough stains?',
@@ -413,6 +418,7 @@ const I18N = {
       'form-submit': 'Request quote',
       'form-note': 'Response within 24 hours — free and no obligation.',
       'footer-tagline': 'Professional cleaning in Limburg & Border Region',
+      'footer-follow': 'Follow Us',
       'footer-privacy': 'Privacy',
       'footer-terms': 'Terms',
       'how-title': 'How It Works',
@@ -475,6 +481,7 @@ const I18N = {
       'scroll-top': '↑',
       // FAQ
       'faq-title': 'Najczęściej Zadawane Pytania',
+      'faq-subtitle': 'Najczęściej zadawane pytania dotyczące naszych usług czyszczenia.',
       'faq-q1': 'Jak długo schną meble po praniu?',
       'faq-a1': 'Czas schnięcia wynosi od 2 do 6 godzin, w zależności od tkaniny i wentylacji. Używamy profesjonalnego sprzętu ekstrakcyjnego, który usuwa większość wody, dzięki czemu meble są szybko gotowe do użytku. Przy dobrej wentylacji sofa jest często sucha w ciągu 3-4 godzin.',
       'faq-q2': 'Czy usuwacie również trudne plamy?',
@@ -557,6 +564,7 @@ const I18N = {
       'form-submit': 'Poproś o wycenę',
       'form-note': 'Odpowiedź w ciągu 24 godzin — za darmo i bez zobowiązań.',
       'footer-tagline': 'Profesjonalne pranie w Limburgii i regionie przygranicznym',
+      'footer-follow': 'Obserwuj Nas',
       'footer-privacy': 'Prywatność',
       'footer-terms': 'Warunki',
       'how-title': 'Jak To Działa',
