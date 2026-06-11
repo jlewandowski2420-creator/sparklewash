@@ -95,6 +95,16 @@
     ]
   }
   </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://sparklewash.nl/" },
+      { "@type": "ListItem", "position": 2, "name": "Bank &amp; Fauteuil", "item": "https://sparklewash.nl/sofa.html" }
+    ]
+  }
+  </script>
   <title>Bank &amp; Fauteuil Reiniging — SparkleWash | Vanaf €35</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -120,6 +130,14 @@
       <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">☰</button>
     </div>
   </header>
+
+  <!-- Breadcrumb -->
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <ol>
+      <li><a href="index.html">Home</a></li>
+      <li aria-current="page">Bank &amp; Fauteuil</li>
+    </ol>
+  </nav>
 
   <!-- Hero -->
   <section class="hero">
@@ -270,6 +288,6 @@
     💬
   </a>
 
-  <script src="js/main.js?v=7"></script>
+  <script src="js/main.js?v=9"></script>
 </body>
 </html>
