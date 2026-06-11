@@ -12,6 +12,46 @@
     <xhtml:link rel="alternate" hreflang="pl" href="https://sparklewash.nl/?lang=pl" />
   </url>
   <url>
+    <loc>https://sparklewash.nl/sofa.html</loc>
+    <lastmod>2026-06-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://sparklewash.nl/sofa.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://sparklewash.nl/sofa.html?lang=de" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://sparklewash.nl/sofa.html?lang=en" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://sparklewash.nl/sofa.html?lang=pl" />
+  </url>
+  <url>
+    <loc>https://sparklewash.nl/carpet.html</loc>
+    <lastmod>2026-06-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://sparklewash.nl/carpet.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://sparklewash.nl/carpet.html?lang=de" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://sparklewash.nl/carpet.html?lang=en" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://sparklewash.nl/carpet.html?lang=pl" />
+  </url>
+  <url>
+    <loc>https://sparklewash.nl/mattress.html</loc>
+    <lastmod>2026-06-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://sparklewash.nl/mattress.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://sparklewash.nl/mattress.html?lang=de" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://sparklewash.nl/mattress.html?lang=en" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://sparklewash.nl/mattress.html?lang=pl" />
+  </url>
+  <url>
+    <loc>https://sparklewash.nl/car.html</loc>
+    <lastmod>2026-06-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://sparklewash.nl/car.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://sparklewash.nl/car.html?lang=de" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://sparklewash.nl/car.html?lang=en" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://sparklewash.nl/car.html?lang=pl" />
+  </url>
+  <url>
     <loc>https://sparklewash.nl/privacy.html</loc>
     <lastmod>2026-06-06</lastmod>
     <changefreq>monthly</changefreq>
