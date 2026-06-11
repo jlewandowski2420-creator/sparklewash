@@ -52,6 +52,16 @@
     <xhtml:link rel="alternate" hreflang="pl" href="https://sparklewash.nl/car.html?lang=pl" />
   </url>
   <url>
+    <loc>https://sparklewash.nl/booking.html</loc>
+    <lastmod>2026-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://sparklewash.nl/booking.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://sparklewash.nl/booking.html?lang=de" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://sparklewash.nl/booking.html?lang=en" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://sparklewash.nl/booking.html?lang=pl" />
+  </url>
+  <url>
     <loc>https://sparklewash.nl/privacy.html</loc>
     <lastmod>2026-06-06</lastmod>
     <changefreq>monthly</changefreq>

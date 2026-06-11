@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="Rechtstreeks boeken bij SparkleWash — professionele tapijt- en meubelreiniging in Limburg. Kies uw dienst, datum en tijd. Reactie binnen 24u.">
+  <meta name="keywords" content="boeken, reiniging boeken, afspraak maken, SparkleWash, Limburg, Heerlen, Aachen">
+  <meta name="author" content="SparkleWash">
+  <meta property="og:title" content="Rechtstreeks Boeken | SparkleWash">
+  <meta property="og:description" content="Boek direct uw professionele reiniging bij SparkleWash. Kies dienst, datum en tijd.">
+  <meta property="og:image" content="https://sparklewash.nl/images/sofa-after.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta property="og:url" content="https://sparklewash.nl/booking.html">
+  <meta name="theme-color" content="#1a1a2e">
+  <meta name="google-site-verification" content="4-QKp_8Ig0Cett05fZkZc3JUilJEa-VdHZQlPrZb3hQ" />
+  <link rel="canonical" href="https://sparklewash.nl/booking.html">
+  <!-- hreflang for multilingual SEO -->
+  <link rel="alternate" hreflang="nl" href="https://sparklewash.nl/booking.html" />
+  <link rel="alternate" hreflang="de" href="https://sparklewash.nl/booking.html?lang=de" />
+  <link rel="alternate" hreflang="en" href="https://sparklewash.nl/booking.html?lang=en" />
+  <link rel="alternate" hreflang="pl" href="https://sparklewash.nl/booking.html?lang=pl" />
+  <link rel="alternate" hreflang="x-default" href="https://sparklewash.nl/booking.html" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+  <title>Rechtstreeks Boeken | SparkleWash</title>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container nav-bar">
+      <a href="/" class="logo">
+        <span class="logo-icon">✨</span>
+        <span class="logo-text">Sparkle<span class="accent">Wash</span></span>
+      </a>
+      <nav class="nav" id="main-nav">
+        <a href="/#services">Diensten</a>
+        <a href="/#pricing">Prijzen</a>
+        <a href="/#about">Over ons</a>
+        <a href="/#calculator">Calculator</a>
+        <a href="/#contact">Contact</a>
+      </nav>
+      <div class="lang-switch">
+        <button class="lang-btn active" data-lang="nl">NL</button>
+        <button class="lang-btn" data-lang="de">DE</button>
+        <button class="lang-btn" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="pl">PL</button>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">☰</button>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" style="min-height:30vh;">
+    <div class="container hero-content">
+      <h1 data-i18n="booking-title">Rechtstreeks Boeken</h1>
+      <p>Kies uw dienst, gewenste datum en tijd. Wij nemen binnen 24 uur contact met u op om de afspraak te bevestigen.</p>
+    </div>
+    <div class="hero-wave"></div>
+  </section>
+
+  <!-- Booking Form -->
+  <section class="section">
+    <div class="container" style="max-width:600px;">
+      <div class="booking-box" style="margin:0 auto;">
+        <h3 data-i18n="booking-title">Rechtstreeks Boeken</h3>
+        <form class="booking-form" id="booking-form">
+          <input type="text" name="b-name" placeholder="Uw naam" required data-i18n-placeholder="booking-name">
+          <input type="email" name="b-email" placeholder="E-mailadres" required data-i18n-placeholder="booking-email">
+          <input type="tel" name="b-phone" placeholder="Telefoonnummer" required data-i18n-placeholder="booking-phone">
+          <select name="b-service" required data-i18n-label="booking-service">
+            <option value="" data-i18n="booking-service">Kies dienst</option>
+            <option value="sofa2" data-i18n="booking-sofa2">2-Zits Bank (€49)</option>
+            <option value="sofa3" data-i18n="booking-sofa3">3-Zits Bank (€69)</option>
+            <option value="corner" data-i18n="booking-corner">Hoekbank (€79)</option>
+            <option value="carpet" data-i18n="booking-carpet">Vloerkleed / Tapijt (€39)</option>
+            <option value="mattress" data-i18n="booking-mattress">Matras (€35)</option>
+            <option value="car" data-i18n="booking-car">Auto Interieur (€59)</option>
+          </select>
+          <input type="date" name="b-date" id="booking-date" required data-i18n-placeholder="booking-date">
+          <select name="b-time" id="booking-time" required data-i18n-label="booking-time">
+            <option value="" data-i18n="booking-time-placeholder">Kies tijd</option>
+          </select>
+          <button type="submit" class="btn btn-primary" data-i18n="booking-submit">Boeken</button>
+        </form>
+        <div class="booking-success-msg" id="booking-success-msg"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Scroll to Top -->
+  <button class="scroll-top-btn" id="scroll-top-btn" aria-label="Scroll to top">↑</button>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-col">
+        <a href="/" class="footer-logo">
+          <span class="logo-icon">✨</span>
+          <span class="logo-text">Sparkle<span class="accent">Wash</span></span>
+        </a>
+        <p>Professionele reiniging in Limburg &amp; Grensregio</p>
+      </div>
+      <div class="footer-col">
+        <h4>Diensten</h4>
+        <div class="footer-links">
+          <a href="/#services">Bank &amp; Fauteuil</a>
+          <a href="/#services">Tapijt &amp; Vloerkleed</a>
+          <a href="/#services">Matras Reiniging</a>
+          <a href="/#services">Auto Interieur</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <p>📞 <a href="tel:+316****7379">+31 6 84067379</a><br>📧 info@sparklewash.nl</p>
+      </div>
+      <div class="footer-col">
+        <h4>Links</h4>
+        <div class="footer-links">
+          <a href="privacy.html">Privacy</a>
+          <a href="terms.html">Voorwaarden</a>
+          <a href="booking.html">Boeken</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 SparkleWash — Professionele reiniging in Limburg &amp; Grensregio</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Floating Button -->
+  <a href="https://wa.me/31684067379?text=Hallo%20SparkleWash!%20Ik%20wil%20graag%20een%20afspraak%20maken."
+     id="whatsapp-button"
+     class="whatsapp-float"
+     target="_blank"
+     rel="noopener noreferrer"
+     aria-label="Chat op WhatsApp">
+    💬
+  </a>
+
+  <script src="js/i18n.js?v=4"></script>
+  <script src="js/main.js?v=9"></script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "SparkleWash",
+    "description": "Professionele tapijt- en meubelreiniging in Limburg en Duitse grensregio",
+    "url": "https://sparklewash.nl/booking.html",
+    "telephone": "+316****7379",
+    "email": "info@sparklewash.nl",
+    "address": {"@type": "PostalAddress", "addressLocality": "Heerlen", "addressCountry": "NL"},
+    "areaServed": ["NL-LI", "DE-NW"],
+    "sameAs": ["https://facebook.com/profile.php?id=61577297895578"]
+  }
+  </script>
+</body>
+</html>
