@@ -1190,6 +1190,18 @@ const I18N = {
     }
     const desc = this.t('meta-desc');
     if (desc) metaDesc.setAttribute('content', desc);
+    // Update canonical URL for current language
+    const canonical = document.getElementById('canonical-link');
+    if (canonical) {
+      const base = canonical.href.split('?')[0];
+      const params = new URLSearchParams(window.location.search);
+      const langParam = params.get('lang');
+      if (langParam) {
+        canonical.href = base + '?lang=' + langParam;
+      } else {
+        canonical.href = base;
+      }
+    }
   },
   translatePage() {
     document.querySelectorAll('[data-i18n]').forEach(el => {

@@ -1,0 +1,147 @@
+# Zmiany w style.css — utwardzenie industrialne
+
+Poniższe zmiany dotyczą pliku:
+~/sparklewash/GIT_repo/sparklewash-theme-main/assets/css/style.css
+
+---
+
+## 1. Font — Google Fonts + kondensowane nagłówki
+
+Na początek pliku, zaraz po pierwszym @import albo w <head>, dodać:
+
+```css
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&display=swap');
+```
+
+Albo lepiej — dodać to w HTML header przed istniejącym style.css.
+
+Następnie zmieniamy font dla nagłówków:
+
+```css
+h1, h2, h3, h4, .display-1, .display-2, .display-3, .display-4,
+.navbar-brand, .btn, .badge, .section-title, .price-tag {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+```
+
+Body zostaje w obecnym sansie (neutralny, czytelny).
+
+---
+
+## 2. Radius 8px → 2px (ostre krawędzie)
+
+Znajdź i zamień w :root:
+
+```
+--radius: 8px;
+```
+
+na:
+
+```
+--radius: 2px;
+```
+
+Badge'y zaokrąglone na 50px (pigułki) zmieniamy na proste:
+
+```css
+.badge {
+  border-radius: 2px !important;
+  padding: 0.35em 0.75em;
+}
+```
+
+Cienie zrzucamy z pillowych na twardsze:
+
+```css
+--shadow: 0 2px 4px rgba(0,0,0,0.08);
+--shadow-lg: 0 4px 12px rgba(0,0,0,0.1);
+```
+
+(zamiast istniejących z rozmyciem 15-30px)
+
+---
+
+## 3. Hazard stripe — czarno-żółty separator
+
+Dodać na końcu CSS:
+
+```css
+/* Hazard stripe separator — industrial motif */
+.hazard-stripe {
+  height: 8px;
+  background: repeating-linear-gradient(
+    45deg,
+    #1A1A1A 0px,
+    #1A1A1A 10px,
+    #FFCC00 10px,
+    #FFCC00 20px
+  );
+  width: 100%;
+  margin: 0;
+  border: none;
+}
+
+.hazard-stripe--red {
+  background: repeating-linear-gradient(
+    45deg,
+    #1A1A1A 0px,
+    #1A1A1A 10px,
+    #DA291C 10px,
+    #DA291C 20px
+  );
+}
+```
+
+Użycie w HTML: `<div class="hazard-stripe"></div>` między sekcjami.
+
+---
+
+## 4. Emoji → SVG (przykład dla 🪟⚡🛡️🏅📞)
+
+Najpierw dodajemy prosty sprite lub atrybut data. W HTML zmieniamy:
+
+```html
+<span class="emoji-icon">🪟</span>
+```
+
+na:
+
+```html
+<svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+  <rect x="2" y="3" width="20" height="18" rx="2" ry="2"/>
+  <line x1="12" y1="3" x2="12" y2="21"/>
+</svg>
+```
+
+(ikona okna dla Windows Revolution — ramka + klamka pośrodku)
+
+W CSS dodajemy:
+
+```css
+.icon {
+  display: inline-block;
+  vertical-align: middle;
+  stroke: currentColor;
+  flex-shrink: 0;
+}
+.icon--red { color: var(--primary); }
+.icon--dark { color: #1A1A1A; }
+```
+
+Resztę ikon (młotek, tarcza, medal, telefon) podobnie — każda ma prosty SVG.
+
+---
+
+## Co się zmienia wizualnie:
+
+- Nagłówki: Barlow Condensed 800, uppercase — czytasz to jak "narzędzia"/"sprzęt"
+- Krawędzie: ostre (2px), znika "appkowość"
+- Hazard stripe: klasyczny budowlany motyw między sekcjami
+- Ikony: SVG zamiast emoji — profesjonalnie, spójnie między OS
+- Czerwona cena wciąż #DA291C (ale jak chcesz #DB011C podmienię)
+
+Chcesz żebym zastosował zmiany 1-3 (font + radius + hazard stripe) w plikach bezpośrednio? Zmiany wizualne od razu zobaczysz.
