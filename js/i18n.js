@@ -1184,22 +1184,26 @@ const I18N = {
     return this.data[this.current]?.[key] ?? this.data.nl[key] ?? key;
   },
   updateMeta() {
-    const title = this.t('meta-title');
-    if (title) document.title = title;
-    let metaDesc = document.querySelector('meta[name="description"]');
-    if (!metaDesc) {
-      metaDesc = document.createElement('meta');
-      metaDesc.setAttribute('name', 'description');
-      document.head.appendChild(metaDesc);
+    const params = new URLSearchParams(window.location.search);
+    const langParam = params.get('lang');
+    // Only override title/meta description when ?lang= is explicitly in URL
+    // Without ?lang=, keep the static NL defaults from HTML for Googlebot
+    if (langParam) {
+      const title = this.t('meta-title');
+      if (title) document.title = title;
+      let metaDesc = document.querySelector('meta[name="description"]');
+      if (!metaDesc) {
+        metaDesc = document.createElement('meta');
+        metaDesc.setAttribute('name', 'description');
+        document.head.appendChild(metaDesc);
+      }
+      const desc = this.t('meta-desc');
+      if (desc) metaDesc.setAttribute('content', desc);
     }
-    const desc = this.t('meta-desc');
-    if (desc) metaDesc.setAttribute('content', desc);
     // Update canonical URL for current language
     const canonical = document.getElementById('canonical-link');
     if (canonical) {
       const base = canonical.href.split('?')[0];
-      const params = new URLSearchParams(window.location.search);
-      const langParam = params.get('lang');
       if (langParam) {
         canonical.href = base + '?lang=' + langParam;
       } else {
