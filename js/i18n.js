@@ -115,7 +115,9 @@ const I18N = {
       'calc-qty': 'Aantal stuks',
       'calc-clear': 'Wis alles',
       // Booking
-      'booking-title': 'Rechtstreeks Boeken',
+      'booking-title': 'Offerte via WhatsApp',
+      'booking-wa-desc': 'Selecteer hierboven uw diensten in de calculator en klik op de knop hieronder om uw offerte te ontvangen via WhatsApp.',
+      'booking-wa-btn': 'Stuur via WhatsApp',
       'booking-name': 'Uw naam',
       'booking-email': 'E-mailadres',
       'booking-phone': 'Telefoonnummer',
@@ -410,7 +412,9 @@ const I18N = {
       'calc-qty': 'Anzahl',
       'calc-clear': 'Alles löschen',
       // Booking
-      'booking-title': 'Direkt Buchen',
+      'booking-title': 'Angebot via WhatsApp',
+      'booking-wa-desc': 'Wählen Sie oben Ihre Dienste im Rechner aus und klicken Sie auf die Schaltfläche unten, um Ihr Angebot per WhatsApp zu erhalten.',
+      'booking-wa-btn': 'Senden via WhatsApp',
       'booking-name': 'Ihr Name',
       'booking-email': 'E-Mail-Adresse',
       'booking-phone': 'Telefonnummer',
@@ -704,7 +708,9 @@ const I18N = {
       'calc-qty': 'Quantity',
       'calc-clear': 'Clear all',
       // Booking
-      'booking-title': 'Book Directly',
+      'booking-title': 'Quote via WhatsApp',
+      'booking-wa-desc': 'Select your services in the calculator above and click the button below to receive your quote via WhatsApp.',
+      'booking-wa-btn': 'Send via WhatsApp',
       'booking-name': 'Your name',
       'booking-email': 'Email address',
       'booking-phone': 'Phone number',
@@ -998,7 +1004,9 @@ const I18N = {
       'calc-qty': 'Ilość sztuk',
       'calc-clear': 'Wyczyść wszystko',
       // Booking
-      'booking-title': 'Rezerwuj Bezpośrednio',
+      'booking-title': 'Wycena przez WhatsApp',
+      'booking-wa-desc': 'Wybierz usługi w kalkulatorze powyżej i kliknij przycisk poniżej, aby otrzymać wycenę przez WhatsApp.',
+      'booking-wa-btn': 'Wyślij przez WhatsApp',
       'booking-name': 'Twoje imię i nazwisko',
       'booking-email': 'Adres e-mail',
       'booking-phone': 'Numer telefonu',

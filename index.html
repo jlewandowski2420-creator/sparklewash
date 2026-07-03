@@ -136,7 +136,7 @@
       <h1 data-i18n="hero-title">Uw meubels weer als nieuw</h1>
       <p data-i18n="hero-subtitle">Professionele extractiereiniging — tapijten, banken, matrassen, auto-interieurs. Wij komen naar u toe in heel Limburg en de Duitse grensregio.</p>
       <div class="hero-buttons">
-        <a href="contact.html" class="btn btn-primary" data-i18n="hero-cta">Gratis offerte aanvragen</a>
+        <a href="https://wa.me/31684067379?text=Hallo!%20Ik%20wil%20graag%20een%20offerte%20voor%20meubelreiniging." class="btn btn-primary" data-i18n="hero-cta" target="_blank" rel="noopener">💬 Direct via WhatsApp</a>
         <a href="#pricing" class="btn btn-secondary" data-i18n="hero-pricing">Bekijk prijzen</a>
       </div>
     </div>
@@ -399,27 +399,18 @@
 
         <!-- Booking Box -->
         <div class="booking-box">
-          <h3 data-i18n="booking-title">Rechtstreeks Boeken</h3>
-          <form class="booking-form" id="booking-form">
-            <input type="text" name="b-name" placeholder="Uw naam" required data-i18n-placeholder="booking-name">
-            <input type="email" name="b-email" placeholder="E-mailadres" required data-i18n-placeholder="booking-email">
-            <input type="tel" name="b-phone" placeholder="Telefoonnummer" required data-i18n-placeholder="booking-phone">
-            <select name="b-service" required data-i18n-label="booking-service">
-              <option value="" data-i18n="booking-service">Kies dienst</option>
-              <option value="sofa2" data-i18n="booking-sofa2">2-Zits Bank (€49)</option>
-              <option value="sofa3" data-i18n="booking-sofa3">3-Zits Bank (€69)</option>
-              <option value="corner" data-i18n="booking-corner">Hoekbank (€79)</option>
-              <option value="carpet" data-i18n="booking-carpet">Vloerkleed / Tapijt (€39)</option>
-              <option value="mattress" data-i18n="booking-mattress">Matras (€35)</option>
-              <option value="car" data-i18n="booking-car">Auto Interieur (€59)</option>
-            </select>
-            <input type="date" name="b-date" id="booking-date" required data-i18n-placeholder="booking-date">
-            <select name="b-time" id="booking-time" required data-i18n-label="booking-time">
-              <option value="" data-i18n="booking-time-placeholder">Kies tijd</option>
-            </select>
-            <button type="submit" class="btn btn-primary" data-i18n="booking-submit">Boeken</button>
-          </form>
-          <div class="booking-success-msg" id="booking-success-msg"></div>
+          <h3 data-i18n="booking-title">Offerte via WhatsApp</h3>
+          <div class="booking-whatsapp">
+            <p style="margin-bottom:16px;color:var(--text-dim);" data-i18n="booking-wa-desc">Selecteer hierboven uw diensten in de calculator en klik op de knop hieronder om uw offerte te ontvangen via WhatsApp.</p>
+            <a href="https://wa.me/31684067379?text=Hallo!%20Ik%20wil%20graag%20een%20offerte%20voor%20meubelreiniging."
+               id="booking-wa-btn"
+               class="btn btn-primary"
+               target="_blank"
+               rel="noopener"
+               style="background:#25D366;display:inline-flex;align-items:center;gap:8px;width:100%;justify-content:center;">
+              💬 <span data-i18n="booking-wa-btn">Stuur via WhatsApp</span>
+            </a>
+          </div>
         </div>
       </div>
     </div>
