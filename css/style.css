@@ -876,6 +876,14 @@ body {
   box-shadow: 0 6px 28px rgba(14,124,123,0.35);
 }
 
+/* ═══ Icons (SVG) ═══ */
+.card-icon svg, .step-icon svg { width: 36px; height: 36px; color: var(--accent); }
+.icon-badge { display: flex; justify-content: center; margin-bottom: 10px; }
+.icon-badge svg { width: 30px; height: 30px; color: var(--accent); }
+.whatsapp-float svg { display: block; }
+.share-btn svg { vertical-align: middle; }
+.footer-social a svg { color: var(--accent); }
+
 /* ═══ Footer ═══ */
 .footer {
   background: var(--bg2); border-top: 1px solid var(--border);
@@ -891,14 +899,14 @@ body {
 .footer-col h4 {
   font-size: 0.95rem;
   font-weight: 700;
-  color: var(--white);
+  color: var(--text);
   margin-bottom: 14px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
 .footer-logo {
   display: flex; align-items: center; gap: 8px;
-  text-decoration: none; color: var(--white); font-size: 1.3rem; font-weight: 800;
+  text-decoration: none; color: var(--text); font-size: 1.3rem; font-weight: 800;
   margin-bottom: 10px;
 }
 .footer p { color: var(--text-dim); font-size: 0.88rem; line-height: 1.6; }

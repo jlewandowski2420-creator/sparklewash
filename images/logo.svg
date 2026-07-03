@@ -1,15 +1,15 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 64" width="300" height="64" role="img" aria-label="SparkleWash">
   <defs>
     <linearGradient id="sw-orange" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#f77f00"/>
-      <stop offset="100%" stop-color="#ff9f1c"/>
+      <stop offset="0%" stop-color="#f77f00"></stop>
+      <stop offset="100%" stop-color="#ff9f1c"></stop>
     </linearGradient>
   </defs>
   <g fill="url(#sw-orange)">
-    <path d="M32 10 Q37.5 26.5 54 32 Q37.5 37.5 32 54 Q26.5 37.5 10 32 Q26.5 26.5 32 10 Z"/>
-    <path d="M54 7 Q55.8 12.2 61 14 Q55.8 15.8 54 21 Q52.2 15.8 47 14 Q52.2 12.2 54 7 Z"/>
+    <path d="M32 10 Q37.5 26.5 54 32 Q37.5 37.5 32 54 Q26.5 37.5 10 32 Q26.5 26.5 32 10 Z"></path>
+    <path d="M54 7 Q55.8 12.2 61 14 Q55.8 15.8 54 21 Q52.2 15.8 47 14 Q52.2 12.2 54 7 Z"></path>
   </g>
-  <text x="78" y="41" font-family="system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="29" font-weight="800" letter-spacing="-0.5">
+  <text x="78" y="41" font-family="system-ui,-apple-system,&#39;Segoe UI&#39;,Roboto,sans-serif" font-size="29" font-weight="800" letter-spacing="-0.5">
     <tspan fill="#ffffff">Sparkle</tspan><tspan fill="url(#sw-orange)">Wash</tspan>
   </text>
 </svg>

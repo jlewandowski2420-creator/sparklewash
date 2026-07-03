@@ -202,11 +202,11 @@ const I18N = {
       'pricing-note': '* Prijzen zijn richtprijzen. Offerte op maat na inspectie. <strong>Gratis</strong> offerte binnen 24u.',
       'gallery-title': 'Voor & Nadien',
       'gallery-subtitle': 'Bekijk onze resultaten — echte voorbeelden van onze reinigingen in Limburg en omgeving.',
-      'gallery-item-sofa': '🛋️ Bank & Fauteuil',
+      'gallery-item-sofa': 'Bank & Fauteuil',
       'gallery-item-sofa-desc': 'Voor en na grondige extractiereiniging van een stoffen bank. Vlekken en geuren verwijderd.',
-      'gallery-item-carpet': '🟫 Tapijt & Vloerkleed',
+      'gallery-item-carpet': 'Tapijt & Vloerkleed',
       'gallery-item-carpet-desc': 'Een vloerkleed na professionele extractiereiniging. Diep gereinigd tot in de vezels.',
-      'gallery-item-car': '🚗 Auto Interieur',
+      'gallery-item-car': 'Auto Interieur',
       'gallery-item-car-desc': 'Auto-interieur voor en na. Stoelen, bekleding en matten weer als nieuw.',
       'area-title': 'Werkgebied',
       'area-subtitle': 'Actief in heel Nederlands Limburg en de Duitse grensregio (Aachen, Keulen, Düren).',
@@ -501,11 +501,11 @@ const I18N = {
       'pricing-note': '* Preise sind Richtpreise. Individuelles Angebot nach Besichtigung. <strong>Kostenloses</strong> Angebot innerhalb von 24h.',
       'gallery-title': 'Vorher & Nachher',
       'gallery-subtitle': 'Sehen Sie sich unsere Ergebnisse an — echte Beispiele unserer Reinigungen in Limburg und Umgebung.',
-      'gallery-item-sofa': '🛋️ Sofa & Sessel',
+      'gallery-item-sofa': 'Sofa & Sessel',
       'gallery-item-sofa-desc': 'Vor und nach einer gründlichen Extraktionsreinigung eines Stoffsofas. Flecken und Gerüche entfernt.',
-      'gallery-item-carpet': '🟫 Teppich & Läufer',
+      'gallery-item-carpet': 'Teppich & Läufer',
       'gallery-item-carpet-desc': 'Ein Teppich nach professioneller Extraktionsreinigung. Tiefengereinigt bis in die Fasern.',
-      'gallery-item-car': '🚗 Auto Innenraum',
+      'gallery-item-car': 'Auto Innenraum',
       'gallery-item-car-desc': 'Auto-Innenraum vor und nach der Reinigung. Sitze, Polster und Matten wieder wie neu.',
       'area-title': 'Einsatzgebiet',
       'area-subtitle': 'Tätig in der gesamten niederländischen Provinz Limburg und der deutschen Grenzregion (Aachen, Köln, Düren).',
@@ -802,11 +802,11 @@ const I18N = {
       'pricing-note': '* Prices are guidelines. Custom quote after inspection. <strong>Free</strong> quote within 24h.',
       'gallery-title': 'Before & After',
       'gallery-subtitle': 'See our results — real examples of our cleanings in Limburg and surrounding areas.',
-      'gallery-item-sofa': '🛋️ Sofa & Armchair',
+      'gallery-item-sofa': 'Sofa & Armchair',
       'gallery-item-sofa-desc': 'Before and after a thorough extraction cleaning of a fabric sofa. Stains and odors removed.',
-      'gallery-item-carpet': '🟫 Carpet & Rug',
+      'gallery-item-carpet': 'Carpet & Rug',
       'gallery-item-carpet-desc': 'A rug after professional extraction cleaning. Deep cleaned down to the fibers.',
-      'gallery-item-car': '🚗 Car Interior',
+      'gallery-item-car': 'Car Interior',
       'gallery-item-car-desc': 'Car interior before and after. Seats, upholstery and mats like new again.',
       'area-title': 'Service Area',
       'area-subtitle': 'Active throughout Dutch Limburg and the German border region (Aachen, Cologne, Düren).',
@@ -1103,11 +1103,11 @@ const I18N = {
       'pricing-note': '* Ceny orientacyjne. Wycena po obejrzeniu. <strong>Darmowa</strong> wycena w ciągu 24h.',
       'gallery-title': 'Przed & Po',
       'gallery-subtitle': 'Zobacz nasze efekty — prawdziwe przykłady naszych czyszczeń w Limburgii i okolicy.',
-      'gallery-item-sofa': '🛋️ Sofa & Fotele',
+      'gallery-item-sofa': 'Sofa & Fotele',
       'gallery-item-sofa-desc': 'Przed i po dokładnym praniu ekstrakcyjnym sofy materiałowej. Plamy i zapachy usunięte.',
-      'gallery-item-carpet': '🟫 Dywan & Wykładzina',
+      'gallery-item-carpet': 'Dywan & Wykładzina',
       'gallery-item-carpet-desc': 'Dywan po profesjonalnym praniu ekstrakcyjnym. Dogłębnie wyczyszczony do włókien.',
-      'gallery-item-car': '🚗 Wnętrze Auta',
+      'gallery-item-car': 'Wnętrze Auta',
       'gallery-item-car-desc': 'Wnętrze auta przed i po. Fotele, tapicerka i dywaniki znów jak nowe.',
       'area-title': 'Obszar Działania',
       'area-subtitle': 'Działamy na terenie całej holenderskiej Limburgii i przygranicznych Niemiec (Aachen, Kolonia, Düren).',
@@ -1241,7 +1241,7 @@ const I18N = {
     document.querySelectorAll('[data-i18n]').forEach(el => {
       const key = el.getAttribute('data-i18n');
       const text = this.t(key);
-      if (text) el.textContent = text;
+      if (text) { if (text.indexOf('<') !== -1) el.innerHTML = text; else el.textContent = text; }
     });
     document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
       const key = el.getAttribute('data-i18n-placeholder');
