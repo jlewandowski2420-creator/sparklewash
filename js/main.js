@@ -97,7 +97,36 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     const qty = parseInt(calcQty ? calcQty.value : 1, 10) || 1;
     const grandTotal = total * qty;
-    if (calcTotalDisplay) calcTotalDisplay.textContent = '\u20AC' + grandTotal;
+    if (calcTotalDisplay) calcTotalDisplay.textContent = '€' + grandTotal;
+
+    // Update WhatsApp button link with selected items
+    updateWaLink(grandTotal);
+  }
+
+  function updateWaLink(total) {
+    const waBtn = document.getElementById('booking-wa-btn');
+    if (!waBtn) return;
+
+    const baseUrl = 'https://wa.me/31684067379?text=';
+    const checked = Array.from(calcCheckboxes).filter(cb => cb.checked);
+    if (checked.length === 0) {
+      // No items selected — generic message
+      waBtn.href = baseUrl + encodeURIComponent('Hallo! Ik wil graag een offerte voor meubelreiniging.');
+      return;
+    }
+    const items = checked.map(cb => {
+      const label = cb.parentElement.querySelector('span[data-i18n]')?.textContent?.trim() || cb.dataset.service;
+      return '• ' + label + ' (€' + cb.dataset.price + ')';
+    });
+    const msg = 'Hallo! Offerte via calculator:
+
+' + items.join('
+') + '
+
+Totaal: €' + total + '
+
+Adres: ___';
+    waBtn.href = baseUrl + encodeURIComponent(msg);
   }
 
   if (calcCheckboxes.length) {

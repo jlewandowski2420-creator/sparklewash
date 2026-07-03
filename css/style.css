@@ -503,6 +503,26 @@ body {
 .step h3 { font-size: 1.1rem; color: var(--white); margin-bottom: 6px; }
 .step p { font-size: 0.9rem; color: var(--text-dim); }
 
+/* ═══ Google Reviews Bar ═══ */
+.google-reviews-bar {
+  display: flex; align-items: center; justify-content: center; gap: 20px;
+  flex-wrap: wrap; margin-bottom: 32px; padding: 16px 24px;
+  background: var(--card-bg); border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+.google-reviews-stars {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 1.1rem; font-weight: 700; color: var(--text);
+}
+.google-reviews-links {
+  display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+}
+.google-reviews-link {
+  color: var(--accent); text-decoration: underline;
+  font-weight: 600; font-size: 0.9rem;
+}
+.google-reviews-link:hover { color: var(--accent-glow); }
+
 /* ═══ Testimonials ═══ */
 .testimonials-grid {
   display: grid;
