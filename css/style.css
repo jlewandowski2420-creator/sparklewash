@@ -792,7 +792,7 @@ body {
   padding: 18px 22px;
   font-weight: 600;
   font-size: 1.05rem;
-  color: var(--white);
+  color: var(--text);
   cursor: pointer;
   position: relative;
   user-select: none;
