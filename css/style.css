@@ -91,8 +91,9 @@ body {
 .lang-switcher { display: flex; gap: 4px; }
 .lang-btn {
   background: transparent; border: 1px solid var(--border);
-  color: var(--text-dim); padding: 4px 10px; border-radius: 6px;
-  cursor: pointer; font-size: 0.8rem; font-weight: 600;
+  color: var(--text-dim); padding: 8px 14px; border-radius: 6px;
+  cursor: pointer; font-size: 0.9rem; font-weight: 600;
+  min-width: 44px; min-height: 44px;
   transition: all 0.2s;
 }
 .lang-btn:hover, .lang-btn.active {
@@ -1077,5 +1078,29 @@ body {
 @media (max-width: 480px) {
   .pricing-grid { grid-template-columns: 1fr; }
   .lang-switcher { gap: 2px; }
-  .lang-btn { padding: 4px 8px; font-size: 0.7rem; }
+  .lang-btn { padding: 4px 8px; font-size: 0.7rem; min-width: 38px; min-height: 38px; }
+}
+
+/* ═══ Accessibility ═══ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* P2-18: visible focus for keyboard navigation */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+.ba-handle:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
 }

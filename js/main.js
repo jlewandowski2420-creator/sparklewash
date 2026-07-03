@@ -118,14 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const label = cb.parentElement.querySelector('span[data-i18n]')?.textContent?.trim() || cb.dataset.service;
       return '• ' + label + ' (€' + cb.dataset.price + ')';
     });
-    const msg = 'Hallo! Offerte via calculator:
-
-' + items.join('
-') + '
-
-Totaal: €' + total + '
-
-Adres: ___';
+    const msg = 'Hallo! Offerte via calculator:\n\n' + items.join('\n') + '\n\nTotaal: \u20AC' + total + '\n\nAdres: ___';
     waBtn.href = baseUrl + encodeURIComponent(msg);
   }
 
@@ -376,7 +369,16 @@ Adres: ___';
         localStorage.setItem('sparklewash-inquiries', JSON.stringify(inquiries));
         alert(loc('Bedankt! Wij reageren binnen 24u.', 'Thank you! We will respond within 24h.', 'Vielen Dank! Wir melden uns innerhalb von 24h.', 'Dziękujemy! Odezwiemy się w ciągu 24h.'));
       } else {
-        alert(loc('Er is een fout opgetreden. Probeer het opnieuw of bel ons.', 'An error occurred. Please try again or call us.', 'Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut oder rufen Sie uns an.', 'Wystąpił błąd. Spróbuj ponownie lub zadzwoń do nas.'));
+        // WhatsApp fallback
+        const waMsg = loc(
+          'Er is een fout opgetreden. Wilt u uw aanvraag via WhatsApp sturen?',
+          'An error occurred. Send your request via WhatsApp?',
+          'Ein Fehler ist aufgetreten. Möchten Sie Ihre Anfrage per WhatsApp senden?',
+          'Wystąpił błąd. Czy chcesz wysłać zapytanie przez WhatsApp?'
+        );
+        if (confirm(waMsg)) {
+          window.open('https://wa.me/31684067379?text=Hallo!%20Ik%20wil%20graag%20een%20offerte%20aanvragen.', '_blank');
+        }
       }
 
       btn.textContent = originalText;
