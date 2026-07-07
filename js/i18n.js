@@ -3,7 +3,7 @@ const I18N = {
   current: 'nl',
   data: {
     nl: {
-      'sofa-page-title': 'Bank & Fauteuil Reiniging — SparkleWash | Vanaf €35',
+      'sofa-page-title': 'Bank & Fauteuil Reiniging Heerlen — SparkleWash | Vanaf €35',
       'sofa-breadcrumb': 'Bank & Fauteuil',
       'sofa-hero-title': 'Bank & Fauteuil Reiniging',
       'sofa-hero-desc': 'Professionele extractiereiniging voor uw bank, hoekbank of fauteuil. Vlekken, geuren en allergenen verdwijnen — wij komen naar u toe in heel Limburg en de Duitse grensregio.',
@@ -32,7 +32,7 @@ const I18N = {
       'sofa-cta-title': 'Klaar voor een frisse, schone bank?',
       'sofa-cta-subtitle': 'Vraag vandaag nog uw gratis en vrijblijvende offerte aan. Wij reageren binnen 24 uur.',
       // Mattress page
-      'mattress-page-title': 'Matras Reiniging — SparkleWash | Vanaf €35',
+      'mattress-page-title': 'Matras Reiniging Heerlen — SparkleWash | Vanaf €35',
       'mattress-breadcrumb': 'Matras',
       'mattress-hero-title': 'Matras Reiniging',
       'mattress-hero-desc': 'Professionele extractiereiniging voor uw matras. Huisstofmijt, vlekken en zweetgeur verdwijnen — wij komen naar u toe in heel Limburg en de Duitse grensregio.',
@@ -66,7 +66,7 @@ const I18N = {
       'mattress-cta-title': 'Klaar voor een fris, hygiënisch matras?',
       'mattress-cta-subtitle': 'Vraag vandaag nog uw gratis en vrijblijvende offerte aan. Wij reageren binnen 24 uur.',
       // Carpet page
-      'carpet-page-title': 'Tapijt & Vloerkleed Reiniging — SparkleWash | Vanaf €39',
+      'carpet-page-title': 'Tapijt & Vloerkleed Reiniging Heerlen — SparkleWash | Vanaf €39',
       'carpet-breadcrumb': 'Tapijt & Vloerkleed',
       'carpet-hero-title': 'Tapijt & Vloerkleed Reiniging',
       'carpet-hero-desc': 'Professionele extractiereiniging voor uw tapijt en vloerkleden. Hardnekkige vlekken en geuren verdwijnen — wij komen naar u toe in heel Limburg en de Duitse grensregio.',
@@ -267,7 +267,7 @@ const I18N = {
       'promise-3': 'U weet vooraf precies waar u aan toe bent. Vraag vandaag nog een gratis, vrijblijvende offerte aan.',
       'promise-4': 'Niet tevreden? Wij komen terug. Uw tevredenheid is onze hoogste prioriteit — altijd.',
       // Car page
-      'car-page-title': 'Auto Interieur Reiniging — SparkleWash | Vanaf €59',
+      'car-page-title': 'Auto Interieur Reiniging Heerlen — SparkleWash | Vanaf €59',
       'car-breadcrumb': 'Auto Interieur',
       'car-hero-title': 'Auto Interieur Reiniging',
       'car-hero-desc': 'Professionele extractiereiniging voor uw auto-interieur. Stoelen, vloermatten en bekleding grondig gereinigd — wij komen naar u toe in heel Limburg en de Duitse grensregio.',
@@ -307,7 +307,7 @@ const I18N = {
       'car-cta-call': 'Bel +31 6 84067379',
     },
     de: {
-      'sofa-page-title': 'Sofa & Sessel Reinigung — SparkleWash | Ab €35',
+      'sofa-page-title': 'Sofa & Sessel Reinigung Heerlen — SparkleWash | Ab €35',
       'sofa-breadcrumb': 'Sofa & Sessel',
       'sofa-hero-title': 'Sofa & Sessel Reinigung',
       'sofa-hero-desc': 'Professionelle Extraktionsreinigung für Ihr Sofa, Ecksofa oder Ihren Sessel. Flecken, Gerüche und Allergene verschwinden — wir kommen zu Ihnen in ganz Limburg und der deutschen Grenzregion.',
@@ -336,7 +336,7 @@ const I18N = {
       'sofa-cta-title': 'Bereit für ein frisches, sauberes Sofa?',
       'sofa-cta-subtitle': 'Fordern Sie noch heute Ihr kostenloses und unverbindliches Angebot an. Wir antworten innerhalb von 24 Stunden.',
       // Mattress page
-      'mattress-page-title': 'Matratzenreinigung — SparkleWash | Ab €35',
+      'mattress-page-title': 'Matratzenreinigung Heerlen — SparkleWash | Ab €35',
       'mattress-breadcrumb': 'Matratze',
       'mattress-hero-title': 'Matratzenreinigung',
       'mattress-hero-desc': 'Professionelle Extraktionsreinigung für Ihre Matratze. Hausstaubmilben, Flecken und Schweißgeruch verschwinden — wir kommen zu Ihnen in ganz Limburg und der deutschen Grenzregion.',
@@ -370,7 +370,7 @@ const I18N = {
       'mattress-cta-title': 'Bereit für eine frische, hygienische Matratze?',
       'mattress-cta-subtitle': 'Fordern Sie noch heute Ihr kostenloses und unverbindliches Angebot an. Wir antworten innerhalb von 24 Stunden.',
       // Carpet page
-      'carpet-page-title': 'Teppich & Läufer Reinigung — SparkleWash | Ab €39',
+      'carpet-page-title': 'Teppich & Läufer Reinigung Heerlen — SparkleWash | Ab €39',
       'carpet-breadcrumb': 'Teppich & Läufer',
       'carpet-hero-title': 'Teppich & Läufer Reinigung',
       'carpet-hero-desc': 'Professionelle Extraktionsreinigung für Ihren Teppich und Ihre Läufer. Hartnäckige Flecken und Gerüche verschwinden — wir kommen zu Ihnen in ganz Limburg und der deutschen Grenzregion.',
@@ -568,7 +568,7 @@ const I18N = {
       'promise-3': 'Sie wissen vorher genau, woran Sie sind. Fordern Sie noch heute ein kostenloses, unverbindliches Angebot an.',
       'promise-4': 'Nicht zufrieden? Wir kommen zurück. Ihre Zufriedenheit hat für uns höchste Priorität — immer.',
       // Car page
-      'car-page-title': 'Auto Innenraum Reinigung — SparkleWash | Ab €59',
+      'car-page-title': 'Auto Innenraum Reinigung Heerlen — SparkleWash | Ab €59',
       'car-breadcrumb': 'Auto Innenraum',
       'car-hero-title': 'Auto Innenraum Reinigung',
       'car-hero-desc': 'Professionelle Extraktionsreinigung für Ihren Auto-Innenraum. Sitze, Fußmatten und Polster gründlich gereinigt — wir kommen zu Ihnen in ganz Limburg und der deutschen Grenzregion.',
@@ -608,7 +608,7 @@ const I18N = {
       'car-cta-call': 'Rufen Sie +31 6 84067379 an',
     },
     en: {
-      'sofa-page-title': 'Sofa & Armchair Cleaning — SparkleWash | From €35',
+      'sofa-page-title': 'Sofa & Armchair Cleaning Heerlen — SparkleWash | From €35',
       'sofa-breadcrumb': 'Sofa & Armchair',
       'sofa-hero-title': 'Sofa & Armchair Cleaning',
       'sofa-hero-desc': 'Professional extraction cleaning for your sofa, corner sofa or armchair. Stains, odors and allergens disappear — we come to you throughout Limburg and the German border region.',
@@ -637,7 +637,7 @@ const I18N = {
       'sofa-cta-title': 'Ready for a fresh, clean sofa?',
       'sofa-cta-subtitle': 'Request your free, no-obligation quote today. We respond within 24 hours.',
       // Mattress page
-      'mattress-page-title': 'Mattress Cleaning — SparkleWash | From €35',
+      'mattress-page-title': 'Mattress Cleaning Heerlen — SparkleWash | From €35',
       'mattress-breadcrumb': 'Mattress',
       'mattress-hero-title': 'Mattress Cleaning',
       'mattress-hero-desc': 'Professional extraction cleaning for your mattress. Dust mites, stains and sweat odor disappear — we come to you throughout Limburg and the German border region.',
@@ -671,7 +671,7 @@ const I18N = {
       'mattress-cta-title': 'Ready for a fresh, hygienic mattress?',
       'mattress-cta-subtitle': 'Request your free, no-obligation quote today. We respond within 24 hours.',
       // Carpet page
-      'carpet-page-title': 'Carpet & Rug Cleaning — SparkleWash | From €39',
+      'carpet-page-title': 'Carpet & Rug Cleaning Heerlen — SparkleWash | From €39',
       'carpet-breadcrumb': 'Carpet & Rug',
       'carpet-hero-title': 'Carpet & Rug Cleaning',
       'carpet-hero-desc': 'Professional extraction cleaning for your carpet and rugs. Stubborn stains and odors disappear — we come to you throughout Limburg and the German border region.',
@@ -871,7 +871,7 @@ const I18N = {
       'promise-3': 'You know exactly where you stand upfront. Request a free, no-obligation quote today.',
       'promise-4': 'Not satisfied? We come back. Your satisfaction is our highest priority — always.',
       // Car page
-      'car-page-title': 'Car Interior Cleaning — SparkleWash | From €59',
+      'car-page-title': 'Car Interior Cleaning Heerlen — SparkleWash | From €59',
       'car-breadcrumb': 'Car Interior',
       'car-hero-title': 'Car Interior Cleaning',
       'car-hero-desc': 'Professional extraction cleaning for your car interior. Seats, floor mats and upholstery thoroughly cleaned — we come to you throughout Limburg and the German border region.',
@@ -911,7 +911,7 @@ const I18N = {
       'car-cta-call': 'Call +31 6 84067379',
     },
     pl: {
-      'sofa-page-title': 'Pranie Sof i Foteli — SparkleWash | Od €35',
+      'sofa-page-title': 'Pranie Sof i Foteli w Heerlen — SparkleWash | Od €35',
       'sofa-breadcrumb': 'Sofa & Fotele',
       'sofa-hero-title': 'Pranie Sof i Foteli',
       'sofa-hero-desc': 'Profesjonalne pranie ekstrakcyjne Twojej sofy, narożnika lub fotela. Plamy, zapachy i alergeny znikają — przyjeżdżamy do Ciebie na terenie całej Limburgii i przygranicznych Niemiec.',
@@ -940,7 +940,7 @@ const I18N = {
       'sofa-cta-title': 'Gotowy na świeżą, czystą sofę?',
       'sofa-cta-subtitle': 'Poproś o darmową i niezobowiązującą wycenę już dziś. Odpowiadamy w ciągu 24 godzin.',
       // Mattress page
-      'mattress-page-title': 'Pranie Materacy — SparkleWash | Od €35',
+      'mattress-page-title': 'Pranie Materacy w Heerlen — SparkleWash | Od €35',
       'mattress-breadcrumb': 'Materac',
       'mattress-hero-title': 'Pranie Materacy',
       'mattress-hero-desc': 'Profesjonalne pranie ekstrakcyjne Twojego materaca. Roztocza, plamy i zapach potu znikają — przyjeżdżamy do Ciebie na terenie całej Limburgii i przygranicznych Niemiec.',
@@ -974,7 +974,7 @@ const I18N = {
       'mattress-cta-title': 'Gotowy na świeży, higieniczny materac?',
       'mattress-cta-subtitle': 'Poproś o darmową i niezobowiązującą wycenę już dziś. Odpowiadamy w ciągu 24 godzin.',
       // Carpet page
-      'carpet-page-title': 'Pranie Dywanów i Wykładzin — SparkleWash | Od €39',
+      'carpet-page-title': 'Pranie Dywanów i Wykładzin w Heerlen — SparkleWash | Od €39',
       'carpet-breadcrumb': 'Dywan & Wykładzina',
       'carpet-hero-title': 'Pranie Dywanów i Wykładzin',
       'carpet-hero-desc': 'Profesjonalne pranie ekstrakcyjne Twoich dywanów i wykładzin. Uporczywe plamy i zapachy znikają — przyjeżdżamy do Ciebie na terenie całej Limburgii i przygranicznych Niemiec.',
@@ -1174,7 +1174,7 @@ const I18N = {
       'promise-3': 'Wiesz z góry, na czym stoisz. Poproś o darmową, niezobowiązującą wycenę już dziś.',
       'promise-4': 'Nie jesteś zadowolony? Wracamy. Twoja satysfakcja to nasz najwyższy priorytet — zawsze.',
       // Car page
-      'car-page-title': 'Pranie Wnętrza Samochodu — SparkleWash | Od €59',
+      'car-page-title': 'Pranie Wnętrza Samochodu w Heerlen — SparkleWash | Od €59',
       'car-breadcrumb': 'Wnętrze Auta',
       'car-hero-title': 'Pranie Wnętrza Samochodu',
       'car-hero-desc': 'Profesjonalne pranie ekstrakcyjne wnętrza Twojego samochodu. Fotele, dywaniki i tapicerka dokładnie wyczyszczone — przyjeżdżamy do Ciebie na terenie całej Limburgii i przygranicznych Niemiec.',
