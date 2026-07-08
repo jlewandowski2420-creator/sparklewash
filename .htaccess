@@ -1,0 +1,3 @@
+RewriteEngine On
+# Route all /oauth/* requests to gateway.php
+RewriteRule ^oauth/(.*)$ oauth/gateway.php [QSA,L]

@@ -1,14 +1,15 @@
 backend:
-  name: github
-  repo: jlewandowski2420-creator/sparklewash
+  name: git-gateway
   branch: main
-
-local_backend: true
+  identity_url: https://sparklewash.nl/oauth/gateway.php
+  gateway_url: https://sparklewash.nl/oauth/gateway.php
 
 media_folder: "assets/images"
 public_folder: "/assets/images"
 site_url: https://sparklewash.nl
 display_url: https://sparklewash.nl
+
+locale: nl
 
 collections:
   - name: "content"
@@ -34,7 +35,7 @@ collections:
         file: "data/service-carpet.json"
         fields:
           - { name: "title", label: "Titel", widget: "string", default: "Tapijtreiniging" }
-          - { name: "desc", label: "Beschrijving", widget: "text", default: "Grondige tapijtreiniging..." }
+          - { name: "desc", label: "Beschrijving", widget: "text" }
           - { name: "price", label: "Prijs", widget: "string", default: "€35" }
           - { name: "unit", label: "Per", widget: "string", default: "/m²" }
 
@@ -70,14 +71,14 @@ collections:
         file: "data/about.json"
         fields:
           - { name: "title", label: "Titel", widget: "string", default: "Over SparkleWash" }
-          - { name: "text", label: "Tekst", widget: "markdown", default: "SparkleWash is uw specialist in tapijt- en meubelreiniging in Limburg…" }
+          - { name: "text", label: "Tekst", widget: "markdown", default: "SparkleWash is uw specialist…" }
 
       - name: "area"
         label: "📍 Werkgebied"
         file: "data/area.json"
         fields:
           - { name: "title", label: "Titel", widget: "string", default: "Werkgebied" }
-          - { name: "text", label: "Tekst", widget: "text", default: "Actief in heel Limburg en de Duitse grensregio." }
+          - { name: "text", label: "Tekst", widget: "text" }
 
       - name: "contact"
         label: "📞 Contact"
@@ -85,4 +86,4 @@ collections:
         fields:
           - { name: "phone", label: "Telefoon", widget: "string", default: "+31 6 12345678" }
           - { name: "email", label: "E-mail", widget: "string", default: "info@sparklewash.nl" }
-          - { name: "address", label: "Adres", widget: "text", default: "Heerlen, Limburg" }
+          - { name: "address", label: "Adres", widget: "text" }
