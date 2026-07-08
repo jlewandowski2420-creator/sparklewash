@@ -30,6 +30,10 @@ $PASS     = $config['admin_password'];
 $body   = json_decode(file_get_contents('php://input'), true) ?: [];
 $path   = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 $action = trim(str_replace('/oauth/', '', $path), '/');
+// Fallback to body['action'] for direct gateway.php POSTs
+if (!$action || $action === 'gateway.php') {
+    $action = $body['action'] ?? '';
+}
 
 // ── AUTH ───────────────────────────
 if ($action === 'auth' && $_SERVER['REQUEST_METHOD'] === 'POST') {
