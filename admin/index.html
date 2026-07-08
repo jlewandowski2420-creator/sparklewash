@@ -7,5 +7,65 @@
   <script src="https://unpkg.com/decap-cms@^3/dist/decap-cms.js"></script>
 </head>
 <body>
+  <script>
+    CMS.init({
+      config: {
+        backend: {
+          name: "git-gateway",
+          branch: "main",
+          identity_url: "https://sparklewash.nl/oauth/gateway.php",
+          gateway_url: "https://sparklewash.nl/oauth/gateway.php"
+        },
+        load_config_file: false,
+        media_folder: "assets/images",
+        public_folder: "/assets/images",
+        site_url: "https://sparklewash.nl",
+        locale: "nl",
+        collections: [{
+          name: "content",
+          label: "⚡ SparkleWash CMS",
+          files: [
+            { name: "hero", label: "🏠 Hero sectie", file: "data/hero.json", fields: [
+              { name: "title", label: "Titel", widget: "string" },
+              { name: "subtitle", label: "Subtitel", widget: "string" },
+              { name: "cta", label: "Knop", widget: "string" }
+            ]},
+            { name: "carpet", label: "🧹 Tapijtreiniging", file: "data/service-carpet.json", fields: [
+              { name: "title", label: "Titel", widget: "string" },
+              { name: "desc", label: "Beschrijving", widget: "text" },
+              { name: "price", label: "Prijs", widget: "string" },
+              { name: "unit", label: "Per", widget: "string" }
+            ]},
+            { name: "sofa", label: "🛋️ Bankreiniging", file: "data/service-sofa.json", fields: [
+              { name: "title", label: "Titel", widget: "string" },
+              { name: "desc", label: "Beschrijving", widget: "text" },
+              { name: "price", label: "Prijs", widget: "string" },
+              { name: "unit", label: "Per", widget: "string" }
+            ]},
+            { name: "mattress", label: "🛏️ Matrasreiniging", file: "data/service-mattress.json", fields: [
+              { name: "title", label: "Titel", widget: "string" },
+              { name: "desc", label: "Beschrijving", widget: "text" },
+              { name: "price", label: "Prijs", widget: "string" },
+              { name: "unit", label: "Per", widget: "string" }
+            ]},
+            { name: "car", label: "🚗 Auto interieur", file: "data/service-car.json", fields: [
+              { name: "title", label: "Titel", widget: "string" },
+              { name: "desc", label: "Beschrijving", widget: "text" },
+              { name: "price", label: "Prijs", widget: "string" },
+              { name: "unit", label: "Per", widget: "string" }
+            ]},
+            { name: "about", label: "👤 Over SparkleWash", file: "data/about.json", fields: [
+              { name: "title", label: "Titel", widget: "string" },
+              { name: "text", label: "Tekst", widget: "text" }
+            ]},
+            { name: "contact", label: "📞 Contact", file: "data/contact.json", fields: [
+              { name: "phone", label: "Telefoon", widget: "string" },
+              { name: "email", label: "E-mail", widget: "string" }
+            ]}
+          ]
+        }]
+      }
+    });
+  </script>
 </body>
 </html>
