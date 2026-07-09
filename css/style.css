@@ -1066,9 +1066,10 @@ body {
   .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 560px) {
-  .testimonials-grid { grid-template-columns: 1fr; max-width: 100%; width: 100%; }
-  .testimonial-card, .testimonial-text { max-width: 100%; min-width: 0; overflow-wrap: anywhere; word-break: break-all; }
-  .testimonial-card { box-sizing: border-box; }
+  .testimonials-grid { display: block; }
+  .testimonial-card { display: block; width: 100%; max-width: 100%; margin-bottom: 16px; box-sizing: border-box; }
+  .testimonial-card:last-child { margin-bottom: 0; }
+  .testimonial-text { white-space: normal; overflow-wrap: anywhere; }
 }
 @media (max-width: 768px) {
   .nav { display: none; }
