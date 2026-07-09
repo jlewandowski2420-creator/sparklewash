@@ -19,6 +19,10 @@
 
 * { margin:0; padding:0; box-sizing:border-box; }
 
+/* Prevent horizontal scroll on iOS without breaking sticky */
+html { overflow-x: hidden; }
+body { position: relative; }
+
 body {
   font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
   background: var(--bg);
