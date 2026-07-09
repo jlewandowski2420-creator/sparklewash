@@ -966,7 +966,7 @@ body {
   position: fixed;
   bottom: 24px;
   right: 24px;
-  z-index: 9998;
+  z-index: 10000;
   width: 60px;
   height: 60px;
   background: var(--accent);
@@ -1086,9 +1086,10 @@ body {
 @media (max-width: 480px) {
   .pricing-grid { grid-template-columns: 1fr; }
   .lang-switcher { gap: 2px; }
-  .lang-btn { padding: 4px 8px; font-size: 0.7rem; min-width: 38px; min-height: 38px; }
+  .lang-btn { padding: 4px 8px; font-size: 0.7rem; min-width: 38px; min-height: 44px; }
+  .whatsapp-float { width: 48px; height: 48px; bottom: 16px; right: 16px; }
+  .logo { font-size: 1.15rem; }
 }
-
 /* ═══ Accessibility ═══ */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
