@@ -305,6 +305,10 @@ const I18N = {
       'car-cta-title': 'Klaar voor een frisse, schone auto?',
       'car-cta-subtitle': 'Vraag vandaag nog uw gratis en vrijblijvende offerte aan. Wij reageren binnen 24 uur.',
       'car-cta-call': 'Bel +31 6 84067379',
+      'trust-rating': '⭐ 5.0/5 op Google',
+      'trust-customers': '🏠 50+ tevreden klanten in Limburg',
+      'trust-team': '📅 Professioneel reinigingsteam',
+      'trust-guarantee': '🛡️ Niet tevreden? Gratis retour',
     },
     de: {
       'sofa-page-title': 'Sofa & Sessel Reinigung Heerlen — SparkleWash | Ab €35',
@@ -606,6 +610,10 @@ const I18N = {
       'car-cta-title': 'Bereit für ein frisches, sauberes Auto?',
       'car-cta-subtitle': 'Fordern Sie noch heute Ihr kostenloses und unverbindliches Angebot an. Wir antworten innerhalb von 24 Stunden.',
       'car-cta-call': 'Rufen Sie +31 6 84067379 an',
+      'trust-rating': '⭐ 5.0/5 bei Google',
+      'trust-customers': '🏠 50+ zufriedene Kunden in Limburg',
+      'trust-team': '📅 Professionelles Reinigungsteam',
+      'trust-guarantee': '🛡️ Nicht zufrieden? Kostenlose Rückkehr',
     },
     en: {
       'sofa-page-title': 'Sofa & Armchair Cleaning Heerlen — SparkleWash | From €35',
@@ -909,6 +917,10 @@ const I18N = {
       'car-cta-title': 'Ready for a fresh, clean car?',
       'car-cta-subtitle': 'Request your free, no-obligation quote today. We respond within 24 hours.',
       'car-cta-call': 'Call +31 6 84067379',
+      'trust-rating': '⭐ 5.0/5 on Google',
+      'trust-customers': '🏠 50+ satisfied customers in Limburg',
+      'trust-team': '📅 Professional cleaning team',
+      'trust-guarantee': '🛡️ Not satisfied? Free return visit',
     },
     pl: {
       'sofa-page-title': 'Pranie Sof i Foteli w Heerlen — SparkleWash | Od €35',
@@ -1212,6 +1224,10 @@ const I18N = {
       'car-cta-title': 'Gotowy na świeże, czyste auto?',
       'car-cta-subtitle': 'Poproś o darmową i niezobowiązującą wycenę już dziś. Odpowiadamy w ciągu 24 godzin.',
       'car-cta-call': 'Zadzwoń +31 6 84067379',
+      'trust-rating': '⭐ 5.0/5 w Google',
+      'trust-customers': '🏠 50+ zadowolonych klientów w Limburgii',
+      'trust-team': '📅 Profesjonalny zespół sprzątający',
+      'trust-guarantee': '🛡️ Niezadowolony? Darmowa poprawka',
     }
   },
   t(key) {
