@@ -1123,3 +1123,6 @@ textarea:focus-visible,
   outline: 3px solid var(--accent);
   outline-offset: 3px;
 }
+
+/* Trust bar */
+@media (max-width:480px){.trust-bar{gap:8px;font-size:0.75rem}}
