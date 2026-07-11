@@ -737,7 +737,7 @@ const I18N = {
       'booking-service': 'Choose service',
       'booking-sofa2': '2-Seater Sofa (€49)',
       'booking-sofa3': '3-Seater Sofa (€69)',
-      'booking-corner': 'Corner Sofa (€79)',
+      'booking-corner': 'Corner Sofa (€59)',
       'booking-carpet': 'Rug / Carpet (€39)',
       'booking-mattress': 'Mattress (€35)',
       'booking-car': 'Car Interior (€59)',
