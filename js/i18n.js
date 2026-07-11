@@ -164,7 +164,7 @@ const I18N = {
       'nav-pricing': 'Prijzen',
       'nav-about': 'Over ons',
       'nav-contact': 'Contact',
-      'hero-title': 'Uw meubels weer als nieuw',
+      'hero-title': 'SparkleWash — Tapijtreiniging & Meubelreiniging in Limburg',
       'hero-subtitle': 'Professionele extractiereiniging — tapijten, banken, matrassen, auto-interieurs. Wij komen naar u toe in heel Limburg en de Duitse grensregio.',
       'hero-cta': 'Gratis offerte aanvragen',
       'hero-pricing': 'Bekijk prijzen',
