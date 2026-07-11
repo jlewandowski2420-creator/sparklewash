@@ -136,6 +136,13 @@ body {
   clip-path: polygon(0 100%, 100% 100%, 100% 0, 75% 40%, 50% 0, 25% 40%, 0 0);
 }
 
+/* ═══ Hero Dark (city + region pages) ═══ */
+.hero--dark { background: linear-gradient(135deg, var(--accent), #0a5c5b); }
+.hero--dark h1 { color: #ffffff; }
+.hero--dark p { color: rgba(255,255,255,0.92); }
+.hero--dark .btn-secondary { color: #fff; border-color: rgba(255,255,255,0.7); }
+.hero--dark .btn-secondary:hover { background: rgba(255,255,255,0.12); }
+
 /* ═══ Buttons ═══ */
 .btn {
   display: inline-block; padding: 14px 32px;
