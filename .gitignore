@@ -1,3 +1,6 @@
 __pycache__/
 *.py
-backups/\n*.zip\n.gateway-config.json\n.gateway-tokens.json
+backups/
+*.zip
+.gateway-config.json
+.gateway-tokens.json

@@ -1,11 +1,7 @@
-RewriteEngine On
-# Route all /oauth/* requests to gateway.php
-RewriteRule ^oauth/(.*)$ oauth/gateway.php [QSA,L]
-
 # Security headers
 <IfModule mod_headers.c>
   Header always set X-Frame-Options "SAMEORIGIN"
   Header always set X-Content-Type-Options "nosniff"
   Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
-  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://cloud.umami.is https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://api.github.com https://cloud.umami.is; frame-src 'self' https://www.google.com; form-action 'self' https://formspree.io"
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://cloud.umami.is; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://cloud.umami.is; frame-src 'self' https://www.google.com; form-action 'self' https://formspree.io"
 </IfModule>
