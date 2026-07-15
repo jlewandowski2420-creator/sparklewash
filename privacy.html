@@ -28,7 +28,6 @@
     .legal-content .updated { color: var(--text-dim); font-size: 0.9rem; margin-bottom: 32px; font-style: italic; }
     .legal-content a { color: var(--accent); }
   </style>
-  <script defer src="https://cloud.umami.is/script.js" data-website-id="248597f5"></script>
 </head>
 <body>
   <header class="header">
@@ -49,7 +48,7 @@
   <section class="section">
     <div class="container legal-content">
       <h1>Privacybeleid</h1>
-      <p class="updated">Laatst bijgewerkt: 6 juni 2026</p>
+      <p class="updated">Laatst bijgewerkt: 16 juli 2026</p>
 
       <p>SparkleWash (hierna: "wij", "ons" of "onze") hecht veel waarde aan de bescherming van uw persoonsgegevens. In dit privacybeleid leggen wij uit welke gegevens wij verzamelen, waarom wij dit doen en wat uw rechten zijn onder de Algemene Verordening Gegevensbescherming (AVG/GDPR).</p>
 
@@ -66,7 +65,7 @@
         <li><strong>Telefoonnummer</strong> — voor het plannen van afspraken</li>
         <li><strong>Berichtinhoud</strong> — de informatie die u met ons deelt via het contactformulier</li>
         <li><strong>Gegevens over uw meubels</strong> — type meubelstuk, staat en gewenste dienst</li>
-        <li><strong>IP-adres</strong> — anoniem voor beveiliging en analysedoeleinden</li>
+        <li><strong>Geanonimiseerde gebruiksgegevens</strong> — alleen wanneer u toestemming geeft voor Umami-analytics</li>
       </ul>
 
       <h2>3. Doeleinden van verwerking</h2>
@@ -84,7 +83,7 @@
       <ul>
         <li><strong>Uitvoering van een overeenkomst</strong> — wanneer u een offerte aanvraagt of een dienst afneemt</li>
         <li><strong>Gerechtvaardigd belang</strong> — voor klantrelatiebeheer en verbetering van onze diensten</li>
-        <li><strong>Toestemming</strong> — voor het plaatsen van niet-functionele cookies (via onze cookiebanner)</li>
+        <li><strong>Toestemming</strong> — voor het laden van privacyvriendelijke Umami-analytics via onze cookiebanner</li>
       </ul>
 
       <h2>5. Bewaartermijn</h2>
@@ -99,6 +98,7 @@
       <p>Wij verkopen uw gegevens niet aan derden. Wij kunnen gegevens delen met:</p>
       <ul>
         <li><strong>Cloud86</strong> — onze hostingprovider (gevestigd in Nederland)</li>
+        <li><strong>Umami</strong> — websiteanalyse, uitsluitend nadat u hiervoor toestemming geeft</li>
         <li><strong>Boekhoudsoftware</strong> — voor facturatie en administratie</li>
         <li>Wettelijke instanties — indien wij hiervoor een wettelijke verplichting hebben</li>
       </ul>
@@ -118,8 +118,10 @@
       </ul>
       <p>Om uw rechten uit te oefenen, kunt u contact met ons opnemen via <a href="mailto:info@sparklewash.nl">info@sparklewash.nl</a>. Wij reageren binnen 4 weken.</p>
 
-      <h2>9. Cookies</h2>
-      <p>Onze website gebruikt cookies. Lees ons <a href="#cookies">cookiebeleid</a> voor meer informatie. U kunt uw cookievoorkeuren altijd aanpassen via de cookiebanner onderaan de pagina.</p>
+      <h2 id="cookies">9. Cookies en analytics</h2>
+      <p>De website gebruikt lokale opslag om uw cookievoorkeur te onthouden. Umami-analytics wordt pas geladen nadat u op <strong>Accepteren</strong> klikt. Kiest u <strong>Weigeren</strong>, dan wordt Umami niet geladen.</p>
+      <p>U kunt uw keuze altijd wijzigen. Open de instellingen en maak opnieuw een keuze:</p>
+      <p><button id="cookie-settings" class="cookie-btn cookie-btn-reject" type="button">Cookievoorkeuren wijzigen</button></p>
 
       <h2>10. Klachten</h2>
       <p>Heeft u een klacht over de verwerking van uw persoonsgegevens? Neem dan contact met ons op. U heeft ook het recht om een klacht in te dienen bij de <strong>Autoriteit Persoonsgegevens</strong> (AP).</p>
@@ -144,5 +146,6 @@
       </div>
     </div>
   </footer>
+  <script src="js/cookie.js?v=100"></script>
 </body>
 </html>

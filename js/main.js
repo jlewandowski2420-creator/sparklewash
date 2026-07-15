@@ -254,7 +254,7 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('sparklewash-last-submit', Date.now().toString());
         // Re-populate time slots after reset
         if (bookingTime) populateTimeSlots(bookingTime);
-        const successText = loc('Boeking ontvangen! Wij nemen binnen 24u contact met u op.', 'Booking received! We will contact you within 24h.', 'Buchung erhalten! Wir melden uns innerhalb von 24h.', 'Rezerwacja otrzymana! Skontaktujemy się w ciągu 24h.');
+        const successText = loc('Boeking ontvangen! Wij nemen zo snel mogelijk contact met u op.', 'Booking received! We will contact you as soon as possible.', 'Buchung erhalten! Wir melden uns so schnell wie möglich.', 'Rezerwacja otrzymana! Skontaktujemy się tak szybko, jak to możliwe.');
         if (bookingSuccessMsg) {
           bookingSuccessMsg.textContent = successText;
           bookingSuccessMsg.classList.add('show');
@@ -367,7 +367,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const inquiries = JSON.parse(localStorage.getItem('sparklewash-inquiries') || '[]');
         inquiries.push({ name, email, date: new Date().toISOString() });
         localStorage.setItem('sparklewash-inquiries', JSON.stringify(inquiries));
-        alert(loc('Bedankt! Wij reageren binnen 24u.', 'Thank you! We will respond within 24h.', 'Vielen Dank! Wir melden uns innerhalb von 24h.', 'Dziękujemy! Odezwiemy się w ciągu 24h.'));
+        alert(loc('Bedankt! Wij nemen zo snel mogelijk contact op.', 'Thank you! We will contact you as soon as possible.', 'Vielen Dank! Wir melden uns so schnell wie möglich.', 'Dziękujemy! Skontaktujemy się tak szybko, jak to możliwe.'));
       } else {
         // WhatsApp fallback
         const waMsg = loc(
