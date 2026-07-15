@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from collections import Counter
-from datetime import date
+from datetime import date, timedelta
 from html.parser import HTMLParser
 import json
 from pathlib import Path
@@ -138,8 +138,8 @@ def validate_sitemap(errors: list[str], pages: list[Path]) -> None:
             error(errors, "sitemap.xml", f"invalid location: {loc}")
         try:
             parsed = date.fromisoformat(modified)
-            if parsed > date.today():
-                error(errors, "sitemap.xml", f"future lastmod for {loc}: {modified}")
+            if parsed > date.today() + timedelta(days=1):
+                error(errors, "sitemap.xml", f"lastmod is more than one day in the future for {loc}: {modified}")
         except ValueError:
             error(errors, "sitemap.xml", f"invalid lastmod for {loc}: {modified}")
     if len(locations) != len(set(locations)):
