@@ -11,9 +11,21 @@ function initBeforeAfterSliders() {
 
     let isDragging = false;
 
-    // ── Labels ──
-    beforeEl.setAttribute('data-label-before', 'VOOR / PRZED');
-    afterEl.setAttribute('data-label-after', 'NA / PO');
+    // ── Localized labels ──
+    function updateLabels() {
+      const lang = typeof I18N !== 'undefined' ? I18N.current : 'nl';
+      const labels = {
+        nl: { before: 'VOOR', after: 'NA' },
+        de: { before: 'VORHER', after: 'NACHHER' },
+        en: { before: 'BEFORE', after: 'AFTER' },
+        pl: { before: 'PRZED', after: 'PO' }
+      };
+      const current = labels[lang] || labels.nl;
+      beforeEl.setAttribute('data-label-before', current.before);
+      afterEl.setAttribute('data-label-after', current.after);
+    }
+    updateLabels();
+    document.addEventListener('sparklewash:languagechange', updateLabels);
 
     // ── Update position (0-100%) ──
     function setPosition(pct) {

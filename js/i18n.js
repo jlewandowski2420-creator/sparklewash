@@ -201,7 +201,7 @@ const I18N = {
       'gallery-subtitle': 'Bekijk onze resultaten — echte voorbeelden van onze reinigingen in Limburg en omgeving.',
       'gallery-item-sofa': 'Bank & Fauteuil',
       'gallery-item-sofa-desc': 'Voor en na grondige extractiereiniging van een stoffen bank. Vlekken en geuren verwijderd.',
-      'gallery-item-velvet': '🛋️ Bank Velvet — Geleen',
+      'gallery-item-velvet': 'Bank Velvet — Geleen',
       'gallery-item-velvet-desc': 'Velvet bank gereinigd na jaren gebruik. Opvallend verschil voor en na extractiereiniging.',
       'gallery-item-carpet': 'Tapijt & Vloerkleed',
       'gallery-item-carpet-desc': 'Een vloerkleed na professionele extractiereiniging. Diep gereinigd tot in de vezels.',
@@ -306,6 +306,9 @@ const I18N = {
       'trust-customers': '📍 Heerlen, Limburg & Grensregio',
       'trust-team': '📅 Professioneel reinigingsteam',
       'trust-guarantee': '🛡️ 7 dagen tevredenheidsgarantie',
+      'hero-area-proof': 'Heerlen, Limburg & Grensregio',
+      'hero-review-proof': 'Bekijk onze Google-reviews',
+      'hero-guarantee-proof': '7 dagen tevredenheidsgarantie',
     },
     de: {
       'sofa-page-title': 'Sofa & Sessel Reinigung Heerlen — SparkleWash',
@@ -505,7 +508,7 @@ const I18N = {
       'gallery-subtitle': 'Sehen Sie sich unsere Ergebnisse an — echte Beispiele unserer Reinigungen in Limburg und Umgebung.',
       'gallery-item-sofa': 'Sofa & Sessel',
       'gallery-item-sofa-desc': 'Vor und nach einer gründlichen Extraktionsreinigung eines Stoffsofas. Flecken und Gerüche entfernt.',
-      'gallery-item-velvet': '🛋️ Sofa Velvet — Geleen',
+      'gallery-item-velvet': 'Sofa Velvet — Geleen',
       'gallery-item-velvet-desc': 'Velvet-Sofa nach jahrelanger Nutzung gereinigt. Auffälliger Unterschied vor und nach der Extraktionsreinigung.',
       'gallery-item-carpet': 'Teppich & Läufer',
       'gallery-item-carpet-desc': 'Ein Teppich nach professioneller Extraktionsreinigung. Tiefengereinigt bis in die Fasern.',
@@ -610,6 +613,9 @@ const I18N = {
       'trust-customers': '📍 Heerlen, Limburg & Grenzregion',
       'trust-team': '📅 Professionelles Reinigungsteam',
       'trust-guarantee': '🛡️ 7 Tage Zufriedenheitsgarantie',
+      'hero-area-proof': 'Heerlen, Limburg & Grenzregion',
+      'hero-review-proof': 'Unsere Google-Bewertungen ansehen',
+      'hero-guarantee-proof': '7 Tage Zufriedenheitsgarantie',
     },
     en: {
       'sofa-page-title': 'Sofa & Armchair Cleaning Heerlen — SparkleWash',
@@ -809,7 +815,7 @@ const I18N = {
       'gallery-subtitle': 'See our results — real examples of our cleanings in Limburg and surrounding areas.',
       'gallery-item-sofa': 'Sofa & Armchair',
       'gallery-item-sofa-desc': 'Before and after a thorough extraction cleaning of a fabric sofa. Stains and odors removed.',
-      'gallery-item-velvet': '🛋️ Velvet Sofa — Geleen',
+      'gallery-item-velvet': 'Velvet Sofa — Geleen',
       'gallery-item-velvet-desc': 'Velvet sofa cleaned after years of use. Striking difference before and after extraction cleaning.',
       'gallery-item-carpet': 'Carpet & Rug',
       'gallery-item-carpet-desc': 'A rug after professional extraction cleaning. Deep cleaned down to the fibers.',
@@ -914,6 +920,9 @@ const I18N = {
       'trust-customers': '📍 Heerlen, Limburg & Border Region',
       'trust-team': '📅 Professional cleaning team',
       'trust-guarantee': '🛡️ 7-day satisfaction guarantee',
+      'hero-area-proof': 'Heerlen, Limburg & Border Region',
+      'hero-review-proof': 'View our Google reviews',
+      'hero-guarantee-proof': '7-day satisfaction guarantee',
     },
     pl: {
       'sofa-page-title': 'Pranie Sof i Foteli w Heerlen — SparkleWash',
@@ -1113,7 +1122,7 @@ const I18N = {
       'gallery-subtitle': 'Zobacz nasze efekty — prawdziwe przykłady naszych czyszczeń w Limburgii i okolicy.',
       'gallery-item-sofa': 'Sofa & Fotele',
       'gallery-item-sofa-desc': 'Przed i po dokładnym praniu ekstrakcyjnym sofy materiałowej. Plamy i zapachy usunięte.',
-      'gallery-item-velvet': '🛋️ Sofa Welwet — Geleen',
+      'gallery-item-velvet': 'Sofa Welwet — Geleen',
       'gallery-item-velvet-desc': 'Sofa welwetowa wyczyszczona po latach użytkowania. Uderzająca różnica przed i po praniu ekstrakcyjnym.',
       'gallery-item-carpet': 'Dywan & Wykładzina',
       'gallery-item-carpet-desc': 'Dywan po profesjonalnym praniu ekstrakcyjnym. Dogłębnie wyczyszczony do włókien.',
@@ -1217,7 +1226,10 @@ const I18N = {
       'trust-rating': '⭐ Zobacz opinie Google',
       'trust-customers': '📍 Heerlen, Limburgia & Region przygraniczny',
       'trust-team': '📅 Profesjonalny zespół sprzątający',
-      'trust-guarantee': '🛡️ 30-dniowa gwarancja satysfakcji',
+      'trust-guarantee': '🛡️ 7-dniowa gwarancja satysfakcji',
+      'hero-area-proof': 'Heerlen, Limburgia & Region przygraniczny',
+      'hero-review-proof': 'Zobacz nasze opinie Google',
+      'hero-guarantee-proof': '7-dniowa gwarancja satysfakcji',
     }
   },
   t(key) {
@@ -1282,6 +1294,7 @@ const I18N = {
       b.classList.toggle('active', b.dataset.lang === lang);
     });
     this.translatePage();
+    document.dispatchEvent(new CustomEvent('sparklewash:languagechange', { detail: { lang } }));
   }
 };
 
