@@ -152,7 +152,7 @@ const I18N = {
       'faq-a4': 'Wij komen naar u toe! Wij zijn mobiel en actief in heel Nederlands Limburg en de Duitse grensregio (Aachen, Keulen, Düren). U hoeft niets te vervoeren — wij doen de reiniging bij u thuis of op locatie. Geen gedoe, geen transportkosten.',
       'faq-q5': 'Krijg ik garantie op de reiniging?',
       'faq-a5': 'Ja, wij staan achter ons werk. Mocht u na de reiniging niet tevreden zijn, dan komen wij gratis terug voor een herbehandeling. Wij streven naar 100% tevredenheid bij al onze klanten. Bekijk de ervaringen van klanten op ons Google-profiel.',
-      'page-title': 'SparkleWash — Professionele Tapijt- & Meubelreiniging',
+      'page-title': 'Tapijtreiniging Heerlen & Limburg | SparkleWash — Vanaf €35',
       'cookie-text': 'Met uw toestemming gebruiken wij privacyvriendelijke Umami-analytics om de website te verbeteren.',
       'cookie-more': 'Lees meer',
       'cookie-ok': 'Accepteren',
