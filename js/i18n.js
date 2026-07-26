@@ -4,9 +4,10 @@ const I18N = {
   data: {
     nl: {
       'sofa-page-title': 'Bank & Fauteuil Reiniging Heerlen — SparkleWash',
+      'sofa-meta-desc': 'Bank of fauteuil laten reinigen? SparkleWash reinigt meubels in Heerlen en Limburg. Bank vanaf €49, fauteuil vanaf €39. Vraag gratis een offerte aan.',
       'sofa-breadcrumb': 'Bank & Fauteuil',
-      'sofa-hero-title': 'Bank & Fauteuil Reiniging',
-      'sofa-hero-desc': 'Professionele extractiereiniging voor uw bank, hoekbank of fauteuil. Vlekken, geuren en allergenen verdwijnen — wij komen naar u toe in heel Limburg en de Duitse grensregio.',
+      'sofa-hero-title': 'Bank & Fauteuil Reiniging — SparkleWash',
+      'sofa-hero-desc': 'SparkleWash reinigt uw bank, hoekbank of fauteuil met professionele extractiereiniging. Vlekken, geuren en allergenen verdwijnen — wij komen naar u toe in heel Limburg en de Duitse grensregio.',
       'sofa-why-title': 'Waarom uw meubels laten reinigen?',
       'sofa-why-p1': 'Een bank, hoekbank of fauteuil wordt dagelijks gebruikt en verzamelt na verloop van tijd stof, vuil, vetresten en huisstofmijt diep in de vezels. Stofzuigen alleen is niet genoeg — daarvoor is professionele extractiereiniging nodig.',
       'sofa-why-p2': 'Met onze professionele heetwaterextractieapparatuur reinigen wij uw stoffen meubels tot in de diepste vezels. Vlekken van koffie, wijn, vet en huisdieren worden grondig verwijderd, vervelende geuren verdwijnen en de levensduur van uw meubels wordt verlengd.',
@@ -33,9 +34,10 @@ const I18N = {
       'sofa-cta-subtitle': 'Vraag vandaag nog uw gratis en vrijblijvende offerte aan. Wij nemen zo snel mogelijk contact op.',
       // Mattress page
       'mattress-page-title': 'Matras Reiniging Heerlen — SparkleWash | Vanaf €35',
+      'mattress-meta-desc': 'Matras laten reinigen? SparkleWash verwijdert huisstofmijt, vlekken en geuren in Heerlen en Limburg. Vanaf €35. Vraag gratis een offerte aan.',
       'mattress-breadcrumb': 'Matras',
-      'mattress-hero-title': 'Matras Reiniging',
-      'mattress-hero-desc': 'Professionele extractiereiniging voor uw matras. Huisstofmijt, vlekken en zweetgeur verdwijnen — wij komen naar u toe in heel Limburg en de Duitse grensregio.',
+      'mattress-hero-title': 'Matras Reiniging — SparkleWash',
+      'mattress-hero-desc': 'SparkleWash reinigt uw matras met professionele extractiereiniging. Huisstofmijt, vlekken en zweetgeur verdwijnen — wij komen naar u toe in heel Limburg en de Duitse grensregio.',
       'mattress-why-title': 'Waarom uw matras professioneel laten reinigen?',
       'mattress-why-p1': 'Wist u dat een matras tot 10 miljoen huisstofmijten kan bevatten? Elke nacht verliest u vocht, huidschilfers en zweet — een perfecte voedingsbodem voor allergenen en bacteriën. Een schone matrashoes is niet genoeg: het vuil zit diep in de kern.',
       'mattress-why-p2': 'SparkleWash reinigt uw matras met de <strong>Kärcher SE 4001 extractiemethode</strong>. Wij injecteren een hypoallergeen reinigingsmiddel diep in het matras en zuigen alles direct weer op. Huisstofmijten, vlekken, zweetgeur en bacteriën worden verwijderd. U slaapt weer fris en gezond — zonder chemicaliënresten.',
@@ -67,9 +69,10 @@ const I18N = {
       'mattress-cta-subtitle': 'Vraag vandaag nog uw gratis en vrijblijvende offerte aan. Wij nemen zo snel mogelijk contact op.',
       // Carpet page
       'carpet-page-title': 'Tapijt & Vloerkleed Reiniging Heerlen — SparkleWash | Vanaf €39',
+      'carpet-meta-desc': 'Tapijt of vloerkleed laten reinigen? SparkleWash verwijdert vuil, vlekken en geuren in Heerlen en Limburg. Vanaf €39. Vraag gratis een offerte aan.',
       'carpet-breadcrumb': 'Tapijt & Vloerkleed',
-      'carpet-hero-title': 'Tapijt & Vloerkleed Reiniging',
-      'carpet-hero-desc': 'Professionele extractiereiniging voor uw tapijt en vloerkleden. Hardnekkige vlekken en geuren verdwijnen — wij komen naar u toe in heel Limburg en de Duitse grensregio.',
+      'carpet-hero-title': 'Tapijt & Vloerkleed Reiniging — SparkleWash',
+      'carpet-hero-desc': 'SparkleWash reinigt uw tapijt en vloerkleden met professionele extractiereiniging. Hardnekkige vlekken en geuren verdwijnen — wij komen naar u toe in heel Limburg en de Duitse grensregio.',
       'carpet-why-title': 'Waarom uw tapijt professioneel laten reinigen?',
       'carpet-why-p1': 'Tapijt en vloerkleden verzamelen meer vuil dan u denkt. Stof, huidschilfers, huisstofmijt, bacteriën en hardnekkige vlekken nestelen zich diep in de vezels. Stofzuigen verwijdert alleen het oppervlakkige vuil — de diepere lagen blijven vervuild.',
       'carpet-why-p2': 'Met de <strong>Kärcher SE 4001 extractiemethode</strong> injecteren wij reinigingsmiddel diep in de tapijtvezels en zuigen het direct weer op. Zelfs hardnekkige vlekken van wijn, koffie, huisdieren of modder worden verwijderd. Uw tapijt wordt weer als nieuw — fris, schoon en hygiënisch.',
@@ -103,7 +106,7 @@ const I18N = {
       'whatsapp-chat': 'Chat op WhatsApp',
       // Meta
       'meta-title': 'SparkleWash — Professionele Tapijt- & Meubelreiniging in Limburg',
-      'meta-desc': 'SparkleWash: professionele extractiereiniging van tapijten, banken, matrassen en auto-interieurs. ✓ Gratis offerte ✓ Wij komen naar u toe in Limburg & Duitsland.',
+      'meta-desc': 'SparkleWash reinigt tapijten, banken, matrassen en auto-interieurs in Heerlen en Limburg. Wij komen naar u toe. Vraag gratis een offerte aan.',
       // Calculator
       'calc-title': 'Prijs Calculator',
       'calc-total': 'Totaal:',
@@ -152,7 +155,7 @@ const I18N = {
       'faq-a4': 'Wij komen naar u toe! Wij zijn mobiel en actief in heel Nederlands Limburg en de Duitse grensregio (Aachen, Keulen, Düren). U hoeft niets te vervoeren — wij doen de reiniging bij u thuis of op locatie. Geen gedoe, geen transportkosten.',
       'faq-q5': 'Krijg ik garantie op de reiniging?',
       'faq-a5': 'Ja, wij staan achter ons werk. Mocht u na de reiniging niet tevreden zijn, dan komen wij gratis terug voor een herbehandeling. Wij streven naar 100% tevredenheid bij al onze klanten. Bekijk de ervaringen van klanten op ons Google-profiel.',
-      'page-title': 'Tapijtreiniging Heerlen & Limburg | SparkleWash — Vanaf €35',
+      'page-title': 'Tapijtreiniging Heerlen & Limburg | SparkleWash',
       'cookie-text': 'Met uw toestemming gebruiken wij privacyvriendelijke Umami-analytics om de website te verbeteren.',
       'cookie-more': 'Lees meer',
       'cookie-ok': 'Accepteren',
@@ -265,9 +268,10 @@ const I18N = {
       'promise-4': 'Niet tevreden? Wij komen terug. Uw tevredenheid is onze hoogste prioriteit — altijd.',
       // Car page
       'car-page-title': 'Auto Interieur Reiniging Heerlen — SparkleWash | Vanaf €59',
+      'car-meta-desc': 'Auto-interieur laten reinigen? SparkleWash reinigt stoelen, matten en bekleding in Heerlen en Limburg. Vanaf €59. Vraag gratis een offerte aan.',
       'car-breadcrumb': 'Auto Interieur',
-      'car-hero-title': 'Auto Interieur Reiniging',
-      'car-hero-desc': 'Professionele extractiereiniging voor uw auto-interieur. Stoelen, vloermatten en bekleding grondig gereinigd — wij komen naar u toe in heel Limburg en de Duitse grensregio.',
+      'car-hero-title': 'Auto Interieur Reiniging — SparkleWash',
+      'car-hero-desc': 'SparkleWash reinigt uw auto-interieur met professionele extractiereiniging. Stoelen, vloermatten en bekleding worden grondig gereinigd — wij komen naar u toe in heel Limburg en de Duitse grensregio.',
       'car-why-title': 'Waarom uw auto interieur professioneel laten reinigen?',
       'car-why-p1': 'Uw auto is uw tweede huiskamer. Dagelijks brengt u vuil van buiten naar binnen — modder, zand, etensresten, huisdierharen en gemorste dranken. Zelfs regelmatig stofzuigen verwijdert alleen het oppervlakkige vuil. Vlekken en geuren trekken diep in de stoffen bekleding.',
       'car-why-p2': 'SparkleWash gebruikt de <strong>Kärcher SE 4001 extractiemethode</strong> om uw auto-interieur grondig te reinigen. Wij behandelen stoelen, vloermatten, tapijt en bekleding. Hardnekkige vlekken, huisdiergeuren, rooklucht en bacteriën worden verwijderd. Uw auto ruikt weer fris en ziet eruit als nieuw.',
@@ -312,9 +316,10 @@ const I18N = {
     },
     de: {
       'sofa-page-title': 'Sofa & Sessel Reinigung Heerlen — SparkleWash',
+      'sofa-meta-desc': 'Sofa oder Sessel reinigen lassen? SparkleWash reinigt Polstermöbel in Heerlen und Limburg. Kostenloses und unverbindliches Angebot anfordern.',
       'sofa-breadcrumb': 'Sofa & Sessel',
-      'sofa-hero-title': 'Sofa & Sessel Reinigung',
-      'sofa-hero-desc': 'Professionelle Extraktionsreinigung für Ihr Sofa, Ecksofa oder Ihren Sessel. Flecken, Gerüche und Allergene verschwinden — wir kommen zu Ihnen in ganz Limburg und der deutschen Grenzregion.',
+      'sofa-hero-title': 'Sofa & Sessel Reinigung — SparkleWash',
+      'sofa-hero-desc': 'SparkleWash reinigt Ihr Sofa, Ecksofa oder Ihren Sessel professionell per Extraktion. Flecken, Gerüche und Allergene verschwinden — wir kommen zu Ihnen in ganz Limburg und der deutschen Grenzregion.',
       'sofa-why-title': 'Warum Ihre Möbel reinigen lassen?',
       'sofa-why-p1': 'Ein Sofa, Ecksofa oder Sessel wird täglich genutzt und sammelt mit der Zeit Staub, Schmutz, Fettreste und Hausstaubmilben tief in den Fasern. Staubsaugen allein reicht nicht — dafür ist eine professionelle Extraktionsreinigung nötig.',
       'sofa-why-p2': 'Mit unserer professionellen Heißwasserextraktionsausrüstung reinigen wir Ihre Stoffmöbel bis in die tiefsten Fasern. Flecken von Kaffee, Wein, Fett und Haustieren werden gründlich entfernt, unangenehme Gerüche verschwinden und die Lebensdauer Ihrer Möbel wird verlängert.',
@@ -341,9 +346,10 @@ const I18N = {
       'sofa-cta-subtitle': 'Fordern Sie noch heute Ihr kostenloses und unverbindliches Angebot an. Wir melden uns so schnell wie möglich.',
       // Mattress page
       'mattress-page-title': 'Matratzenreinigung Heerlen — SparkleWash | Ab €35',
+      'mattress-meta-desc': 'Matratze reinigen lassen? SparkleWash entfernt Hausstaubmilben, Flecken und Gerüche in Heerlen und Limburg. Kostenloses Angebot anfordern.',
       'mattress-breadcrumb': 'Matratze',
-      'mattress-hero-title': 'Matratzenreinigung',
-      'mattress-hero-desc': 'Professionelle Extraktionsreinigung für Ihre Matratze. Hausstaubmilben, Flecken und Schweißgeruch verschwinden — wir kommen zu Ihnen in ganz Limburg und der deutschen Grenzregion.',
+      'mattress-hero-title': 'Matratzenreinigung — SparkleWash',
+      'mattress-hero-desc': 'SparkleWash reinigt Ihre Matratze professionell per Extraktion. Hausstaubmilben, Flecken und Schweißgeruch verschwinden — wir kommen zu Ihnen in ganz Limburg und der deutschen Grenzregion.',
       'mattress-why-title': 'Warum Ihre Matratze professionell reinigen lassen?',
       'mattress-why-p1': 'Wussten Sie, dass eine Matratze bis zu 10 Millionen Hausstaubmilben enthalten kann? Jede Nacht verlieren Sie Feuchtigkeit, Hautschuppen und Schweiß — ein perfekter Nährboden für Allergene und Bakterien. Ein sauberer Matratzenbezug reicht nicht: Der Schmutz sitzt tief im Kern.',
       'mattress-why-p2': 'SparkleWash reinigt Ihre Matratze mit der <strong>Kärcher SE 4001 Extraktionsmethode</strong>. Wir injizieren ein hypoallergenes Reinigungsmittel tief in die Matratze und saugen alles sofort wieder ab. Hausstaubmilben, Flecken, Schweißgeruch und Bakterien werden entfernt. Sie schlafen wieder frisch und gesund — ohne chemische Rückstände.',
@@ -375,9 +381,10 @@ const I18N = {
       'mattress-cta-subtitle': 'Fordern Sie noch heute Ihr kostenloses und unverbindliches Angebot an. Wir melden uns so schnell wie möglich.',
       // Carpet page
       'carpet-page-title': 'Teppich & Läufer Reinigung Heerlen — SparkleWash | Ab €39',
+      'carpet-meta-desc': 'Teppich oder Läufer reinigen lassen? SparkleWash entfernt Schmutz, Flecken und Gerüche in Heerlen und Limburg. Kostenloses Angebot anfordern.',
       'carpet-breadcrumb': 'Teppich & Läufer',
-      'carpet-hero-title': 'Teppich & Läufer Reinigung',
-      'carpet-hero-desc': 'Professionelle Extraktionsreinigung für Ihren Teppich und Ihre Läufer. Hartnäckige Flecken und Gerüche verschwinden — wir kommen zu Ihnen in ganz Limburg und der deutschen Grenzregion.',
+      'carpet-hero-title': 'Teppich & Läufer Reinigung — SparkleWash',
+      'carpet-hero-desc': 'SparkleWash reinigt Ihren Teppich und Ihre Läufer professionell per Extraktion. Hartnäckige Flecken und Gerüche verschwinden — wir kommen zu Ihnen in ganz Limburg und der deutschen Grenzregion.',
       'carpet-why-title': 'Warum Ihren Teppich professionell reinigen lassen?',
       'carpet-why-p1': 'Teppiche und Läufer sammeln mehr Schmutz als Sie denken. Staub, Hautschuppen, Hausstaubmilben, Bakterien und hartnäckige Flecken nisten sich tief in den Fasern ein. Staubsaugen entfernt nur den oberflächlichen Schmutz — die tieferen Schichten bleiben verschmutzt.',
       'carpet-why-p2': 'Mit der <strong>Kärcher SE 4001 Extraktionsmethode</strong> injizieren wir Reinigungsmittel tief in die Teppichfasern und saugen es sofort wieder ab. Selbst hartnäckige Flecken von Wein, Kaffee, Haustieren oder Schlamm werden entfernt. Ihr Teppich wird wieder wie neu — frisch, sauber und hygienisch.',
@@ -572,9 +579,10 @@ const I18N = {
       'promise-4': 'Nicht zufrieden? Wir kommen zurück. Ihre Zufriedenheit hat für uns höchste Priorität — immer.',
       // Car page
       'car-page-title': 'Auto Innenraum Reinigung Heerlen — SparkleWash | Ab €59',
+      'car-meta-desc': 'Auto-Innenraum reinigen lassen? SparkleWash reinigt Sitze, Matten und Polster in Heerlen und Limburg. Kostenloses Angebot anfordern.',
       'car-breadcrumb': 'Auto Innenraum',
-      'car-hero-title': 'Auto Innenraum Reinigung',
-      'car-hero-desc': 'Professionelle Extraktionsreinigung für Ihren Auto-Innenraum. Sitze, Fußmatten und Polster gründlich gereinigt — wir kommen zu Ihnen in ganz Limburg und der deutschen Grenzregion.',
+      'car-hero-title': 'Auto Innenraum Reinigung — SparkleWash',
+      'car-hero-desc': 'SparkleWash reinigt Ihren Auto-Innenraum professionell per Extraktion. Sitze, Fußmatten und Polster werden gründlich gereinigt — wir kommen zu Ihnen in ganz Limburg und der deutschen Grenzregion.',
       'car-why-title': 'Warum Ihren Auto-Innenraum professionell reinigen lassen?',
       'car-why-p1': 'Ihr Auto ist Ihr zweites Wohnzimmer. Täglich bringen Sie Schmutz von draußen herein — Schlamm, Sand, Essensreste, Tierhaare und verschüttete Getränke. Selbst regelmäßiges Staubsaugen entfernt nur oberflächlichen Schmutz. Flecken und Gerüche dringen tief in die Stoffpolster ein.',
       'car-why-p2': 'SparkleWash verwendet die <strong>Kärcher SE 4001 Extraktionsmethode</strong>, um Ihren Auto-Innenraum gründlich zu reinigen. Wir behandeln Sitze, Fußmatten, Teppich und Polster. Hartnäckige Flecken, Tiergerüche, Rauchgeruch und Bakterien werden entfernt. Ihr Auto riecht wieder frisch und sieht aus wie neu.',
@@ -619,9 +627,10 @@ const I18N = {
     },
     en: {
       'sofa-page-title': 'Sofa & Armchair Cleaning Heerlen — SparkleWash',
+      'sofa-meta-desc': 'Need sofa or armchair cleaning? SparkleWash cleans upholstery in Heerlen and Limburg. Request a free, no-obligation quote.',
       'sofa-breadcrumb': 'Sofa & Armchair',
-      'sofa-hero-title': 'Sofa & Armchair Cleaning',
-      'sofa-hero-desc': 'Professional extraction cleaning for your sofa, corner sofa or armchair. Stains, odors and allergens disappear — we come to you throughout Limburg and the German border region.',
+      'sofa-hero-title': 'Sofa & Armchair Cleaning — SparkleWash',
+      'sofa-hero-desc': 'SparkleWash professionally extraction-cleans your sofa, corner sofa or armchair. Stains, odors and allergens disappear — we come to you throughout Limburg and the German border region.',
       'sofa-why-title': 'Why have your furniture cleaned?',
       'sofa-why-p1': 'A sofa, corner sofa or armchair is used daily and over time collects dust, dirt, grease and dust mites deep in the fibers. Vacuuming alone is not enough — professional extraction cleaning is needed.',
       'sofa-why-p2': 'With our professional hot water extraction equipment, we clean your fabric furniture down to the deepest fibers. Stains from coffee, wine, grease and pets are thoroughly removed, unpleasant odors disappear and the life of your furniture is extended.',
@@ -648,9 +657,10 @@ const I18N = {
       'sofa-cta-subtitle': 'Request your free, no-obligation quote today. We will contact you as soon as possible.',
       // Mattress page
       'mattress-page-title': 'Mattress Cleaning Heerlen — SparkleWash | From €35',
+      'mattress-meta-desc': 'Need mattress cleaning? SparkleWash removes dust mites, stains and odors in Heerlen and Limburg. Request a free quote.',
       'mattress-breadcrumb': 'Mattress',
-      'mattress-hero-title': 'Mattress Cleaning',
-      'mattress-hero-desc': 'Professional extraction cleaning for your mattress. Dust mites, stains and sweat odor disappear — we come to you throughout Limburg and the German border region.',
+      'mattress-hero-title': 'Mattress Cleaning — SparkleWash',
+      'mattress-hero-desc': 'SparkleWash professionally extraction-cleans your mattress. Dust mites, stains and sweat odor disappear — we come to you throughout Limburg and the German border region.',
       'mattress-why-title': 'Why have your mattress professionally cleaned?',
       'mattress-why-p1': 'Did you know a mattress can contain up to 10 million dust mites? Every night you lose moisture, skin flakes and sweat — a perfect breeding ground for allergens and bacteria. A clean mattress cover is not enough: the dirt sits deep in the core.',
       'mattress-why-p2': 'SparkleWash cleans your mattress with the <strong>Kärcher SE 4001 extraction method</strong>. We inject a hypoallergenic cleaning solution deep into the mattress and vacuum everything back up. Dust mites, stains, sweat odor and bacteria are removed. You sleep fresh and healthy again — without chemical residues.',
@@ -682,9 +692,10 @@ const I18N = {
       'mattress-cta-subtitle': 'Request your free, no-obligation quote today. We will contact you as soon as possible.',
       // Carpet page
       'carpet-page-title': 'Carpet & Rug Cleaning Heerlen — SparkleWash | From €39',
+      'carpet-meta-desc': 'Need carpet or rug cleaning? SparkleWash removes dirt, stains and odors in Heerlen and Limburg. Request a free quote.',
       'carpet-breadcrumb': 'Carpet & Rug',
-      'carpet-hero-title': 'Carpet & Rug Cleaning',
-      'carpet-hero-desc': 'Professional extraction cleaning for your carpet and rugs. Stubborn stains and odors disappear — we come to you throughout Limburg and the German border region.',
+      'carpet-hero-title': 'Carpet & Rug Cleaning — SparkleWash',
+      'carpet-hero-desc': 'SparkleWash professionally extraction-cleans your carpet and rugs. Stubborn stains and odors disappear — we come to you throughout Limburg and the German border region.',
       'carpet-why-title': 'Why have your carpet professionally cleaned?',
       'carpet-why-p1': 'Carpets and rugs collect more dirt than you think. Dust, skin flakes, dust mites, bacteria and stubborn stains nestle deep in the fibers. Vacuuming only removes surface dirt — the deeper layers remain contaminated.',
       'carpet-why-p2': 'With the <strong>Kärcher SE 4001 extraction method</strong> we inject cleaning solution deep into the carpet fibers and immediately vacuum it back up. Even stubborn stains from wine, coffee, pets or mud are removed. Your carpet becomes like new — fresh, clean and hygienic.',
@@ -879,9 +890,10 @@ const I18N = {
       'promise-4': 'Not satisfied? We come back. Your satisfaction is our highest priority — always.',
       // Car page
       'car-page-title': 'Car Interior Cleaning Heerlen — SparkleWash | From €59',
+      'car-meta-desc': 'Need car interior cleaning? SparkleWash cleans seats, mats and upholstery in Heerlen and Limburg. Request a free quote.',
       'car-breadcrumb': 'Car Interior',
-      'car-hero-title': 'Car Interior Cleaning',
-      'car-hero-desc': 'Professional extraction cleaning for your car interior. Seats, floor mats and upholstery thoroughly cleaned — we come to you throughout Limburg and the German border region.',
+      'car-hero-title': 'Car Interior Cleaning — SparkleWash',
+      'car-hero-desc': 'SparkleWash professionally extraction-cleans your car interior. Seats, floor mats and upholstery are thoroughly cleaned — we come to you throughout Limburg and the German border region.',
       'car-why-title': 'Why have your car interior professionally cleaned?',
       'car-why-p1': 'Your car is your second living room. Every day you bring in dirt from outside — mud, sand, food scraps, pet hair and spilled drinks. Even regular vacuuming only removes surface dirt. Stains and odors penetrate deep into the fabric upholstery.',
       'car-why-p2': 'SparkleWash uses the <strong>Kärcher SE 4001 extraction method</strong> to thoroughly clean your car interior. We treat seats, floor mats, carpet and upholstery. Stubborn stains, pet odors, smoke smell and bacteria are removed. Your car smells fresh again and looks like new.',
@@ -926,9 +938,10 @@ const I18N = {
     },
     pl: {
       'sofa-page-title': 'Pranie Sof i Foteli w Heerlen — SparkleWash',
+      'sofa-meta-desc': 'Potrzebujesz prania sofy lub fotela? SparkleWash czyści tapicerkę w Heerlen i Limburgii. Poproś o bezpłatną wycenę.',
       'sofa-breadcrumb': 'Sofa & Fotele',
-      'sofa-hero-title': 'Pranie Sof i Foteli',
-      'sofa-hero-desc': 'Profesjonalne pranie ekstrakcyjne Twojej sofy, narożnika lub fotela. Plamy, zapachy i alergeny znikają — przyjeżdżamy do Ciebie na terenie całej Limburgii i przygranicznych Niemiec.',
+      'sofa-hero-title': 'Pranie Sof i Foteli — SparkleWash',
+      'sofa-hero-desc': 'SparkleWash profesjonalnie pierze ekstrakcyjnie Twoją sofę, narożnik lub fotel. Plamy, zapachy i alergeny znikają — przyjeżdżamy do Ciebie na terenie całej Limburgii i przygranicznych Niemiec.',
       'sofa-why-title': 'Dlaczego warto prać meble?',
       'sofa-why-p1': 'Sofa, narożnik lub fotel są używane codziennie i z czasem gromadzą kurz, brud, tłuste osady i roztocza głęboko we włóknach. Samo odkurzanie nie wystarczy — potrzebne jest profesjonalne pranie ekstrakcyjne.',
       'sofa-why-p2': 'Naszym profesjonalnym sprzętem do ekstrakcji gorącą wodą czyścimy meble tapicerowane do najgłębszych włókien. Plamy z kawy, wina, tłuszczu i od zwierząt są dokładnie usuwane, nieprzyjemne zapachy znikają, a żywotność mebli zostaje przedłużona.',
@@ -955,9 +968,10 @@ const I18N = {
       'sofa-cta-subtitle': 'Poproś o darmową i niezobowiązującą wycenę już dziś. Skontaktujemy się tak szybko, jak to możliwe.',
       // Mattress page
       'mattress-page-title': 'Pranie Materacy w Heerlen — SparkleWash | Od €35',
+      'mattress-meta-desc': 'Potrzebujesz prania materaca? SparkleWash usuwa roztocza, plamy i zapachy w Heerlen i Limburgii. Poproś o bezpłatną wycenę.',
       'mattress-breadcrumb': 'Materac',
-      'mattress-hero-title': 'Pranie Materacy',
-      'mattress-hero-desc': 'Profesjonalne pranie ekstrakcyjne Twojego materaca. Roztocza, plamy i zapach potu znikają — przyjeżdżamy do Ciebie na terenie całej Limburgii i przygranicznych Niemiec.',
+      'mattress-hero-title': 'Pranie Materacy — SparkleWash',
+      'mattress-hero-desc': 'SparkleWash profesjonalnie pierze ekstrakcyjnie Twój materac. Roztocza, plamy i zapach potu znikają — przyjeżdżamy do Ciebie na terenie całej Limburgii i przygranicznych Niemiec.',
       'mattress-why-title': 'Dlaczego warto profesjonalnie prać materac?',
       'mattress-why-p1': 'Czy wiesz, że materac może zawierać do 10 milionów roztoczy? Każdej nocy tracisz wilgoć, naskórek i pot — idealna pożywka dla alergenów i bakterii. Czysty pokrowiec na materac to za mało: brud tkwi głęboko we wnętrzu.',
       'mattress-why-p2': 'SparkleWash pierze Twój materac <strong>metodą ekstrakcyjną Kärcher SE 4001</strong>. Wstrzykujemy hipoalergiczny środek czyszczący głęboko w materac i natychmiast wszystko odsysamy z powrotem. Roztocza, plamy, zapach potu i bakterie zostają usunięte. Śpisz znów świeżo i zdrowo — bez pozostałości chemicznych.',
@@ -989,9 +1003,10 @@ const I18N = {
       'mattress-cta-subtitle': 'Poproś o darmową i niezobowiązującą wycenę już dziś. Skontaktujemy się tak szybko, jak to możliwe.',
       // Carpet page
       'carpet-page-title': 'Pranie Dywanów i Wykładzin w Heerlen — SparkleWash | Od €39',
+      'carpet-meta-desc': 'Potrzebujesz prania dywanu lub wykładziny? SparkleWash usuwa brud, plamy i zapachy w Heerlen i Limburgii. Poproś o bezpłatną wycenę.',
       'carpet-breadcrumb': 'Dywan & Wykładzina',
-      'carpet-hero-title': 'Pranie Dywanów i Wykładzin',
-      'carpet-hero-desc': 'Profesjonalne pranie ekstrakcyjne Twoich dywanów i wykładzin. Uporczywe plamy i zapachy znikają — przyjeżdżamy do Ciebie na terenie całej Limburgii i przygranicznych Niemiec.',
+      'carpet-hero-title': 'Pranie Dywanów i Wykładzin — SparkleWash',
+      'carpet-hero-desc': 'SparkleWash profesjonalnie pierze ekstrakcyjnie Twoje dywany i wykładziny. Uporczywe plamy i zapachy znikają — przyjeżdżamy do Ciebie na terenie całej Limburgii i przygranicznych Niemiec.',
       'carpet-why-title': 'Dlaczego warto profesjonalnie prać dywan?',
       'carpet-why-p1': 'Dywany i wykładziny zbierają więcej brudu niż myślisz. Kurz, naskórek, roztocza, bakterie i uporczywe plamy osadzają się głęboko we włóknach. Odkurzanie usuwa tylko powierzchniowy brud — głębsze warstwy pozostają zanieczyszczone.',
       'carpet-why-p2': '<strong>Metodą ekstrakcyjną Kärcher SE 4001</strong> wstrzykujemy środek czyszczący głęboko we włókna dywanu i natychmiast go odsysamy. Nawet uporczywe plamy z wina, kawy, od zwierząt czy błota są usuwane. Twój dywan znów jak nowy — świeży, czysty i higieniczny.',
@@ -1186,9 +1201,10 @@ const I18N = {
       'promise-4': 'Nie jesteś zadowolony? Wracamy. Twoja satysfakcja to nasz najwyższy priorytet — zawsze.',
       // Car page
       'car-page-title': 'Pranie Wnętrza Samochodu w Heerlen — SparkleWash | Od €59',
+      'car-meta-desc': 'Potrzebujesz prania wnętrza auta? SparkleWash czyści fotele, dywaniki i tapicerkę w Heerlen i Limburgii. Poproś o bezpłatną wycenę.',
       'car-breadcrumb': 'Wnętrze Auta',
-      'car-hero-title': 'Pranie Wnętrza Samochodu',
-      'car-hero-desc': 'Profesjonalne pranie ekstrakcyjne wnętrza Twojego samochodu. Fotele, dywaniki i tapicerka dokładnie wyczyszczone — przyjeżdżamy do Ciebie na terenie całej Limburgii i przygranicznych Niemiec.',
+      'car-hero-title': 'Pranie Wnętrza Samochodu — SparkleWash',
+      'car-hero-desc': 'SparkleWash profesjonalnie pierze ekstrakcyjnie wnętrze Twojego auta. Fotele, dywaniki i tapicerka są dokładnie czyszczone — przyjeżdżamy do Ciebie na terenie całej Limburgii i przygranicznych Niemiec.',
       'car-why-title': 'Dlaczego warto profesjonalnie prać wnętrze samochodu?',
       'car-why-p1': 'Twój samochód to Twój drugi salon. Codziennie wnosisz brud z zewnątrz — błoto, piasek, resztki jedzenia, sierść zwierząt i rozlane napoje. Nawet regularne odkurzanie usuwa tylko powierzchniowy brud. Plamy i zapachy wnikają głęboko w tapicerkę.',
       'car-why-p2': 'SparkleWash stosuje <strong>metodę ekstrakcji Kärcher SE 4001</strong>, aby dokładnie wyczyścić wnętrze Twojego samochodu. Czyścimy fotele, dywaniki, wykładzinę i tapicerkę. Uporczywe plamy, zapachy zwierząt, zapach dymu i bakterie są usuwane. Twój samochód znów pachnie świeżością i wygląda jak nowy.',
@@ -1238,29 +1254,23 @@ const I18N = {
   updateMeta() {
     const params = new URLSearchParams(window.location.search);
     const langParam = params.get('lang');
-    // Only override title/meta description when ?lang= is explicitly in URL
-    // Without ?lang=, keep the static NL defaults from HTML for Googlebot
-    if (langParam) {
-      const title = this.t('meta-title');
-      if (title) document.title = title;
-      let metaDesc = document.querySelector('meta[name="description"]');
-      if (!metaDesc) {
-        metaDesc = document.createElement('meta');
-        metaDesc.setAttribute('name', 'description');
-        document.head.appendChild(metaDesc);
-      }
-      const desc = this.t('meta-desc');
-      if (desc) metaDesc.setAttribute('content', desc);
-    }
-    // Update canonical URL for current language
-    const canonical = document.getElementById('canonical-link');
+
+    // Translate only metadata that declares a page-specific translation key.
+    document.querySelectorAll('[data-i18n-content]').forEach(el => {
+      const key = el.getAttribute('data-i18n-content');
+      const value = this.t(key);
+      if (value && value !== key) el.setAttribute('content', value);
+    });
+
+    // Every translated URL is self-canonical; Dutch remains the clean URL.
+    const canonical = document.querySelector('link[rel="canonical"]');
     if (canonical) {
-      const base = canonical.href.split('?')[0];
-      if (langParam) {
-        canonical.href = base + '?lang=' + langParam;
-      } else {
-        canonical.href = base;
+      const url = new URL(canonical.getAttribute('href'), window.location.origin);
+      url.search = '';
+      if (langParam && langParam !== 'nl' && this.data[langParam]) {
+        url.searchParams.set('lang', langParam);
       }
+      canonical.href = url.toString();
     }
   },
   translatePage() {
@@ -1284,12 +1294,18 @@ const I18N = {
       const text = this.t(key);
       if (text) el.setAttribute('aria-label', text);
     });
+    document.documentElement.lang = this.current;
     document.documentElement.setAttribute('data-i18n-lang', this.current);
     this.updateMeta();
   },
   setLang(lang) {
+    if (!this.data[lang]) return;
     this.current = lang;
     localStorage.setItem('sparklewash-lang', lang);
+    const url = new URL(window.location.href);
+    if (lang === 'nl') url.searchParams.delete('lang');
+    else url.searchParams.set('lang', lang);
+    history.replaceState(null, '', url);
     document.querySelectorAll('.lang-btn').forEach(b => {
       b.classList.toggle('active', b.dataset.lang === lang);
     });
@@ -1300,13 +1316,23 @@ const I18N = {
 
 // Init on load
 document.addEventListener('DOMContentLoaded', () => {
+  const params = new URLSearchParams(window.location.search);
+  const requested = params.get('lang');
   const saved = localStorage.getItem('sparklewash-lang');
-  if (saved && I18N.data[saved]) {
+
+  if (requested && I18N.data[requested]) {
+    I18N.current = requested;
+    localStorage.setItem('sparklewash-lang', requested);
+  } else if (saved && I18N.data[saved]) {
     I18N.current = saved;
+    if (saved !== 'nl') {
+      const url = new URL(window.location.href);
+      url.searchParams.set('lang', saved);
+      history.replaceState(null, '', url);
+    }
   } else {
-    // Detect browser language on first visit
-    const browserLang = (navigator.language || '').split('-')[0];
-    if (I18N.data[browserLang]) I18N.current = browserLang;
+    // Keep Dutch as the indexable default; alternates use an explicit ?lang= URL.
+    I18N.current = 'nl';
   }
   I18N.translatePage();
 

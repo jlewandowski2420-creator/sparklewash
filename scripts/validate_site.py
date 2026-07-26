@@ -23,6 +23,19 @@ BANNED_CLAIMS = (
     "30 dagen garantie",
     "30 dagen tevredenheidsgarantie",
 )
+SEO_PAGES = {
+    "index.html", "sofa.html", "carpet.html", "mattress.html", "car.html",
+    "heerlen.html", "kerkrade.html", "maastricht.html", "sittard.html",
+    "tapijtreiniging-limburg.html",
+}
+LOCAL_DUTCH_PAGES = {
+    "heerlen.html", "kerkrade.html", "maastricht.html", "sittard.html",
+    "tapijtreiniging-limburg.html",
+}
+PRIORITY_LOCAL_LINKS = {
+    "heerlen.html", "kerkrade.html", "maastricht.html", "sittard.html",
+    "tapijtreiniging-limburg.html",
+}
 
 
 class PageParser(HTMLParser):
@@ -35,6 +48,9 @@ class PageParser(HTMLParser):
         self.links: list[dict[str, str]] = []
         self.ids: set[str] = set()
         self.h1_count = 0
+        self.h1_texts: list[str] = []
+        self._in_h1 = False
+        self._h1_parts: list[str] = []
         self.jsonld: list[str] = []
         self._in_jsonld = False
         self._jsonld_parts: list[str] = []
@@ -48,6 +64,8 @@ class PageParser(HTMLParser):
             self._title_parts = []
         elif tag == "h1":
             self.h1_count += 1
+            self._in_h1 = True
+            self._h1_parts = []
         elif tag == "meta":
             self.meta.append(values)
         elif tag == "link":
@@ -60,6 +78,9 @@ class PageParser(HTMLParser):
         if tag == "title" and self._in_title:
             self.titles.append("".join(self._title_parts).strip())
             self._in_title = False
+        elif tag == "h1" and self._in_h1:
+            self.h1_texts.append("".join(self._h1_parts).strip())
+            self._in_h1 = False
         elif tag == "script" and self._in_jsonld:
             self.jsonld.append("".join(self._jsonld_parts).strip())
             self._in_jsonld = False
@@ -67,6 +88,8 @@ class PageParser(HTMLParser):
     def handle_data(self, data: str) -> None:
         if self._in_title:
             self._title_parts.append(data)
+        if self._in_h1:
+            self._h1_parts.append(data)
         if self._in_jsonld:
             self._jsonld_parts.append(data)
 
@@ -169,11 +192,15 @@ def main() -> int:
             error(errors, rel, f"expected one non-empty title, got {parser.titles}")
         else:
             titles.setdefault(parser.titles[0], []).append(page.name)
+            if len(parser.titles[0]) > 60:
+                error(errors, rel, f"title exceeds 60 characters: {len(parser.titles[0])}")
         desc = meta_values(parser, "name", "description")
         if len(desc) != 1 or not desc[0]:
             error(errors, rel, f"expected one meta description, got {desc}")
         else:
             descriptions.setdefault(desc[0], []).append(page.name)
+            if len(desc[0]) > 160:
+                error(errors, rel, f"meta description exceeds 160 characters: {len(desc[0])}")
         canonical = canonical_values(parser)
         if page.name == "404.html":
             robots = meta_values(parser, "name", "robots")
@@ -187,6 +214,8 @@ def main() -> int:
             canonicals.setdefault(canonical[0], []).append(page.name)
         if parser.h1_count != 1:
             error(errors, rel, f"expected one h1, got {parser.h1_count}")
+        elif page.name in SEO_PAGES and (not parser.h1_texts or "SparkleWash" not in parser.h1_texts[0]):
+            error(errors, rel, "priority SEO page h1 must include SparkleWash")
         if page.name != "404.html":
             for property_name in ("og:title", "og:description", "og:image", "og:url"):
                 values = meta_values(parser, "property", property_name)
@@ -206,6 +235,17 @@ def main() -> int:
             error(errors, rel, "Umami must not load statically before consent")
         if text.count("js/cookie.js?v=100") != 1:
             error(errors, rel, "expected exactly one consent loader")
+        if page.name in LOCAL_DUTCH_PAGES:
+            if "js/i18n.js" in text or "lang-switcher" in text:
+                error(errors, rel, "Dutch-only landing must not load or expose the multilingual switcher")
+            if re.search(r'hreflang=["\'](?:de|en|pl)["\']', text):
+                error(errors, rel, "Dutch-only landing advertises an untranslated hreflang alternate")
+        if page.name in {"sofa.html", "carpet.html", "mattress.html", "car.html"}:
+            for language in ("nl", "de", "en", "pl"):
+                if f'data-lang="{language}"' not in text:
+                    error(errors, rel, f"missing working {language} language control")
+            if "onclick=\"setLang(" in text:
+                error(errors, rel, "obsolete inline setLang handler remains")
 
         refs: list[str] = []
         refs.extend(match.group(1) for match in re.finditer(r'(?:href|src)=["\']([^"\']+)', text, re.I))
@@ -229,6 +269,11 @@ def main() -> int:
 
     parse_i18n(errors)
     validate_sitemap(errors, pages)
+
+    homepage = (ROOT / "index.html").read_text(encoding="utf-8")
+    for target in sorted(PRIORITY_LOCAL_LINKS):
+        if not re.search(rf'href=["\']{re.escape(target)}(?:[#?][^"\']*)?["\']', homepage):
+            error(errors, "index.html", f"missing direct priority local link: {target}")
 
     robots = (ROOT / "robots.txt").read_text(encoding="utf-8")
     if "Sitemap: https://sparklewash.nl/sitemap.xml" not in robots:

@@ -98,3 +98,15 @@ Gebruik gratis stockfoto's van:
 - **Slider JS**: `js/slider.js` — init bij DOMContentLoaded, ondersteunt mouse, touch en keyboard (pijltjestoetsen / Home / End).
 - **Slider CSS**: `css/style.css` — `.ba-slider`, `.ba-handle`, `.ba-img-before/after` met `clip-path`.
 - **i18n keys**: `gallery-title`, `gallery-subtitle`, `gallery-item-sofa`, `gallery-item-sofa-desc`, etc. in alle 4 talen (NL/DE/EN/PL).
+
+### Validatie voor deploy
+
+```bash
+python3 scripts/validate_site.py
+node scripts/test_i18n_runtime.js
+node --check js/i18n.js
+node --check js/main.js
+node --check js/cookie.js
+node --check js/slider.js
+git diff --check
+```
