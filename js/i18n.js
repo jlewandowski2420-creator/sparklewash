@@ -202,10 +202,14 @@ const I18N = {
       'pricing-note': '* Prijzen zijn richtprijzen. Offerte op maat na inspectie. <strong>Gratis</strong> en vrijblijvende offerte.',
       'gallery-title': 'Voor & Nadien',
       'gallery-subtitle': 'Bekijk onze resultaten — echte voorbeelden van onze reinigingen in Limburg en omgeving.',
+      'gallery-before': 'Voor',
+      'gallery-after': 'Na',
       'gallery-item-sofa': 'Bank & Fauteuil',
       'gallery-item-sofa-desc': 'Voor en na grondige extractiereiniging van een stoffen bank. Vlekken en geuren verwijderd.',
       'gallery-item-velvet': 'Bank Velvet — Geleen',
       'gallery-item-velvet-desc': 'Velvet bank gereinigd na jaren gebruik. Opvallend verschil voor en na extractiereiniging.',
+      'gallery-item-mattress': 'Matrasreiniging',
+      'gallery-item-mattress-desc': 'Voor en na extractiereiniging van een matras op locatie.',
       'gallery-item-carpet': 'Tapijt & Vloerkleed',
       'gallery-item-carpet-desc': 'Een vloerkleed na professionele extractiereiniging. Diep gereinigd tot in de vezels.',
       'gallery-item-car': 'Auto Interieur',
@@ -513,10 +517,14 @@ const I18N = {
       'pricing-note': '* Preise sind Richtpreise. Individuelles Angebot nach Besichtigung. <strong>Kostenloses</strong> und unverbindliches Angebot.',
       'gallery-title': 'Vorher & Nachher',
       'gallery-subtitle': 'Sehen Sie sich unsere Ergebnisse an — echte Beispiele unserer Reinigungen in Limburg und Umgebung.',
+      'gallery-before': 'Vorher',
+      'gallery-after': 'Nachher',
       'gallery-item-sofa': 'Sofa & Sessel',
       'gallery-item-sofa-desc': 'Vor und nach einer gründlichen Extraktionsreinigung eines Stoffsofas. Flecken und Gerüche entfernt.',
       'gallery-item-velvet': 'Sofa Velvet — Geleen',
       'gallery-item-velvet-desc': 'Velvet-Sofa nach jahrelanger Nutzung gereinigt. Auffälliger Unterschied vor und nach der Extraktionsreinigung.',
+      'gallery-item-mattress': 'Matratzenreinigung',
+      'gallery-item-mattress-desc': 'Vor und nach der Extraktionsreinigung einer Matratze vor Ort.',
       'gallery-item-carpet': 'Teppich & Läufer',
       'gallery-item-carpet-desc': 'Ein Teppich nach professioneller Extraktionsreinigung. Tiefengereinigt bis in die Fasern.',
       'gallery-item-car': 'Auto Innenraum',
@@ -824,10 +832,14 @@ const I18N = {
       'pricing-note': '* Prices are guidelines. Custom quote after inspection. <strong>Free</strong>, no-obligation quote.',
       'gallery-title': 'Before & After',
       'gallery-subtitle': 'See our results — real examples of our cleanings in Limburg and surrounding areas.',
+      'gallery-before': 'Before',
+      'gallery-after': 'After',
       'gallery-item-sofa': 'Sofa & Armchair',
       'gallery-item-sofa-desc': 'Before and after a thorough extraction cleaning of a fabric sofa. Stains and odors removed.',
       'gallery-item-velvet': 'Velvet Sofa — Geleen',
       'gallery-item-velvet-desc': 'Velvet sofa cleaned after years of use. Striking difference before and after extraction cleaning.',
+      'gallery-item-mattress': 'Mattress cleaning',
+      'gallery-item-mattress-desc': 'Before and after on-site extraction cleaning of a mattress.',
       'gallery-item-carpet': 'Carpet & Rug',
       'gallery-item-carpet-desc': 'A rug after professional extraction cleaning. Deep cleaned down to the fibers.',
       'gallery-item-car': 'Car Interior',
@@ -1135,10 +1147,14 @@ const I18N = {
       'pricing-note': '* Ceny orientacyjne. Wycena po obejrzeniu. <strong>Darmowa</strong> i niezobowiązująca wycena.',
       'gallery-title': 'Przed & Po',
       'gallery-subtitle': 'Zobacz nasze efekty — prawdziwe przykłady naszych czyszczeń w Limburgii i okolicy.',
+      'gallery-before': 'Przed',
+      'gallery-after': 'Po',
       'gallery-item-sofa': 'Sofa & Fotele',
       'gallery-item-sofa-desc': 'Przed i po dokładnym praniu ekstrakcyjnym sofy materiałowej. Plamy i zapachy usunięte.',
       'gallery-item-velvet': 'Sofa Welwet — Geleen',
       'gallery-item-velvet-desc': 'Sofa welwetowa wyczyszczona po latach użytkowania. Uderzająca różnica przed i po praniu ekstrakcyjnym.',
+      'gallery-item-mattress': 'Czyszczenie materaca',
+      'gallery-item-mattress-desc': 'Przed i po praniu ekstrakcyjnym materaca na miejscu.',
       'gallery-item-carpet': 'Dywan & Wykładzina',
       'gallery-item-carpet-desc': 'Dywan po profesjonalnym praniu ekstrakcyjnym. Dogłębnie wyczyszczony do włókien.',
       'gallery-item-car': 'Wnętrze Auta',
@@ -1293,6 +1309,14 @@ const I18N = {
       const key = el.getAttribute('data-i18n-aria');
       const text = this.t(key);
       if (text) el.setAttribute('aria-label', text);
+    });
+    document.querySelectorAll('[data-i18n-before]').forEach(el => {
+      const text = this.t(el.getAttribute('data-i18n-before'));
+      if (text) el.setAttribute('data-label-before', text);
+    });
+    document.querySelectorAll('[data-i18n-after]').forEach(el => {
+      const text = this.t(el.getAttribute('data-i18n-after'));
+      if (text) el.setAttribute('data-label-after', text);
     });
     document.documentElement.lang = this.current;
     document.documentElement.setAttribute('data-i18n-lang', this.current);
