@@ -8,6 +8,7 @@ from html.parser import HTMLParser
 import json
 from pathlib import Path
 import re
+import subprocess
 import sys
 from urllib.parse import unquote, urlsplit
 import xml.etree.ElementTree as ET
@@ -36,6 +37,26 @@ PRIORITY_LOCAL_LINKS = {
     "heerlen.html", "kerkrade.html", "maastricht.html", "sittard.html",
     "tapijtreiniging-limburg.html",
 }
+SECRET_PATTERNS = {
+    "private key": re.compile(r"BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY"),
+    "GitHub token": re.compile(r"(?:github_pat_|ghp_)[A-Za-z0-9_]{20,}"),
+    "Google API key": re.compile(r"AIza[0-9A-Za-z_-]{30,}"),
+    "Slack token": re.compile(r"xox[baprs]-[A-Za-z0-9-]{10,}"),
+}
+FORBIDDEN_TRACKED_SUFFIXES = {".pem", ".key", ".p12", ".pfx", ".kdbx"}
+REQUIRED_HTACCESS_TOKENS = (
+    "Options -Indexes",
+    'Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"',
+    "default-src 'self'",
+    "base-uri 'self'",
+    "object-src 'none'",
+    "frame-ancestors 'none'",
+    "https://formspree.io",
+    'X-Frame-Options "DENY"',
+    'X-Content-Type-Options "nosniff"',
+    'Referrer-Policy "strict-origin-when-cross-origin"',
+    "Permissions-Policy",
+)
 
 
 class PageParser(HTMLParser):
@@ -173,9 +194,98 @@ def validate_sitemap(errors: list[str], pages: list[Path]) -> None:
         error(errors, "sitemap.xml", f"coverage mismatch; missing={sorted(expected-actual)}, extra={sorted(actual-expected)}")
 
 
+def validate_repository_security(errors: list[str], pages: list[Path]) -> None:
+    """Reject common static-site security regressions before deployment."""
+    try:
+        output = subprocess.check_output(
+            ["git", "ls-files", "-z"], cwd=ROOT, stderr=subprocess.DEVNULL
+        ).decode("utf-8")
+        tracked = [ROOT / item for item in output.split("\0") if item]
+    except (OSError, subprocess.CalledProcessError, UnicodeDecodeError):
+        tracked = [path for path in ROOT.rglob("*") if path.is_file() and ".git" not in path.parts]
+
+    for path in tracked:
+        rel = path.relative_to(ROOT)
+        lowered_name = path.name.lower()
+        if lowered_name == ".env" or lowered_name.startswith(".env."):
+            if lowered_name != ".env.example":
+                error(errors, rel, "secret environment file must not be tracked")
+        if path.suffix.lower() in FORBIDDEN_TRACKED_SUFFIXES:
+            error(errors, rel, "credential/key container must not be tracked")
+        if lowered_name.startswith("deploy") and path.suffix.lower() == ".py":
+            error(errors, rel, "deployment scripts must remain outside the repository")
+        try:
+            text = path.read_text(encoding="utf-8")
+        except (OSError, UnicodeDecodeError):
+            continue
+        for label, pattern in SECRET_PATTERNS.items():
+            if pattern.search(text):
+                error(errors, rel, f"possible committed {label}")
+
+    for workflow in sorted((ROOT / ".github/workflows").glob("*.y*ml")):
+        text = workflow.read_text(encoding="utf-8")
+        for match in re.finditer(r"^\s*uses:\s*([^\s#]+)", text, re.MULTILINE):
+            action = match.group(1)
+            if action.startswith("./"):
+                continue
+            ref = action.rsplit("@", 1)[-1] if "@" in action else ""
+            if not re.fullmatch(r"[0-9a-f]{40}", ref):
+                error(errors, workflow.relative_to(ROOT), f"action is not pinned to a full commit SHA: {action}")
+
+    for page in pages:
+        text = page.read_text(encoding="utf-8")
+        rel = page.relative_to(ROOT)
+        for tag in re.finditer(r"<([a-z][a-z0-9:-]*)\b([^>]*)>", text, re.IGNORECASE | re.DOTALL):
+            attrs = tag.group(2)
+            if re.search(r"\son[a-z]+\s*=", " " + attrs, re.IGNORECASE):
+                error(errors, rel, f"inline event handler on <{tag.group(1).lower()}>")
+            if re.search(r"(?:href|src)\s*=\s*[\"']\s*javascript:", attrs, re.IGNORECASE):
+                error(errors, rel, f"javascript: URL on <{tag.group(1).lower()}>")
+        for anchor in re.finditer(r"<a\b([^>]*)>", text, re.IGNORECASE | re.DOTALL):
+            attrs = anchor.group(1)
+            if re.search(r"target\s*=\s*[\"']_blank[\"']", attrs, re.IGNORECASE):
+                rel_match = re.search(r"rel\s*=\s*[\"']([^\"']*)[\"']", attrs, re.IGNORECASE)
+                rel_tokens = set(rel_match.group(1).lower().split()) if rel_match else set()
+                if not {"noopener", "noreferrer"}.issubset(rel_tokens):
+                    error(errors, rel, 'target="_blank" requires rel="noopener noreferrer"')
+        for script in re.finditer(r"<script\b([^>]*)>(.*?)</script>", text, re.IGNORECASE | re.DOTALL):
+            attrs, body = script.groups()
+            script_type = re.search(r"type\s*=\s*[\"']([^\"']+)", attrs, re.IGNORECASE)
+            is_jsonld = script_type and script_type.group(1).lower() == "application/ld+json"
+            if "src=" not in attrs.lower() and body.strip() and not is_jsonld:
+                error(errors, rel, "executable inline script is forbidden by CSP")
+        for iframe in re.finditer(r"<iframe\b([^>]*)>", text, re.IGNORECASE | re.DOTALL):
+            attrs = iframe.group(1)
+            if "sandbox=" not in attrs.lower():
+                error(errors, rel, "iframe must declare a sandbox")
+            if not re.search(r"referrerpolicy\s*=\s*[\"'](?:no-referrer|strict-origin|strict-origin-when-cross-origin)[\"']", attrs, re.IGNORECASE):
+                error(errors, rel, "iframe must use a restrictive referrerpolicy")
+
+    htaccess = (ROOT / ".htaccess").read_text(encoding="utf-8")
+    active_htaccess = "\n".join(
+        line for line in htaccess.splitlines() if not line.lstrip().startswith("#")
+    )
+    for token in REQUIRED_HTACCESS_TOKENS:
+        if token not in active_htaccess:
+            error(errors, ".htaccess", f"required security directive missing: {token}")
+    csp_lines = [
+        line for line in active_htaccess.splitlines()
+        if "Content-Security-Policy" in line
+    ]
+    if len(csp_lines) != 1:
+        error(errors, ".htaccess", "expected exactly one active Content-Security-Policy header")
+    else:
+        script_src = re.search(r"script-src([^;\"]*)", csp_lines[0])
+        if not script_src:
+            error(errors, ".htaccess", "CSP must declare script-src")
+        elif {"'unsafe-inline'", "'unsafe-eval'"} & set(script_src.group(1).split()):
+            error(errors, ".htaccess", "script-src must not allow unsafe-inline or unsafe-eval")
+
+
 def main() -> int:
     errors: list[str] = []
     pages = sorted(ROOT.glob("*.html"))
+    validate_repository_security(errors, pages)
     parsed: dict[Path, PageParser] = {}
     titles: dict[str, list[str]] = {}
     descriptions: dict[str, list[str]] = {}

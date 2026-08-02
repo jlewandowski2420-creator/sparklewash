@@ -1,9 +1,50 @@
-# Security headers
+# SparkleWash production hardening for Cloud86 Apache/LiteSpeed.
+# GitHub Pages ignores this file; the Cloud86 production host applies it.
+
+ServerSignature Off
+Options -Indexes
+
+RewriteEngine On
+RewriteCond %{HTTPS} !=on [OR]
+RewriteCond %{HTTP_HOST} ^www\.sparklewash\.nl$ [NC]
+RewriteRule ^ https://sparklewash.nl%{REQUEST_URI} [R=301,L,NE]
+
 <IfModule mod_headers.c>
-  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+  Header always set Content-Security-Policy "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; script-src 'self' https://cloud.umami.is; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://cloud.umami.is https://formspree.io; frame-src https://www.openstreetmap.org https://www.google.com; form-action 'self' https://formspree.io; upgrade-insecure-requests"
+  Header always set X-Frame-Options "DENY"
   Header always set X-Content-Type-Options "nosniff"
-  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
   Header always set Referrer-Policy "strict-origin-when-cross-origin"
-  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
-  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://cloud.umami.is; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://cloud.umami.is; frame-src 'self' https://www.google.com; form-action 'self' https://formspree.io"
+  Header always set Permissions-Policy "accelerometer=(), autoplay=(), camera=(), display-capture=(), encrypted-media=(), fullscreen=(self), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), midi=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), screen-wake-lock=(), usb=()"
+  Header always set Cross-Origin-Opener-Policy "same-origin"
+  Header always set X-Permitted-Cross-Domain-Policies "none"
+
+  Header always unset X-Powered-By
+  Header always unset Server
 </IfModule>
+
+<FilesMatch "(^\.|\.(?:env|ini|log|sql|sqlite|db|bak|backup|pem|key|p12|yml|yaml|toml|lock)$|^(?:deploy|composer|package-lock|pnpm-lock|yarn\.lock))">
+  Require all denied
+</FilesMatch>
+
+<IfModule mod_mime.c>
+  AddType text/javascript .js
+  AddType application/manifest+json .webmanifest
+</IfModule>
+
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/css text/javascript application/javascript application/json application/xml image/svg+xml
+</IfModule>
+
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/html "access plus 1 hour"
+  ExpiresByType text/css "access plus 7 days"
+  ExpiresByType text/javascript "access plus 7 days"
+  ExpiresByType application/javascript "access plus 7 days"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+</IfModule>
+
+ErrorDocument 404 /404.html

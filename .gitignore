@@ -4,3 +4,20 @@ backups/
 *.zip
 .gateway-config.json
 .gateway-tokens.json
+
+# Local secrets and deployment credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.kdbx
+deploy*.py
+
+# Local editor and OS state
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
