@@ -27,6 +27,8 @@ function runCase({ path, search = '', saved = null, titleKey, heroKey, metaKey }
   const hero = makeElement({ 'data-i18n': heroKey });
   const meta = makeElement({ 'data-i18n-content': metaKey, content: 'static' });
   const canonical = makeElement({ href: `https://sparklewash.nl${path}` });
+  const areaMap = makeElement({ 'data-i18n-title': 'area-map-aria', title: 'static' });
+  const areaLink = makeElement({ 'data-i18n-href': 'area-map-wa-href', href: 'static' });
   const buttons = ['nl', 'de', 'en', 'pl'].map(lang => makeElement({ 'data-lang': lang }));
   const store = saved ? { 'sparklewash-lang': saved } : {};
   const location = {
@@ -43,6 +45,8 @@ function runCase({ path, search = '', saved = null, titleKey, heroKey, metaKey }
     querySelectorAll(selector) {
       if (selector === '[data-i18n]') return [title, hero];
       if (selector === '[data-i18n-content]') return [meta];
+      if (selector === '[data-i18n-title]') return [areaMap];
+      if (selector === '[data-i18n-href]') return [areaLink];
       if (selector === '.lang-btn') return buttons;
       return [];
     },
@@ -91,6 +95,8 @@ function runCase({ path, search = '', saved = null, titleKey, heroKey, metaKey }
     canonical: () => canonical.href,
     htmlLang: () => documentElement.lang,
     href: () => location.href,
+    mapTitle: () => areaMap._state.attrs.title,
+    areaHref: () => areaLink._state.attrs.href,
   };
 }
 
@@ -104,6 +110,8 @@ assert(homepage.title().includes('SparkleWash'), `homepage title=${homepage.titl
 assert(homepage.meta().startsWith('SparkleWash reinigt'), `homepage meta=${homepage.meta()}`);
 assert(homepage.canonical() === 'https://sparklewash.nl/', `homepage canonical=${homepage.canonical()}`);
 assert(homepage.htmlLang() === 'nl', `homepage html lang=${homepage.htmlLang()}`);
+assert(homepage.mapTitle().startsWith('Kaart van'), `homepage map title=${homepage.mapTitle()}`);
+assert(homepage.areaHref().includes('Dit%20is%20mijn%20adres'), `homepage area href=${homepage.areaHref()}`);
 
 const german = runCase({ path: '/sofa.html', search: '?lang=de', titleKey: 'sofa-page-title', heroKey: 'sofa-hero-title', metaKey: 'sofa-meta-desc' });
 assert(german.current === 'de', `German current=${german.current}`);
@@ -112,6 +120,8 @@ assert(german.hero().includes('SparkleWash'), `German H1=${german.hero()}`);
 assert(german.meta().startsWith('Sofa oder Sessel'), `German meta=${german.meta()}`);
 assert(german.canonical() === 'https://sparklewash.nl/sofa.html?lang=de', `German canonical=${german.canonical()}`);
 assert(german.htmlLang() === 'de', `German html lang=${german.htmlLang()}`);
+assert(german.mapTitle().startsWith('Karte des'), `German map title=${german.mapTitle()}`);
+assert(german.areaHref().includes('Meine%20Adresse%20ist'), `German area href=${german.areaHref()}`);
 
 german.setLang('pl');
 assert(german.href() === 'https://sparklewash.nl/sofa.html?lang=pl', `Polish href=${german.href()}`);

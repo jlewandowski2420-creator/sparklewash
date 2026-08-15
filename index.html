@@ -78,7 +78,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap">
   <link rel="preload" href="images/favicon.svg" as="image" type="image/svg+xml">
-  <link rel="stylesheet" href="css/style.css?v=102">
+  <link rel="stylesheet" href="css/style.css?v=103">
   <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
   <link rel="alternate icon" type="image/png" href="images/favicon.png">
   <link rel="canonical" href="https://sparklewash.nl/" id="canonical-link">
@@ -356,31 +356,76 @@
   <!-- Service Area -->
   <section id="area" class="section">
     <div class="container">
+      <div class="area-kicker" data-i18n="area-kicker">Limburg &amp; grensregio</div>
       <h2 class="section-title" data-i18n="area-title">Werkgebied</h2>
-      <p class="section-subtitle" data-i18n="area-subtitle">Actief in heel Nederlands Limburg en de Duitse grensregio (Aachen, Keulen, Düren).</p>
+      <p class="section-subtitle" data-i18n="area-subtitle">Wij reinigen op locatie in heel Nederlands Limburg. Aanvragen uit de Duitse grensregio beoordelen wij op adres en reistijd.</p>
       <div class="area-grid">
-        <div>
-          <h3 data-i18n="area-nl">🇳🇱 Nederland</h3>
-          <p><a href="heerlen.html">Tapijtreiniging Heerlen</a> • <a href="maastricht.html">Tapijtreiniging Maastricht</a> • <a href="sittard.html">Tapijtreiniging Sittard</a> • Geleen • <a href="kerkrade.html">Tapijtreiniging Kerkrade</a> • Landgraaf • Brunssum • Valkenburg</p>
-          <p><a href="tapijtreiniging-limburg.html"><strong>Bekijk onze tapijtreiniging in heel Limburg</strong></a></p>
-        </div>
-        <div>
-          <h3 data-i18n="area-de">🇩🇪 Deutschland</h3>
-          <p>Aachen • Köln • Düren • Eschweiler • Stolberg • Herzogenrath • Jülich</p>
-        </div>
+        <article class="area-card area-card--primary">
+          <div class="area-card-head">
+            <span class="area-region-code" aria-hidden="true">NL</span>
+            <div>
+              <span class="area-card-label" data-i18n="area-nl-label">Primair werkgebied</span>
+              <h3 data-i18n="area-nl">Nederland</h3>
+            </div>
+          </div>
+          <p class="area-card-copy" data-i18n="area-nl-copy">Wij komen bij u thuis of op locatie in heel Nederlands Limburg.</p>
+          <div class="area-places" aria-label="Plaatsen in Nederlands Limburg" data-i18n-aria="area-nl-places-aria">
+            <a href="heerlen.html" data-i18n="area-city-heerlen">Tapijtreiniging Heerlen</a>
+            <a href="maastricht.html" data-i18n="area-city-maastricht">Tapijtreiniging Maastricht</a>
+            <a href="sittard.html" data-i18n="area-city-sittard">Tapijtreiniging Sittard</a>
+            <a href="kerkrade.html" data-i18n="area-city-kerkrade">Tapijtreiniging Kerkrade</a>
+            <span>Geleen</span><span>Landgraaf</span><span>Brunssum</span><span>Valkenburg</span>
+          </div>
+          <div class="area-card-footer">
+            <span class="area-language-note" data-i18n="area-local-pages-note">Lokale pagina’s zijn beschikbaar in het Nederlands</span>
+            <a class="area-text-link" href="tapijtreiniging-limburg.html" data-i18n="area-nl-cta">Bekijk heel Limburg <span aria-hidden="true">→</span></a>
+          </div>
+        </article>
+
+        <article class="area-card">
+          <div class="area-card-head">
+            <span class="area-region-code" aria-hidden="true">DE</span>
+            <div>
+              <span class="area-card-label" data-i18n="area-de-label">Op aanvraag</span>
+              <h3 data-i18n="area-de">Duitsland</h3>
+            </div>
+          </div>
+          <p class="area-card-copy" data-i18n="area-de-copy">Ook aanvragen uit de Duitse grensregio zijn welkom. Wij bevestigen vooraf of de rit haalbaar is.</p>
+          <div class="area-places" aria-label="Plaatsen in de Duitse grensregio" data-i18n-aria="area-de-places-aria">
+            <span>Aachen</span><span>Köln</span><span>Düren</span><span>Eschweiler</span><span>Stolberg</span><span>Herzogenrath</span><span>Jülich</span>
+          </div>
+          <div class="area-card-footer area-card-footer--end">
+            <a class="area-text-link" href="https://wa.me/31684067379?text=Hallo%20SparkleWash!%20Ik%20wil%20graag%20weten%20of%20jullie%20naar%20mijn%20adres%20komen."
+               target="_blank" rel="noopener noreferrer" data-i18n="area-de-cta" data-i18n-href="area-de-wa-href">Vraag naar uw adres <span aria-hidden="true">→</span></a>
+          </div>
+        </article>
       </div>
-      <div class="area-map">
+      <div class="area-map-shell">
+        <div class="area-map-head">
+          <div class="area-map-heading">
+            <span class="area-map-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s6-5.1 6-11a6 6 0 10-12 0c0 5.9 6 11 6 11z"/><circle cx="12" cy="10" r="2"/></svg>
+            </span>
+            <div>
+              <h3 data-i18n="area-map-title">Vanuit Heerlen, actief over de grens</h3>
+              <p data-i18n="area-map-copy">Stuur uw volledige adres voor een snelle bevestiging van beschikbaarheid en reistijd.</p>
+            </div>
+          </div>
+          <a class="btn btn-primary area-map-cta" href="https://wa.me/31684067379?text=Hallo%20SparkleWash!%20Dit%20is%20mijn%20adres%3A%20"
+             target="_blank" rel="noopener noreferrer" data-i18n="area-map-cta" data-i18n-href="area-map-wa-href">Controleer mijn adres</a>
+        </div>
+        <div class="area-map">
         <iframe
-          src="https://www.openstreetmap.org/export/embed.html?bbox=5.67%2C50.78%2C6.28%2C51.08&amp;layer=transportmap&amp;marker=50.89%2C5.98"
-          width="100%"
-          height="400"
-          style="border: 1px solid var(--border); border-radius: var(--radius); margin-top: 28px;"
+          src="https://www.openstreetmap.org/export/embed.html?bbox=5.55%2C50.72%2C7.20%2C51.15&amp;layer=mapnik&amp;marker=50.89%2C5.98"
           allowfullscreen
           loading="lazy"
           sandbox="allow-scripts allow-same-origin allow-popups"
           referrerpolicy="strict-origin-when-cross-origin"
+          data-i18n-aria="area-map-aria"
+          data-i18n-title="area-map-aria"
           title="SparkleWash werkgebied — Heerlen, Limburg & Grensregio">
         </iframe>
+        </div>
       </div>
     </div>
   </section>
@@ -604,7 +649,7 @@
     <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
   </a>
 
-  <script src="js/i18n.js?v=104"></script>
+  <script src="js/i18n.js?v=105"></script>
   <script src="js/slider.js?v=101"></script>
   <script src="js/main.js?v=99"></script>
 

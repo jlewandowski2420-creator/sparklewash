@@ -358,7 +358,11 @@ def main() -> int:
                 error(errors, rel, "obsolete inline setLang handler remains")
 
         refs: list[str] = []
-        refs.extend(match.group(1) for match in re.finditer(r'(?:href|src)=["\']([^"\']+)', text, re.I))
+        # Match real href/src attributes, not declarative data-i18n-href keys.
+        refs.extend(
+            match.group(1)
+            for match in re.finditer(r'(?<![\w-])(?:href|src)=["\']([^"\']+)', text, re.I)
+        )
         for raw in refs:
             target, fragment = local_target(page.resolve(), raw)
             if target is None:
