@@ -474,6 +474,45 @@ body {
   background: var(--accent-glow);
 }
 
+/* ═══ Sofa service proof & quote ═══ */
+.sofa-results { background: var(--ivory); }
+.sofa-results-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.sofa-results .ba-item {
+  padding: 12px;
+  border: 0;
+  border-radius: 16px;
+  background: #fff;
+  text-align: left;
+  box-shadow: 0 14px 40px rgba(11,29,36,.08);
+}
+.sofa-results .ba-title { padding: 12px 12px 0; color: var(--ink); font-size: 1.22rem; }
+.sofa-results .ba-desc { min-height: 2.4em; padding: 0 12px; }
+.sofa-results .ba-slider { height: 340px; border-radius: 10px; }
+.sofa-quote-panel {
+  display: grid;
+  grid-template-columns: minmax(0,1fr) auto;
+  align-items: center;
+  gap: 36px;
+  margin-top: 32px;
+  padding: 30px 34px;
+  border-radius: 14px;
+  background: var(--ink);
+  color: #fff;
+  box-shadow: var(--shadow-premium);
+}
+.sofa-quote-kicker {
+  display: block;
+  margin-bottom: 8px;
+  color: #78d0cc;
+  font-size: .72rem;
+  font-weight: 800;
+  letter-spacing: .11em;
+  text-transform: uppercase;
+}
+.sofa-quote-panel h3 { margin: 0 0 8px; color: #fff; font-size: clamp(1.35rem,2.4vw,1.8rem); }
+.sofa-quote-panel p { max-width: 720px; margin: 0; color: rgba(255,255,255,.68); }
+.sofa-quote-panel .btn { min-width: 250px; text-align: center; }
+
 /* ═══ About ═══ */
 .about-content { max-width: 750px; margin: 0 auto; }
 .about-content p {
@@ -1446,6 +1485,11 @@ h1, h2, h3, h4, .logo, .footer-logo, .price, .btn {
     width: 100%;
   }
   #gallery .ba-slider { height: 300px; }
+  .sofa-results-grid { grid-template-columns: 1fr; }
+  .sofa-results .ba-desc { min-height: 0; }
+  .sofa-results .ba-slider { height: 300px; }
+  .sofa-quote-panel { grid-template-columns: 1fr; gap: 22px; padding: 26px; }
+  .sofa-quote-panel .btn { width: 100%; min-width: 0; }
   #about .stats-grid { grid-template-columns: repeat(2,1fr) !important; }
   .area-grid { grid-template-columns: 1fr; }
   .area-card-copy { min-height: 0; }
@@ -1468,6 +1512,8 @@ h1, h2, h3, h4, .logo, .footer-logo, .price, .btn {
   .hero-image-shell { aspect-ratio: 4 / 4.7; }
   .hero-result-card { padding: 12px 16px; font-size: .86rem; }
   #gallery .ba-slider { height: 245px; }
+  .sofa-results .ba-slider { height: 245px; }
+  .sofa-quote-panel { padding: 22px 20px; }
   #about .stats-grid { grid-template-columns: 1fr !important; }
   .area-card { padding: 22px; }
   .area-card-footer { align-items: flex-start; flex-direction: column; }
